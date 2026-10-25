@@ -1,0 +1,11 @@
+{
+    "id": "fixture-394",
+    "jsonrpc": "fixture-395",
+    "method": "light_client_proof",
+    "params": {
+        "light_client_head": "fixture-396",
+        "sender_id": "fixture-397",
+        "transaction_hash": "fixture-398",
+        "type": "transaction"
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "addr": "fixture-605",
+    "archival": true,
+    "connection_established_time_millis": 86,
+    "height": 48,
+    "is_highest_block_invalid": false,
+    "is_outbound_peer": false,
+    "last_time_peer_requested_millis": 49,
+    "last_time_received_message_millis": 91,
+    "nonce": 59,
+    "peer_id": "fixture-606",
+    "received_bytes_per_sec": 78,
+    "sent_bytes_per_sec": 94,
+    "tracked_shards": [
+        79
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "id": "fixture-382",
+    "jsonrpc": "fixture-383",
+    "method": "changes",
+    "params": {
+        "sync_checkpoint": "genesis",
+        "account_ids": [],
+        "changes_type": "account_changes"
+    }
+}

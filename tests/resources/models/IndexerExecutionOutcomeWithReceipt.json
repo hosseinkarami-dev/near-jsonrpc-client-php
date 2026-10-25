@@ -1,0 +1,48 @@
+{
+    "execution_outcome": {
+        "block_hash": "fixture-278",
+        "id": "fixture-279",
+        "outcome": {
+            "executor_id": "fixture-280",
+            "gas_burnt": 33,
+            "logs": [],
+            "receipt_ids": [],
+            "status": {
+                "SuccessValue": "fixture-281"
+            },
+            "tokens_burnt": "fixture-282"
+        },
+        "proof": [
+            {
+                "direction": "Right",
+                "hash": "fixture-283"
+            }
+        ]
+    },
+    "receipt": {
+        "predecessor_id": "fixture-284",
+        "receipt": {
+            "Action": {
+                "actions": [
+                    {
+                        "DeleteKey": {
+                            "public_key": "fixture-285"
+                        }
+                    }
+                ],
+                "gas_price": "fixture-286",
+                "input_data_ids": [],
+                "output_data_receivers": [
+                    {
+                        "data_id": "fixture-287",
+                        "receiver_id": "fixture-288"
+                    }
+                ],
+                "signer_id": "fixture-289",
+                "signer_public_key": "fixture-290"
+            }
+        },
+        "receipt_id": "fixture-291",
+        "receiver_id": "fixture-292"
+    }
+}

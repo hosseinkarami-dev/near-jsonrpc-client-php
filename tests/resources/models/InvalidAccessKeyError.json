@@ -1,0 +1,8 @@
+{
+    "NotEnoughAllowance": {
+        "account_id": "fixture-308",
+        "allowance": "fixture-309",
+        "cost": "fixture-310",
+        "public_key": "fixture-311"
+    }
+}

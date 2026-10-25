@@ -1,0 +1,38 @@
+{
+    "current_fishermen": [
+        {
+            "validator_stake_struct_version": "V1",
+            "account_id": "fixture-797",
+            "public_key": "fixture-798",
+            "stake": "fixture-799"
+        }
+    ],
+    "current_proposals": [
+        {
+            "validator_stake_struct_version": "V1",
+            "account_id": "fixture-800",
+            "public_key": "fixture-801",
+            "stake": "fixture-802"
+        }
+    ],
+    "current_validators": [],
+    "epoch_height": 49,
+    "epoch_start_height": 63,
+    "next_fishermen": [
+        {
+            "validator_stake_struct_version": "V1",
+            "account_id": "fixture-803",
+            "public_key": "fixture-804",
+            "stake": "fixture-805"
+        }
+    ],
+    "next_validators": [
+        {
+            "account_id": "fixture-806",
+            "public_key": "fixture-807",
+            "shards": [],
+            "stake": "fixture-808"
+        }
+    ],
+    "prev_epoch_kickout": []
+}
