@@ -8,7 +8,7 @@ A synchronous, typed PHP client for the [NEAR JSON-RPC API](https://docs.near.or
 - Typed request and response models, including enums and named `oneOf`/`anyOf` variants.
 - Structured exceptions for JSON-RPC errors, HTTP failures, timeouts, and invalid responses.
 - Injectable transport for tests and integrations with another HTTP stack.
-- OpenAPI generator and fixture-based PHPUnit suites included in the repository.
+- OpenAPI generator and fixture-based PHPUnit suites generated locally or in CI.
 - PHP 8.2+ with the `json` and `curl` extensions; no framework runtime dependency.
 
 ## Installation

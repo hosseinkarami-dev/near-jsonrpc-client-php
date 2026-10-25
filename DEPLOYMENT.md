@@ -65,6 +65,7 @@ Before preparing a package release, run these checks from the repository root:
 ```sh
 composer validate --no-check-publish
 composer install --no-interaction --prefer-dist
+composer generate
 composer test
 composer verify-models
 ```
@@ -91,7 +92,7 @@ Do not move or reuse a published version tag; publish a new version for correcti
 
 ## Generator and generated sources
 
-Generated models, the direct client-method trait, one fixture per schema, and the PHPUnit suites are checked into this repository. The generator is a development tool. Do not invoke it during application startup or production deployment. Runtime consumers need only the packaged PHP source and Composer autoloader; they do not need the OpenAPI document or PHPUnit.
+Generated models and the direct client-method trait are checked into this repository. PHPUnit suites and their JSON fixtures are generated in CI (and locally when requested) because the test PHP files are git-ignored. CI generates those test assets from the current OpenAPI URL, verifies that generated models and client methods match the committed source, then runs PHPUnit against those committed classes. The generator is a development tool. Do not invoke it during application startup or production deployment. Runtime consumers need only the packaged PHP source and Composer autoloader; they do not need the OpenAPI document or PHPUnit.
 
 The CLI can generate from a local OpenAPI file or a URL. Prefer a reviewed local specification when reproducibility and offline generation are needed. Review generated output before committing it, especially changes to request constructors, method signatures, union variants, and response typing.
 

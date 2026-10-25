@@ -27,6 +27,17 @@ jobs:
           coverage: none
       - run: composer validate --no-check-publish
       - run: composer install --no-interaction --prefer-dist
+      - name: Generate ignored PHPUnit suites and fixtures
+        run: composer generate
+      - name: Ensure generated models and client APIs are current
+        shell: bash
+        run: |
+          git ls-files --error-unmatch src/Generated/Client/RpcMethods.php >/dev/null
+          if ! git ls-files 'src/Generated/Models/*.php' | grep -q .; then
+            echo 'Generated model PHP files must be committed so CI tests the main-branch models.' >&2
+            exit 1
+          fi
+          git diff --exit-code -- src/Generated/Models src/Generated/Client
       - name: Syntax check
         run: find src tests bin -type f \( -name '*.php' -o -name 'near-rpc-generate' \) -print0 | xargs -0 -n1 php -l
       - run: composer test
