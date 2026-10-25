@@ -1,0 +1,8 @@
+{
+    "info": {
+        "block_reference": {
+            "sync_checkpoint": "earliest_available"
+        }
+    },
+    "name": "UNKNOWN_BLOCK"
+}

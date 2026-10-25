@@ -1,0 +1,11 @@
+{
+    "predecessor_id": "fixture-616",
+    "priority": 17,
+    "receipt": {
+        "Data": {
+            "data_id": "fixture-617"
+        }
+    },
+    "receipt_id": "fixture-618",
+    "receiver_id": "fixture-619"
+}

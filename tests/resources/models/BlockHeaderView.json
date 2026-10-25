@@ -1,0 +1,38 @@
+{
+    "approvals": [
+        null
+    ],
+    "block_merkle_root": "fixture-37",
+    "challenges_result": [
+        {
+            "account_id": "fixture-38",
+            "is_double_sign": false
+        }
+    ],
+    "challenges_root": "fixture-39",
+    "chunk_headers_root": "fixture-40",
+    "chunk_mask": [],
+    "chunk_receipts_root": "fixture-41",
+    "chunk_tx_root": "fixture-42",
+    "chunks_included": 96,
+    "epoch_id": "fixture-43",
+    "gas_price": "fixture-44",
+    "hash": "fixture-45",
+    "height": 92,
+    "last_ds_final_block": "fixture-46",
+    "last_final_block": "fixture-47",
+    "latest_protocol_version": 39,
+    "next_bp_hash": "fixture-48",
+    "next_epoch_id": "fixture-49",
+    "outcome_root": "fixture-50",
+    "prev_hash": "fixture-51",
+    "prev_state_root": "fixture-52",
+    "random_value": "fixture-53",
+    "rent_paid": "fixture-54",
+    "signature": "fixture-55",
+    "timestamp": 25,
+    "timestamp_nanosec": "fixture-56",
+    "total_supply": "fixture-57",
+    "validator_proposals": [],
+    "validator_reward": "fixture-58"
+}

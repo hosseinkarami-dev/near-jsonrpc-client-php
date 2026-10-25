@@ -1,0 +1,9 @@
+{
+    "id": "fixture-417",
+    "jsonrpc": "fixture-418",
+    "method": "tx_status",
+    "params": {
+        "sender_account_id": "fixture-419",
+        "tx_hash": "fixture-420"
+    }
+}

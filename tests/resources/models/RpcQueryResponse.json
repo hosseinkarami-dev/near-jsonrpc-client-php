@@ -1,0 +1,10 @@
+{
+    "block_hash": "fixture-753",
+    "block_height": 98,
+    "logs": [
+        "fixture-754"
+    ],
+    "result": [
+        10
+    ]
+}

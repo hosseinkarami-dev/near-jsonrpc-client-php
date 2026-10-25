@@ -1,0 +1,13 @@
+{
+    "id": "fixture-557",
+    "jsonrpc": "fixture-558",
+    "error": {
+        "cause": {
+            "info": {
+                "error_message": "fixture-559"
+            },
+            "name": "INTERNAL_ERROR"
+        },
+        "name": "INTERNAL_ERROR"
+    }
+}

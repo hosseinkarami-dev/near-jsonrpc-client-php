@@ -1,0 +1,15 @@
+{
+    "predecessor_id": "fixture-757",
+    "receipt": {
+        "GlobalContractDistribution": {
+            "already_delivered_shards": [],
+            "code": "fixture-758",
+            "id": {
+                "account_id": "fixture-759"
+            },
+            "target_shard": 56
+        }
+    },
+    "receipt_id": "fixture-760",
+    "receiver_id": "fixture-761"
+}

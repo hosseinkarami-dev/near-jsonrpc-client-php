@@ -1,0 +1,46 @@
+{
+    "id": "fixture-484",
+    "jsonrpc": "fixture-485",
+    "result": {
+        "block_header_lite": {
+            "inner_lite": {
+                "block_merkle_root": "fixture-486",
+                "epoch_id": "fixture-487",
+                "height": 66,
+                "next_bp_hash": "fixture-488",
+                "next_epoch_id": "fixture-489",
+                "outcome_root": "fixture-490",
+                "prev_state_root": "fixture-491",
+                "timestamp": 62,
+                "timestamp_nanosec": "fixture-492"
+            },
+            "inner_rest_hash": "fixture-493",
+            "prev_block_hash": "fixture-494"
+        },
+        "block_proof": [
+            {
+                "direction": "Right",
+                "hash": "fixture-495"
+            }
+        ],
+        "outcome_proof": {
+            "block_hash": "fixture-496",
+            "id": "fixture-497",
+            "outcome": {
+                "executor_id": "fixture-498",
+                "gas_burnt": 9,
+                "logs": [],
+                "receipt_ids": [],
+                "status": "Unknown",
+                "tokens_burnt": "fixture-499"
+            },
+            "proof": [
+                {
+                    "direction": "Right",
+                    "hash": "fixture-500"
+                }
+            ]
+        },
+        "outcome_root_proof": []
+    }
+}

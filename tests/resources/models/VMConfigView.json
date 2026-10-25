@@ -1,0 +1,6 @@
+{
+    "chain_id_host_fn": true,
+    "fix_contract_loading_cost": true,
+    "grow_mem_cost": 34,
+    "one_yocto_on_promise": true
+}

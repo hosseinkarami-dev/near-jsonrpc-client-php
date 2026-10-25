@@ -1,0 +1,6 @@
+{
+    "id": "fixture-388",
+    "jsonrpc": "fixture-389",
+    "method": "gas_price",
+    "params": {}
+}
