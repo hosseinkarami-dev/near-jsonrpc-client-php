@@ -74,7 +74,7 @@ composer test
 composer verify-models
 ```
 
-The test suites use mock transports and generated JSON fixtures; they do not require NEAR RPC network access. If the OpenAPI specification or generator changed, regenerate the checked-in models, operation methods, fixtures, and generated tests, review the complete diff, and rerun the suite:
+The test suites use mock transports and generated JSON fixtures; they do not require NEAR RPC network access. If the OpenAPI specification or generator changed, regenerate the checked-in models and operation methods. PHPUnit suites and JSON fixtures are generated for local/CI testing and remain git-ignored:
 
 ```sh
 php bin/near-rpc-generate --spec=openapi.json --seed=12345
@@ -95,7 +95,7 @@ Do not move or reuse a published version tag; publish a new version for correcti
 
 ## Generator and generated sources
 
-Generated models and the direct client-method trait are maintained in the repository by the automated pull request. PHPUnit suites are git-ignored and generated in CI together with their JSON fixtures. The generator is a development tool. Do not invoke it during application startup or production deployment. Runtime consumers need the packaged PHP source and Composer autoloader; they do not need the OpenAPI document or PHPUnit.
+Generated models and the direct client-method trait are maintained in the repository by the automated pull request. PHPUnit suites and JSON fixtures are git-ignored and generated in CI for testing; they are not included in generated-code pull requests. The generator is a development tool. Do not invoke it during application startup or production deployment. Runtime consumers need the packaged PHP source and Composer autoloader; they do not need the OpenAPI document or PHPUnit.
 
 The CLI can generate from a local OpenAPI file or a URL. Prefer a reviewed local specification when reproducibility and offline generation are needed. Review generated output before committing it, especially changes to request constructors, method signatures, union variants, and response typing.
 
