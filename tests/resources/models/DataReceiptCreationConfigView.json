@@ -1,0 +1,7 @@
+{
+    "base_cost": {
+        "execution": 15,
+        "send_not_sir": 73,
+        "send_sir": 97
+    }
+}

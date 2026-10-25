@@ -1,0 +1,56 @@
+{
+    "execution_outcome": {
+        "block_hash": "fixture-264",
+        "id": "fixture-265",
+        "outcome": {
+            "executor_id": "fixture-266",
+            "gas_burnt": 81,
+            "logs": [
+                "fixture-267"
+            ],
+            "metadata": {
+                "contracts": [
+                    null
+                ],
+                "gas_profile": [],
+                "version": 54
+            },
+            "receipt_ids": [
+                "fixture-268"
+            ],
+            "status": {
+                "Failure": {
+                    "ActionError": {
+                        "kind": "MalformedUniversalStateInit"
+                    }
+                }
+            },
+            "tokens_burnt": "fixture-269"
+        },
+        "proof": []
+    },
+    "receipt": {
+        "predecessor_id": "fixture-270",
+        "receipt": {
+            "Action": {
+                "actions": [
+                    {
+                        "Stake": {
+                            "public_key": "fixture-271",
+                            "stake": "fixture-272"
+                        }
+                    }
+                ],
+                "gas_price": "fixture-273",
+                "input_data_ids": [],
+                "is_promise_yield": false,
+                "output_data_receivers": [],
+                "refund_to": null,
+                "signer_id": "fixture-274",
+                "signer_public_key": "fixture-275"
+            }
+        },
+        "receipt_id": "fixture-276",
+        "receiver_id": "fixture-277"
+    }
+}

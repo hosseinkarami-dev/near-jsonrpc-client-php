@@ -1,0 +1,11 @@
+{
+    "cause": {
+        "info": {
+            "block_hash": "fixture-180",
+            "block_height": 50,
+            "requested_account_id": "fixture-181"
+        },
+        "name": "UNKNOWN_ACCOUNT"
+    },
+    "name": "HANDLER_ERROR"
+}

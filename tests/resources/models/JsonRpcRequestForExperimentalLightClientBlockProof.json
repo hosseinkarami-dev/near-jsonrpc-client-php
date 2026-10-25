@@ -1,0 +1,9 @@
+{
+    "id": "fixture-329",
+    "jsonrpc": "fixture-330",
+    "method": "EXPERIMENTAL_light_client_block_proof",
+    "params": {
+        "block_hash": "fixture-331",
+        "light_client_head": "fixture-332"
+    }
+}

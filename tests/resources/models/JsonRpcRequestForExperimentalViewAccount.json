@@ -1,0 +1,9 @@
+{
+    "id": "fixture-364",
+    "jsonrpc": "fixture-365",
+    "method": "EXPERIMENTAL_view_account",
+    "params": {
+        "account_id": "fixture-366",
+        "finality": "optimistic"
+    }
+}

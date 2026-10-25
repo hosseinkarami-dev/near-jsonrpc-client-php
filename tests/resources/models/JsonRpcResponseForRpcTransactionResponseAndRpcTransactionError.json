@@ -1,0 +1,72 @@
+{
+    "id": "fixture-538",
+    "jsonrpc": "fixture-539",
+    "result": {
+        "final_execution_status": "EXECUTED_OPTIMISTIC",
+        "receipts_outcome": [
+            {
+                "block_hash": "fixture-540",
+                "id": "fixture-541",
+                "outcome": {
+                    "executor_id": "fixture-542",
+                    "gas_burnt": 87,
+                    "logs": [],
+                    "metadata": {
+                        "contracts": [],
+                        "version": 81
+                    },
+                    "receipt_ids": [
+                        "fixture-543"
+                    ],
+                    "status": {
+                        "Failure": {
+                            "ActionError": {
+                                "kind": {
+                                    "GasKeyBalanceTooHigh": {
+                                        "account_id": "fixture-544",
+                                        "balance": "fixture-545",
+                                        "public_key": "fixture-546"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "tokens_burnt": "fixture-547"
+                },
+                "proof": []
+            }
+        ],
+        "status": {
+            "Failure": {
+                "InvalidTxError": {
+                    "NonceTooLarge": {
+                        "tx_nonce": 54,
+                        "upper_bound": 79
+                    }
+                }
+            }
+        },
+        "transaction": {
+            "actions": [],
+            "hash": "fixture-548",
+            "nonce": 23,
+            "public_key": "fixture-549",
+            "receiver_id": "fixture-550",
+            "signature": "fixture-551",
+            "signer_id": "fixture-552"
+        },
+        "transaction_outcome": {
+            "block_hash": "fixture-553",
+            "id": "fixture-554",
+            "outcome": {
+                "executor_id": "fixture-555",
+                "gas_burnt": 42,
+                "logs": [],
+                "receipt_ids": [],
+                "status": "Unknown",
+                "tokens_burnt": "fixture-556"
+            },
+            "proof": []
+        }
+    }
+}

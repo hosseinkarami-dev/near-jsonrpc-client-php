@@ -1,0 +1,32 @@
+{
+    "block_production_delay_millis": 78,
+    "catchup_status": [],
+    "current_head_status": {
+        "hash": "fixture-140",
+        "height": 67
+    },
+    "current_header_head_status": {
+        "hash": "fixture-141",
+        "height": 70
+    },
+    "network_info": {
+        "connected_peers": [],
+        "known_producers": [
+            {
+                "account_id": "fixture-142",
+                "next_hops": [
+                    "fixture-143"
+                ],
+                "peer_id": "fixture-144"
+            }
+        ],
+        "num_connected_peers": 16,
+        "peer_max_count": 57,
+        "tier1_accounts_data": [],
+        "tier1_accounts_keys": [
+            "fixture-145"
+        ],
+        "tier1_connections": []
+    },
+    "sync_status": "fixture-146"
+}

@@ -1,0 +1,18 @@
+{
+    "active_peers": [
+        {
+            "addr": "fixture-741",
+            "id": "fixture-742"
+        }
+    ],
+    "known_producers": [
+        {
+            "account_id": "fixture-743",
+            "peer_id": "fixture-744"
+        }
+    ],
+    "num_active_peers": 15,
+    "peer_max_count": 6,
+    "received_bytes_per_sec": 5,
+    "sent_bytes_per_sec": 1
+}
