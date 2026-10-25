@@ -5,6 +5,12 @@ on:
   pull_request:
     types: [opened, synchronize, reopened, closed]
   workflow_dispatch:
+    inputs:
+      release_pending_generated:
+        description: Publish already-merged generated API changes that are still untagged
+        type: boolean
+        required: false
+        default: false
   schedule:
     - cron: "0 0 * * *" # Daily at midnight UTC
 
@@ -115,8 +121,40 @@ jobs:
             exit 1
           fi
           echo "sha=$merge_sha" >> "$GITHUB_OUTPUT"
+      - name: Find pending generated changes for a recovery release
+        id: pending-release
+        if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && inputs.release_pending_generated
+        env:
+          RELEASE_SHA: ${{ github.sha }}
+        shell: bash
+        run: |
+          latest_tag=$(git tag --list 'v[0-9]*' | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -n 1 || true)
+          if [[ -n "$latest_tag" ]]; then
+            if git diff --quiet "$latest_tag" "$RELEASE_SHA" -- src/Generated/Models src/Generated/Client; then
+              echo 'No untagged generated model or client API changes exist on main.'
+              exit 0
+            fi
+          elif [[ -z "$(git ls-tree -r --name-only "$RELEASE_SHA" -- src/Generated/Models src/Generated/Client)" ]]; then
+            echo 'No generated model or client API files exist on main.'
+            exit 0
+          fi
+          echo "sha=$RELEASE_SHA" >> "$GITHUB_OUTPUT"
+          echo "Found untagged generated API changes at $RELEASE_SHA."
+      - name: Select the generated commit to release
+        id: release-target
+        if: steps.merged-pr.outputs.sha != '' || steps.pending-release.outputs.sha != ''
+        env:
+          MERGED_SHA: ${{ steps.merged-pr.outputs.sha }}
+          PENDING_SHA: ${{ steps.pending-release.outputs.sha }}
+        shell: bash
+        run: |
+          release_sha="$MERGED_SHA"
+          if [[ -z "$release_sha" ]]; then
+            release_sha="$PENDING_SHA"
+          fi
+          echo "sha=$release_sha" >> "$GITHUB_OUTPUT"
       - name: Verify Packagist credentials are configured
-        if: steps.merged-pr.outputs.sha != ''
+        if: steps.release-target.outputs.sha != ''
         env:
           PACKAGIST_USERNAME: ${{ secrets.PACKAGIST_USERNAME }}
           PACKAGIST_API_TOKEN: ${{ secrets.PACKAGIST_API_TOKEN }}
@@ -128,9 +166,9 @@ jobs:
           fi
       - name: Calculate the next patch version for this generated merge
         id: generated-version
-        if: steps.merged-pr.outputs.sha != ''
+        if: steps.release-target.outputs.sha != ''
         env:
-          RELEASE_SHA: ${{ steps.merged-pr.outputs.sha }}
+          RELEASE_SHA: ${{ steps.release-target.outputs.sha }}
         shell: bash
         run: |
           latest_tag=$(git tag --list 'v[0-9]*' | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -n 1 || true)
@@ -144,29 +182,34 @@ jobs:
           fi
           echo "tag=$next_tag" >> "$GITHUB_OUTPUT"
       - name: Tag the generated merge
-        if: steps.merged-pr.outputs.sha != ''
+        if: steps.release-target.outputs.sha != ''
         env:
           RELEASE_TAG: ${{ steps.generated-version.outputs.tag }}
-          RELEASE_SHA: ${{ steps.merged-pr.outputs.sha }}
+          RELEASE_SHA: ${{ steps.release-target.outputs.sha }}
+          GH_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
         shell: bash
         run: |
-          if git rev-parse "$RELEASE_TAG" >/dev/null 2>&1; then
-            if [[ "$(git rev-list -n 1 "$RELEASE_TAG")" != "$RELEASE_SHA" ]]; then
+          remote_sha=$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/tags/${RELEASE_TAG}" --jq '.object.sha' 2>/dev/null || true)
+          if [[ -n "$remote_sha" ]]; then
+            if [[ "$remote_sha" != "$RELEASE_SHA" ]]; then
               echo "Release tag $RELEASE_TAG already points to a different commit." >&2
               exit 1
             fi
           else
-            git tag "$RELEASE_TAG" "$RELEASE_SHA"
+            gh api --method POST "repos/${GITHUB_REPOSITORY}/git/refs" \
+              -f ref="refs/tags/${RELEASE_TAG}" \
+              -f sha="$RELEASE_SHA" \
+              --jq '.ref'
           fi
-          git push origin "$RELEASE_TAG"
       - name: Create GitHub release for the generated merge
-        if: steps.merged-pr.outputs.sha != ''
+        if: steps.release-target.outputs.sha != ''
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.generated-version.outputs.tag }}
           generate_release_notes: true
       - name: Update Packagist after the generated merge
-        if: steps.merged-pr.outputs.sha != ''
+        if: steps.release-target.outputs.sha != ''
         env:
           PACKAGIST_USERNAME: ${{ secrets.PACKAGIST_USERNAME }}
           PACKAGIST_API_TOKEN: ${{ secrets.PACKAGIST_API_TOKEN }}
@@ -260,17 +303,22 @@ jobs:
         env:
           RELEASE_TAG: ${{ steps.version.outputs.tag }}
           RELEASE_SHA: ${{ github.event.pull_request.merge_commit_sha }}
+          GH_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
         shell: bash
         run: |
-          if git rev-parse "$RELEASE_TAG" >/dev/null 2>&1; then
-            if [[ "$(git rev-list -n 1 "$RELEASE_TAG")" != "$RELEASE_SHA" ]]; then
+          remote_sha=$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/tags/${RELEASE_TAG}" --jq '.object.sha' 2>/dev/null || true)
+          if [[ -n "$remote_sha" ]]; then
+            if [[ "$remote_sha" != "$RELEASE_SHA" ]]; then
               echo "Release tag $RELEASE_TAG already points to a different commit." >&2
               exit 1
             fi
           else
-            git tag "$RELEASE_TAG" "$RELEASE_SHA"
+            gh api --method POST "repos/${GITHUB_REPOSITORY}/git/refs" \
+              -f ref="refs/tags/${RELEASE_TAG}" \
+              -f sha="$RELEASE_SHA" \
+              --jq '.ref'
           fi
-          git push origin "$RELEASE_TAG"
       - name: Create GitHub release
         uses: softprops/action-gh-release@v2
         with:

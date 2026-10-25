@@ -62,6 +62,8 @@ The GitHub Actions workflow runs the generated PHPUnit suites on PHP 8.2, 8.3, a
 
 Publishing is separate from ordinary test runs. A release is created only when the generated-code workflow has detected a real diff under `src/Generated/Models` or `src/Generated/Client`, tested those regenerated files, and merged the resulting pull request into `main`. Docs-only changes, direct pushes to `main`, scheduled runs without generated changes, and successful test runs without a merge do not create versions. An eligible merge receives the next patch tag, a GitHub release, and a Packagist update. The initial version is `v0.1.0` when no semantic version tag exists. The workflow uses GitHub's automatically provided `GITHUB_TOKEN`; no `GITHUB_TOKEN` repository secret is needed. In repository **Settings → Actions → General**, enable **Allow GitHub Actions to create and approve pull requests**. The Packagist release flow separately uses `PACKAGIST_USERNAME` and `PACKAGIST_API_TOKEN`.
 
+If a generated merge completed but deployment failed before a tag was created, use **Actions → PHP CI/CD → Run workflow** on `main` and enable `release_pending_generated`. This recovery option verifies that generated models or client methods differ from the latest semantic-version tag before publishing. Leave it disabled for ordinary manual test runs.
+
 Before preparing a package release, run these checks from the repository root:
 
 ```sh
@@ -86,7 +88,7 @@ Use a fixed fixture seed when preparing a reviewable generated update. Generatio
 1. Register the public GitHub repository on Packagist once. Confirm that the Composer package name is `near/near-jsonrpc-client-php` and enable Packagist's automatic GitHub sync if desired.
 2. Add the repository Actions secrets `PACKAGIST_USERNAME` and `PACKAGIST_API_TOKEN`. A Packagist API token can update an already registered package; initial package registration remains a one-time Packagist setup step.
 3. Run the validation commands above and review the release commit, including generated files and examples.
-4. The workflow tests and merges generated model or client API changes into `main`. It then calculates the next patch version, creates the GitHub release, and calls the Packagist update API. A merge blocked by repository rules is reported as a failed workflow and must be resolved under those rules.
+4. The workflow tests and merges generated model or client API changes into `main`. It then creates the next patch tag through GitHub, creates the GitHub release, and calls the Packagist update API. A merge blocked by repository rules is reported as a failed workflow and must be resolved under those rules.
 5. Confirm the new version appears on Packagist and resolves from a clean consumer project with `composer require near/near-jsonrpc-client-php`.
 
 Do not move or reuse a published version tag; publish a new version for corrections. A release tag is created only for a successfully tested generated-code pull request merged into `main` that changes generated models or client API methods.

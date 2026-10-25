@@ -9,7 +9,7 @@ A synchronous, typed PHP client for the [NEAR JSON-RPC API](https://docs.near.or
 ## Features
 
 - Typed generated methods with IDE completion.
-- Typed request and response models, including enums and named `oneOf`/`anyOf` variants.
+- Typed request and response models.
 - Structured exceptions for JSON-RPC errors, HTTP failures, timeouts, and invalid responses.
 - Injectable transport for tests and integrations with another HTTP stack.
 - OpenAPI generator and fixture-based PHPUnit suites generated locally or in CI.
