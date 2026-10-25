@@ -5,3 +5,4 @@
 .run
 vendor/
 composer.lock
+/tests/resources/models/*.json

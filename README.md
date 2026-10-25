@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="near-jsonrpc-api.png" alt="NEAR JSON-RPC Client for PHP" width="100%">
+</p>
+
 # NEAR JSON-RPC Client for PHP
 
 A synchronous, typed PHP client for the [NEAR JSON-RPC API](https://docs.near.org/api). Generated operation methods are available directly on `Client`, with generated request and response models for the OpenAPI schemas.
@@ -135,4 +139,4 @@ See [`DEPLOYMENT.md`](DEPLOYMENT.md) for application installation, runtime requi
 
 ## License
 
-Apache-2.0. See [`LICENSE`](LICENSE).
+MIT. See [`LICENSE`](LICENSE).
