@@ -58,9 +58,9 @@ Most reads are safe to retry according to application policy. Do not blindly ret
 
 ## CI and release validation
 
-The GitHub Actions workflow runs the generated PHPUnit suites on PHP 8.2, 8.3, and 8.4. It generates the ignored test classes and fixtures before testing. On a daily schedule, a manual run on `main`, or a push to `main`, it also regenerates models and client methods with a fixed fixture seed, stages those outputs, and compares them with the branch. If they differ, it opens or updates an automated pull request and requests auto-merge after the pull request checks pass. A `vX.Y.Z` tag runs the checks and then creates a GitHub release and asks Packagist to refresh the package.
+The GitHub Actions workflow runs the generated PHPUnit suites on PHP 8.2, 8.3, and 8.4. It generates the ignored test classes and fixtures before testing. On a daily schedule, a manual run on `main`, or a push to `main`, it also regenerates models and client methods with a fixed fixture seed, stages those outputs, and opens or updates a pull request when they differ. The pull request is reviewed and merged through the normal repository process.
 
-For automatic generated-code pull requests, add an `OPENAPI_UPDATE_TOKEN` repository secret. It must be a repository-scoped token with Contents and Pull requests read/write permissions; using a token allows the generated pull request to trigger its own CI checks. Enable GitHub's **Allow auto-merge** repository setting so the workflow can merge the pull request after required checks succeed. The Packagist release flow separately uses `PACKAGIST_USERNAME` and `PACKAGIST_API_TOKEN`.
+Publishing is separate from ordinary test runs. A release is considered only after a pull request has been merged into `main` and the merged pull request's file list contains changes under `src/Generated/Models` or `src/Generated/Client`. The PHP test matrix must pass first. Docs-only changes, direct pushes to `main`, successful pull-request tests before merge, scheduled runs, and generated updates with no model or client API diff do not create versions. An eligible merge receives the next patch tag, a GitHub release, and a Packagist update. The initial version is `v0.1.0` when no semantic version tag exists. The workflow uses GitHub's automatically provided `GITHUB_TOKEN` for generated-code pull requests; you do not create or add that token as a repository secret. In repository **Settings → Actions → General**, enable **Allow GitHub Actions to create and approve pull requests**. The Packagist release flow separately uses `PACKAGIST_USERNAME` and `PACKAGIST_API_TOKEN`.
 
 Before preparing a package release, run these checks from the repository root:
 
@@ -86,15 +86,14 @@ Use a fixed fixture seed when preparing a reviewable generated update. Generatio
 1. Register the public GitHub repository on Packagist once. Confirm that the Composer package name is `near/near-jsonrpc-client-php` and enable Packagist's automatic GitHub sync if desired.
 2. Add the repository Actions secrets `PACKAGIST_USERNAME` and `PACKAGIST_API_TOKEN`. A Packagist API token can update an already registered package; initial package registration remains a one-time Packagist setup step.
 3. Run the validation commands above and review the release commit, including generated files and examples.
-4. Choose a semantic version and merge the release commit to the default branch.
-5. Push a tag such as `v1.2.3`. The `ci-cd.yml` workflow runs the test matrix, creates a GitHub release with generated notes, and calls the Packagist update API.
-6. Confirm the new version appears on Packagist and resolves from a clean consumer project with `composer require near/near-jsonrpc-client-php`.
+4. Merge the reviewed generated model or client API pull request into `main`. The workflow checks its actual changed files, runs the tests, and only then calculates the next patch version, creates the GitHub release, and calls the Packagist update API if generated models or client methods changed.
+5. Confirm the new version appears on Packagist and resolves from a clean consumer project with `composer require near/near-jsonrpc-client-php`.
 
-Do not move or reuse a published version tag; publish a new version for corrections. The release workflow runs only for tags beginning with `v` and checks that the remainder is a semantic version.
+Do not move or reuse a published version tag; publish a new version for corrections. A release tag is created only for a successfully tested pull request merged into `main` that changes generated models or client API methods.
 
 ## Generator and generated sources
 
-Generated models and the direct client-method trait are maintained in the repository by the automated pull request. PHPUnit suites are git-ignored and generated in CI together with their JSON fixtures. CI runs those suites against the generated source; the scheduled update flow proposes model, client, and fixture changes for review and auto-merges only after pull-request checks pass. The generator is a development tool. Do not invoke it during application startup or production deployment. Runtime consumers need the packaged PHP source and Composer autoloader; they do not need the OpenAPI document or PHPUnit.
+Generated models and the direct client-method trait are maintained in the repository by the automated pull request. PHPUnit suites are git-ignored and generated in CI together with their JSON fixtures. The generator is a development tool. Do not invoke it during application startup or production deployment. Runtime consumers need the packaged PHP source and Composer autoloader; they do not need the OpenAPI document or PHPUnit.
 
 The CLI can generate from a local OpenAPI file or a URL. Prefer a reviewed local specification when reproducibility and offline generation are needed. Review generated output before committing it, especially changes to request constructors, method signatures, union variants, and response typing.
 
