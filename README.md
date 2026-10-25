@@ -20,7 +20,7 @@ A synchronous, typed PHP client for the [NEAR JSON-RPC API](https://docs.near.or
 After the package is available from your configured Composer repository:
 
 ```sh
-composer require hosseinkarami-dev/near-jsonrpc-client-php
+composer require near/near-jsonrpc-client-php
 ```
 
 The default endpoint is `https://rpc.mainnet.near.org`. Pass another URL, such as `https://rpc.testnet.near.org`, to use a different node.
