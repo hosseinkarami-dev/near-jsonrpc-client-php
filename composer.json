@@ -1,0 +1,12 @@
+{
+  "name": "near/near-jsonrpc-client-php",
+  "description": "Typed PHP client and OpenAPI generator for NEAR JSON-RPC",
+  "type": "library",
+  "license": "Apache-2.0",
+  "require": {"php": ">=8.2", "ext-json": "*", "ext-curl": "*"},
+  "require-dev": {"phpunit/phpunit": "^11.5"},
+  "autoload": {"psr-4": {"Near\\JsonRpc\\": "src/"}},
+  "autoload-dev": {"psr-4": {"Near\\JsonRpc\\Tests\\": "tests/"}},
+  "bin": ["bin/near-rpc-generate"],
+  "scripts": {"test": "phpunit", "verify-models": "phpunit --testsuite \"Generated model JSON round trips\"", "generate": "php bin/near-rpc-generate"}
+}

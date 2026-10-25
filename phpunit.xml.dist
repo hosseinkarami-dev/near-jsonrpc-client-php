@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit colors="true" cacheDirectory=".phpunit.cache">
+    <testsuites>
+        <testsuite name="Generated model JSON round trips">
+            <file>tests/GeneratedModelJsonTest.php</file>
+        </testsuite>
+        <testsuite name="Generated client mock integration">
+            <file>tests/GeneratedClientIntegrationTest.php</file>
+        </testsuite>
+    </testsuites>
+</phpunit>

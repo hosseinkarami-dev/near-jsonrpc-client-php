@@ -1,0 +1,36 @@
+#!/usr/bin/env php
+<?php
+declare(strict_types=1);
+if (is_file(dirname(__DIR__).'/vendor/autoload.php')) require dirname(__DIR__).'/vendor/autoload.php';
+else spl_autoload_register(static function(string $class): void { $prefix='Near\\JsonRpc\\'; if (str_starts_with($class,$prefix)) { $file=dirname(__DIR__).'/src/'.str_replace('\\','/',substr($class,strlen($prefix))).'.php'; if (is_file($file)) require $file; } });
+
+use Near\JsonRpc\Generator\OpenApiGenerator;
+
+$options=getopt('', ['spec:', 'url:', 'models:', 'client:', 'client-tests:', 'model-tests:', 'fixtures:', 'seed:']);
+$defaultUrl='https://raw.githubusercontent.com/near/nearcore/master/chain/jsonrpc/openapi/openapi.json';
+if (isset($options['spec'], $options['url'])) { fwrite(STDERR,"Choose either --spec or --url, not both.\n"); exit(2); }
+$downloaded=null;
+$failed=false;
+try {
+    $spec=$options['spec'] ?? null;
+    if ($spec === null) {
+        $url=$options['url'] ?? $defaultUrl;
+        if (!filter_var($url,FILTER_VALIDATE_URL) || !in_array(strtolower((string)parse_url($url,PHP_URL_SCHEME)),['https','http'],true)) throw new RuntimeException('The spec URL must be a valid HTTP or HTTPS URL.');
+        $handle=curl_init($url);
+        if ($handle === false) throw new RuntimeException('Could not initialize the OpenAPI download.');
+        curl_setopt_array($handle,[CURLOPT_RETURNTRANSFER=>true,CURLOPT_FOLLOWLOCATION=>true,CURLOPT_CONNECTTIMEOUT=>10,CURLOPT_TIMEOUT=>60]);
+        $contents=curl_exec($handle);
+        if ($contents === false) throw new RuntimeException('OpenAPI download failed: '.curl_error($handle));
+        $status=(int)curl_getinfo($handle,CURLINFO_RESPONSE_CODE);
+        if ($status<200 || $status>=300) throw new RuntimeException("OpenAPI download returned HTTP {$status}.");
+        $downloaded=tempnam(sys_get_temp_dir(),'near-openapi-');
+        if ($downloaded===false || file_put_contents($downloaded,$contents,LOCK_EX)===false) throw new RuntimeException('Could not save the downloaded OpenAPI document.');
+        $spec=$downloaded;
+    }
+    $seed=isset($options['seed']) ? filter_var($options['seed'], FILTER_VALIDATE_INT) : random_int(1, 2147483647);
+    if ($seed === false || $seed < 0) throw new RuntimeException('--seed must be a non-negative integer.');
+    $result=(new OpenApiGenerator())->generate($spec,$options['models'] ?? dirname(__DIR__).'/src/Generated/Models',$options['client'] ?? dirname(__DIR__).'/src/Generated/Client',$options['client-tests'] ?? dirname(__DIR__).'/tests/GeneratedClientIntegrationTest.php',$options['model-tests'] ?? dirname(__DIR__).'/tests/GeneratedModelJsonTest.php',$options['fixtures'] ?? dirname(__DIR__).'/tests/resources/models',$seed);
+    fwrite(STDOUT,"Generated {$result['models']} models, {$result['operations']} RPC methods, and one JSON fixture per schema (seed {$result['fixtureSeed']}).\n"); foreach($result['files'] as $file) fwrite(STDOUT,"- {$file}\n");
+} catch (Throwable $e) { fwrite(STDERR,'Generation failed: '.$e->getMessage()."\n"); $failed=true; }
+finally { if ($downloaded !== null && is_file($downloaded)) unlink($downloaded); }
+if ($failed) exit(1);

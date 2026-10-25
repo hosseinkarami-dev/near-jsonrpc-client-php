@@ -1,0 +1,7 @@
+/tests/GeneratedClientIntegrationTest.php
+/tests/GeneratedModelJsonTest.php
+.idea/
+.phpunit.cache
+.run
+vendor/
+composer.lock
