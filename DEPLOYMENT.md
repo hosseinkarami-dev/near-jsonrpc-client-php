@@ -58,7 +58,9 @@ Most reads are safe to retry according to application policy. Do not blindly ret
 
 ## CI and release validation
 
-The GitHub Actions workflow runs on pushes and pull requests against PHP 8.2, 8.3, and 8.4. It validates Composer metadata, installs dependencies, checks PHP syntax, and runs the generated PHPUnit suites. Pushing a `vX.Y.Z` tag runs the same checks and then creates a GitHub release and asks Packagist to refresh the package.
+The GitHub Actions workflow runs the generated PHPUnit suites on PHP 8.2, 8.3, and 8.4. It generates the ignored test classes and fixtures before testing. On a daily schedule, a manual run on `main`, or a push to `main`, it also regenerates models and client methods with a fixed fixture seed, stages those outputs, and compares them with the branch. If they differ, it opens or updates an automated pull request and requests auto-merge after the pull request checks pass. A `vX.Y.Z` tag runs the checks and then creates a GitHub release and asks Packagist to refresh the package.
+
+For automatic generated-code pull requests, add an `OPENAPI_UPDATE_TOKEN` repository secret. It must be a repository-scoped token with Contents and Pull requests read/write permissions; using a token allows the generated pull request to trigger its own CI checks. Enable GitHub's **Allow auto-merge** repository setting so the workflow can merge the pull request after required checks succeed. The Packagist release flow separately uses `PACKAGIST_USERNAME` and `PACKAGIST_API_TOKEN`.
 
 Before preparing a package release, run these checks from the repository root:
 
@@ -92,7 +94,7 @@ Do not move or reuse a published version tag; publish a new version for correcti
 
 ## Generator and generated sources
 
-Generated models and the direct client-method trait are checked into this repository. PHPUnit suites and their JSON fixtures are generated in CI (and locally when requested) because the test PHP files are git-ignored. CI generates those test assets from the current OpenAPI URL, verifies that generated models and client methods match the committed source, then runs PHPUnit against those committed classes. The generator is a development tool. Do not invoke it during application startup or production deployment. Runtime consumers need only the packaged PHP source and Composer autoloader; they do not need the OpenAPI document or PHPUnit.
+Generated models and the direct client-method trait are maintained in the repository by the automated pull request. PHPUnit suites are git-ignored and generated in CI together with their JSON fixtures. CI runs those suites against the generated source; the scheduled update flow proposes model, client, and fixture changes for review and auto-merges only after pull-request checks pass. The generator is a development tool. Do not invoke it during application startup or production deployment. Runtime consumers need the packaged PHP source and Composer autoloader; they do not need the OpenAPI document or PHPUnit.
 
 The CLI can generate from a local OpenAPI file or a URL. Prefer a reviewed local specification when reproducibility and offline generation are needed. Review generated output before committing it, especially changes to request constructors, method signatures, union variants, and response typing.
 
