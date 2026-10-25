@@ -5,12 +5,7 @@ on:
   pull_request:
     types: [opened, synchronize, reopened, closed]
   workflow_dispatch:
-    inputs:
-      release_pending_generated:
-        description: Publish already-merged generated API changes that are still untagged
-        type: boolean
-        required: false
-        default: false
+    # Manual runs execute validation only. Generated source is not auto-published.
   schedule:
     - cron: "0 0 * * *" # Daily at midnight UTC
 
@@ -49,7 +44,7 @@ jobs:
 
   update-generated-pr:
     name: Create or update generated-code pull request
-    if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main') || (github.event_name == 'push' && github.ref == 'refs/heads/main')
+    if: false # Automatic source regeneration and generated-code PR merging are disabled.
     needs: test
     runs-on: ubuntu-latest
     permissions:
@@ -182,6 +177,7 @@ jobs:
           fi
           echo "tag=$next_tag" >> "$GITHUB_OUTPUT"
       - name: Tag the generated merge
+        id: tag-release
         if: steps.release-target.outputs.sha != ''
         env:
           RELEASE_TAG: ${{ steps.generated-version.outputs.tag }}
@@ -190,23 +186,50 @@ jobs:
           GITHUB_REPOSITORY: ${{ github.repository }}
         shell: bash
         run: |
-          remote_sha=$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/tags/${RELEASE_TAG}" --jq '.object.sha' 2>/dev/null || true)
-          if [[ -n "$remote_sha" ]]; then
-            if [[ "$remote_sha" != "$RELEASE_SHA" ]]; then
-              echo "Release tag $RELEASE_TAG already points to a different commit." >&2
-              exit 1
+          resolve_tag_commit() {
+            local tag_name="$1" ref_data object_sha object_type
+            ref_data=$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/tags/${tag_name}" --jq '[.object.sha, .object.type] | @tsv' 2>/dev/null) || return 1
+            IFS=$'\t' read -r object_sha object_type <<< "$ref_data"
+            while [[ "$object_type" == 'tag' ]]; do
+              ref_data=$(gh api "repos/${GITHUB_REPOSITORY}/git/tags/${object_sha}" --jq '[.object.sha, .object.type] | @tsv')
+              IFS=$'\t' read -r object_sha object_type <<< "$ref_data"
+            done
+            [[ "$object_type" == 'commit' ]] || return 1
+            printf '%s' "$object_sha"
+          }
+
+          release_tag="$RELEASE_TAG"
+          for attempt in $(seq 1 100); do
+            if remote_sha=$(resolve_tag_commit "$release_tag"); then
+              if [[ "$remote_sha" == "$RELEASE_SHA" ]]; then
+                echo "tag=$release_tag" >> "$GITHUB_OUTPUT"
+                exit 0
+              fi
+              echo "Release tag $release_tag points to $remote_sha, not $RELEASE_SHA; trying the next patch version."
+            else
+              if gh api --method POST "repos/${GITHUB_REPOSITORY}/git/refs" \
+                -f ref="refs/tags/${release_tag}" \
+                -f sha="$RELEASE_SHA" \
+                --jq '.ref'; then
+                echo "tag=$release_tag" >> "$GITHUB_OUTPUT"
+                exit 0
+              fi
+              if remote_sha=$(resolve_tag_commit "$release_tag") && [[ "$remote_sha" == "$RELEASE_SHA" ]]; then
+                echo "tag=$release_tag" >> "$GITHUB_OUTPUT"
+                exit 0
+              fi
+              echo "Could not create release tag $release_tag; trying the next patch version."
             fi
-          else
-            gh api --method POST "repos/${GITHUB_REPOSITORY}/git/refs" \
-              -f ref="refs/tags/${RELEASE_TAG}" \
-              -f sha="$RELEASE_SHA" \
-              --jq '.ref'
-          fi
+            IFS=. read -r major minor patch <<< "${release_tag#v}"
+            release_tag="v${major}.${minor}.$((patch + 1))"
+          done
+          echo 'Could not allocate an unused release tag after 100 attempts.' >&2
+          exit 1
       - name: Create GitHub release for the generated merge
         if: steps.release-target.outputs.sha != ''
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ steps.generated-version.outputs.tag }}
+          tag_name: ${{ steps.tag-release.outputs.tag }}
           generate_release_notes: true
       - name: Update Packagist after the generated merge
         if: steps.release-target.outputs.sha != ''
@@ -243,7 +266,7 @@ jobs:
           PR_NUMBER: ${{ github.event.pull_request.number }}
         shell: bash
         run: |
-          changed_paths=$(gh api --paginate "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}/files" --jq '.[].filename')
+          changed_paths=$(gh api --paginate "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}/files" --jq '.[] | select(.status != "removed") | .filename')
           generated_paths=$(printf '%s\n' "$changed_paths" | grep -E '^(src/Generated/Models/|src/Generated/Client/)' || true)
           if [[ -z "$generated_paths" ]]; then
             echo 'changed=false' >> "$GITHUB_OUTPUT"
@@ -300,6 +323,7 @@ jobs:
           echo "tag=$next_tag" >> "$GITHUB_OUTPUT"
           echo "Release version: $next_tag"
       - name: Create and push release tag
+        id: create-tag
         env:
           RELEASE_TAG: ${{ steps.version.outputs.tag }}
           RELEASE_SHA: ${{ github.event.pull_request.merge_commit_sha }}
@@ -307,22 +331,49 @@ jobs:
           GITHUB_REPOSITORY: ${{ github.repository }}
         shell: bash
         run: |
-          remote_sha=$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/tags/${RELEASE_TAG}" --jq '.object.sha' 2>/dev/null || true)
-          if [[ -n "$remote_sha" ]]; then
-            if [[ "$remote_sha" != "$RELEASE_SHA" ]]; then
-              echo "Release tag $RELEASE_TAG already points to a different commit." >&2
-              exit 1
+          resolve_tag_commit() {
+            local tag_name="$1" ref_data object_sha object_type
+            ref_data=$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/tags/${tag_name}" --jq '[.object.sha, .object.type] | @tsv' 2>/dev/null) || return 1
+            IFS=$'\t' read -r object_sha object_type <<< "$ref_data"
+            while [[ "$object_type" == 'tag' ]]; do
+              ref_data=$(gh api "repos/${GITHUB_REPOSITORY}/git/tags/${object_sha}" --jq '[.object.sha, .object.type] | @tsv')
+              IFS=$'\t' read -r object_sha object_type <<< "$ref_data"
+            done
+            [[ "$object_type" == 'commit' ]] || return 1
+            printf '%s' "$object_sha"
+          }
+
+          release_tag="$RELEASE_TAG"
+          for attempt in $(seq 1 100); do
+            if remote_sha=$(resolve_tag_commit "$release_tag"); then
+              if [[ "$remote_sha" == "$RELEASE_SHA" ]]; then
+                echo "tag=$release_tag" >> "$GITHUB_OUTPUT"
+                exit 0
+              fi
+              echo "Release tag $release_tag points to $remote_sha, not $RELEASE_SHA; trying the next patch version."
+            else
+              if gh api --method POST "repos/${GITHUB_REPOSITORY}/git/refs" \
+                -f ref="refs/tags/${release_tag}" \
+                -f sha="$RELEASE_SHA" \
+                --jq '.ref'; then
+                echo "tag=$release_tag" >> "$GITHUB_OUTPUT"
+                exit 0
+              fi
+              if remote_sha=$(resolve_tag_commit "$release_tag") && [[ "$remote_sha" == "$RELEASE_SHA" ]]; then
+                echo "tag=$release_tag" >> "$GITHUB_OUTPUT"
+                exit 0
+              fi
+              echo "Could not create release tag $release_tag; trying the next patch version."
             fi
-          else
-            gh api --method POST "repos/${GITHUB_REPOSITORY}/git/refs" \
-              -f ref="refs/tags/${RELEASE_TAG}" \
-              -f sha="$RELEASE_SHA" \
-              --jq '.ref'
-          fi
+            IFS=. read -r major minor patch <<< "${release_tag#v}"
+            release_tag="v${major}.${minor}.$((patch + 1))"
+          done
+          echo 'Could not allocate an unused release tag after 100 attempts.' >&2
+          exit 1
       - name: Create GitHub release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ steps.version.outputs.tag }}
+          tag_name: ${{ steps.create-tag.outputs.tag }}
           generate_release_notes: true
       - name: Update Packagist
         env:
