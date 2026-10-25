@@ -1,0 +1,26 @@
+{
+    "balance_burnt": "fixture-102",
+    "chunk_hash": "fixture-103",
+    "congestion_info": null,
+    "encoded_length": 8,
+    "encoded_merkle_root": "fixture-104",
+    "gas_limit": 78,
+    "gas_used": 27,
+    "height_created": 33,
+    "height_included": 42,
+    "outcome_root": "fixture-105",
+    "outgoing_receipts_root": "fixture-106",
+    "prev_block_hash": "fixture-107",
+    "prev_state_root": "fixture-108",
+    "shard_id": 39,
+    "signature": "fixture-109",
+    "tx_root": "fixture-110",
+    "validator_proposals": [
+        {
+            "validator_stake_struct_version": "V1",
+            "account_id": "fixture-111",
+            "public_key": "fixture-112",
+            "stake": "fixture-113"
+        }
+    ]
+}

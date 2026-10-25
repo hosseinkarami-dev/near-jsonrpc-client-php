@@ -1,0 +1,22 @@
+{
+    "cause": {
+        "tx_hash": "fixture-859",
+        "type": "transaction_processing"
+    },
+    "change": {
+        "access_key": {
+            "nonce": 26,
+            "permission": {
+                "GasKeyFunctionCall": {
+                    "balance": "fixture-860",
+                    "method_names": [],
+                    "num_nonces": 58,
+                    "receiver_id": "fixture-861"
+                }
+            }
+        },
+        "account_id": "fixture-862",
+        "public_key": "fixture-863"
+    },
+    "type": "access_key_update"
+}

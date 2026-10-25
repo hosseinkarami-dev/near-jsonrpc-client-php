@@ -1,0 +1,18 @@
+{
+    "delegate_action": {
+        "V2": {
+            "actions": [],
+            "max_block_height": 80,
+            "nonce": {
+                "GasKeyNonce": {
+                    "nonce": 64,
+                    "nonce_index": 31
+                }
+            },
+            "public_key": "fixture-896",
+            "receiver_id": "fixture-897",
+            "sender_id": "fixture-898"
+        }
+    },
+    "signature": "fixture-899"
+}

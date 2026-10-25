@@ -1,0 +1,46 @@
+{
+    "id": "fixture-432",
+    "jsonrpc": "fixture-433",
+    "result": {
+        "block_producer_kickout_threshold": 36,
+        "chain_id": "fixture-434",
+        "chunk_producer_kickout_threshold": 2,
+        "dynamic_resharding": false,
+        "epoch_length": 58,
+        "fishermen_threshold": "fixture-435",
+        "gas_limit": 51,
+        "gas_price_adjustment_rate": [
+            47,
+            54
+        ],
+        "genesis_height": 19,
+        "genesis_time": "2026-01-01T00:00:00Z",
+        "max_gas_price": "fixture-436",
+        "max_inflation_rate": [
+            93,
+            31
+        ],
+        "min_gas_price": "fixture-437",
+        "num_block_producer_seats": 89,
+        "num_blocks_per_year": 45,
+        "num_chunk_validator_seats": 69,
+        "online_max_threshold": [
+            95,
+            61
+        ],
+        "protocol_reward_rate": [
+            69,
+            42
+        ],
+        "protocol_treasury_account": "fixture-438",
+        "protocol_upgrade_stake_threshold": [
+            64,
+            99
+        ],
+        "protocol_version": 77,
+        "total_supply": "fixture-439",
+        "transaction_validity_period": 41,
+        "use_production_config": false,
+        "validators": []
+    }
+}

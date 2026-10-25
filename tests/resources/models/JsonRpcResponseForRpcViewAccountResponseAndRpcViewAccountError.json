@@ -1,0 +1,14 @@
+{
+    "id": "fixture-566",
+    "jsonrpc": "fixture-567",
+    "result": {
+        "amount": "fixture-568",
+        "block_hash": "fixture-569",
+        "block_height": 29,
+        "bootstrap_nonce": 61,
+        "code_hash": "fixture-570",
+        "global_contract_account_id": "fixture-571",
+        "locked": "fixture-572",
+        "storage_usage": 80
+    }
+}

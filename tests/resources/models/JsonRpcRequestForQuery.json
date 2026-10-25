@@ -1,0 +1,11 @@
+{
+    "id": "fixture-407",
+    "jsonrpc": "fixture-408",
+    "method": "query",
+    "params": {
+        "finality": "near-final",
+        "account_id": "fixture-409",
+        "public_key": "fixture-410",
+        "request_type": "view_access_key"
+    }
+}

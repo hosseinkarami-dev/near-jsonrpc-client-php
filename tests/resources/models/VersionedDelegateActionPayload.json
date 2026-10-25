@@ -1,0 +1,15 @@
+{
+    "V2": {
+        "actions": [],
+        "max_block_height": 73,
+        "nonce": {
+            "GasKeyNonce": {
+                "nonce": 95,
+                "nonce_index": 52
+            }
+        },
+        "public_key": "fixture-893",
+        "receiver_id": "fixture-894",
+        "sender_id": "fixture-895"
+    }
+}
