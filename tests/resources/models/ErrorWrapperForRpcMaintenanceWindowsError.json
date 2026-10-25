@@ -1,0 +1,9 @@
+{
+    "cause": {
+        "info": {
+            "method_name": "fixture-166"
+        },
+        "name": "METHOD_NOT_FOUND"
+    },
+    "name": "REQUEST_VALIDATION_ERROR"
+}

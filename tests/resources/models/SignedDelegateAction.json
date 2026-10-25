@@ -1,0 +1,11 @@
+{
+    "delegate_action": {
+        "actions": [],
+        "max_block_height": 94,
+        "nonce": 42,
+        "public_key": "fixture-844",
+        "receiver_id": "fixture-845",
+        "sender_id": "fixture-846"
+    },
+    "signature": "fixture-847"
+}

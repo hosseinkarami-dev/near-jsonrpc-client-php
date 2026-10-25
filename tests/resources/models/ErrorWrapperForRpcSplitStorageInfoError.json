@@ -1,0 +1,9 @@
+{
+    "cause": {
+        "info": {
+            "error_message": "fixture-173"
+        },
+        "name": "INTERNAL_ERROR"
+    },
+    "name": "HANDLER_ERROR"
+}

@@ -1,0 +1,13 @@
+{
+    "id": "fixture-508",
+    "jsonrpc": "fixture-509",
+    "result": {
+        "block_hash": "fixture-510",
+        "block_height": 48,
+        "amount": "fixture-511",
+        "bootstrap_nonce": 64,
+        "code_hash": "fixture-512",
+        "locked": "fixture-513",
+        "storage_usage": 15
+    }
+}

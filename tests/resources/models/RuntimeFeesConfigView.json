@@ -1,0 +1,32 @@
+{
+    "action_creation_config": {
+        "create_account_cost": {
+            "execution": 27,
+            "send_not_sir": 52,
+            "send_sir": 60
+        },
+        "delete_account_cost": {
+            "execution": 73,
+            "send_not_sir": 68,
+            "send_sir": 5
+        },
+        "delete_key_cost": {
+            "execution": 51,
+            "send_not_sir": 77,
+            "send_sir": 45
+        },
+        "stake_cost": {
+            "execution": 95,
+            "send_not_sir": 38,
+            "send_sir": 81
+        }
+    },
+    "burnt_gas_reward": [
+        25,
+        22
+    ],
+    "pessimistic_gas_price_inflation_ratio": [
+        82,
+        39
+    ]
+}

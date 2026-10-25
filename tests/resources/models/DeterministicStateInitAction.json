@@ -1,0 +1,13 @@
+{
+    "deposit": "fixture-149",
+    "state_init": {
+        "V1": {
+            "code": {
+                "hash": "fixture-150"
+            },
+            "data": {
+                "fixture_151": "fixture-152"
+            }
+        }
+    }
+}

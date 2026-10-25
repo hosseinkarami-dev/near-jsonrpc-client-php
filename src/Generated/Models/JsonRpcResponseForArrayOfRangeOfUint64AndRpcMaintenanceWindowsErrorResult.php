@@ -1,0 +1,178 @@
+<?php
+declare(strict_types=1);
+
+namespace Near\JsonRpc\Generated\Models;
+
+/**
+ * Generated typed OpenAPI object model.
+ */
+final readonly class JsonRpcResponseForArrayOfRangeOfUint64AndRpcMaintenanceWindowsErrorResult implements \Near\JsonRpc\Models\ModelJsonSerializable
+{
+    /** @var array<string, mixed> */
+    private array $extra;
+
+    public function __construct(
+        /**
+         * @var list<\Near\JsonRpc\Generated\Models\RangeOfUint64>
+         */
+        public array $result,
+        /**
+         * @var string
+         */
+        public string $id,
+        /**
+         * @var string
+         */
+        public string $jsonrpc,
+        /** @var array<string, mixed> */
+        array $_extra = [],
+    ) {
+        $this->extra = $_extra;
+        \Near\JsonRpc\Models\TypeGuard::assert($this->result, array (
+  'items' => 
+  array (
+    'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\RangeOfUint64',
+    'nullable' => false,
+  ),
+  'type' => 'array',
+), 'result');
+        \Near\JsonRpc\Models\TypeGuard::assert($this->id, array (
+  'type' => 'string',
+), 'id');
+        \Near\JsonRpc\Models\TypeGuard::assert($this->jsonrpc, array (
+  'type' => 'string',
+), 'jsonrpc');
+    }
+
+    public static function fromValue(mixed $value): self
+    {
+        if ($value instanceof self) return $value;
+        if ($value instanceof \stdClass) return self::fromArray(get_object_vars($value));
+        if (!is_array($value) || array_is_list($value)) throw new \InvalidArgumentException('Expected an object value for JsonRpcResponseForArrayOfRangeOfUint64AndRpcMaintenanceWindowsErrorResult.');
+        return self::fromArray($value);
+    }
+
+    /** @param array<string,mixed> $data */
+    public static function fromArray(array $data): self
+    {
+        if (!array_key_exists('result', $data)) throw new \InvalidArgumentException('Missing required field: result');
+        if (!array_key_exists('jsonrpc', $data)) throw new \InvalidArgumentException('Missing required field: jsonrpc');
+        if (!array_key_exists('id', $data)) throw new \InvalidArgumentException('Missing required field: id');
+        $extra = array_diff_key($data, array (
+  'result' => true,
+  'id' => true,
+  'jsonrpc' => true,
+));
+        return new self(
+            result: \Near\JsonRpc\Models\ModelHydrator::hydrate($data['result'], array (
+  'items' => 
+  array (
+    'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\RangeOfUint64',
+    'nullable' => false,
+  ),
+  'type' => 'array',
+), 'result'),
+            id: \Near\JsonRpc\Models\ModelHydrator::hydrate($data['id'], array (
+  'type' => 'string',
+), 'id'),
+            jsonrpc: \Near\JsonRpc\Models\ModelHydrator::hydrate($data['jsonrpc'], array (
+  'type' => 'string',
+), 'jsonrpc'),
+            _extra: $extra
+        );
+    }
+
+    public static function fromJson(string $json): self
+    {
+        return self::fromArray(\Near\JsonRpc\Models\ModelHydrator::decodeJsonObject($json));
+    }
+
+    private function jsonSerializeValue(): \stdClass
+    {
+        $data = $this->extra;
+        $data['result'] = $this->result;
+        $data['id'] = $this->id;
+        $data['jsonrpc'] = $this->jsonrpc;
+        return (object) $data;
+    }
+
+    public function jsonSerialize(): \stdClass
+    {
+        $data = $this->jsonSerializeValue();
+        \Near\JsonRpc\Models\JsonEncoder::assertNativeEncodingSafe(\Near\JsonRpc\Models\ModelHydrator::normalizeForJson($data, array (
+  'type' => 'object',
+  'properties' => 
+  array (
+    'result' => 
+    array (
+      'items' => 
+      array (
+        'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\RangeOfUint64',
+        'nullable' => false,
+      ),
+      'type' => 'array',
+    ),
+    'id' => 
+    array (
+      'type' => 'string',
+    ),
+    'jsonrpc' => 
+    array (
+      'type' => 'string',
+    ),
+  ),
+  'required' => 
+  array (
+    0 => 'result',
+    1 => 'jsonrpc',
+    2 => 'id',
+  ),
+  'additionalProperties' => true,
+  'x-php-union' => 
+  array (
+    'label' => 'Result',
+  ),
+), 'JsonRpcResponseForArrayOfRangeOfUint64AndRpcMaintenanceWindowsErrorResult'));
+        return $data;
+    }
+
+    public function jsonSerializeForEncoding(): mixed
+    {
+        return \Near\JsonRpc\Models\ModelHydrator::normalizeForJson($this->jsonSerializeValue(), array (
+  'type' => 'object',
+  'properties' => 
+  array (
+    'result' => 
+    array (
+      'items' => 
+      array (
+        'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\RangeOfUint64',
+        'nullable' => false,
+      ),
+      'type' => 'array',
+    ),
+    'id' => 
+    array (
+      'type' => 'string',
+    ),
+    'jsonrpc' => 
+    array (
+      'type' => 'string',
+    ),
+  ),
+  'required' => 
+  array (
+    0 => 'result',
+    1 => 'jsonrpc',
+    2 => 'id',
+  ),
+  'additionalProperties' => true,
+  'x-php-union' => 
+  array (
+    'label' => 'Result',
+  ),
+), 'JsonRpcResponseForArrayOfRangeOfUint64AndRpcMaintenanceWindowsErrorResult');
+    }
+
+    public function toJson(): string { return \Near\JsonRpc\Models\JsonEncoder::encode($this); }
+}

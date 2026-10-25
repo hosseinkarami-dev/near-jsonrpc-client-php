@@ -1,0 +1,22 @@
+{
+    "block_hash": "fixture-187",
+    "id": "fixture-188",
+    "outcome": {
+        "executor_id": "fixture-189",
+        "gas_burnt": 6,
+        "logs": [
+            "fixture-190"
+        ],
+        "receipt_ids": [],
+        "status": {
+            "SuccessValue": "fixture-191"
+        },
+        "tokens_burnt": "fixture-192"
+    },
+    "proof": [
+        {
+            "direction": "Right",
+            "hash": "fixture-193"
+        }
+    ]
+}

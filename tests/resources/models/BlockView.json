@@ -1,0 +1,78 @@
+{
+    "author": "fixture-60",
+    "chunks": [
+        {
+            "balance_burnt": "fixture-61",
+            "bandwidth_requests": null,
+            "chunk_hash": "fixture-62",
+            "congestion_info": {
+                "allowed_shard": 0,
+                "buffered_receipts_gas": "fixture-63",
+                "delayed_receipts_gas": "fixture-64",
+                "receipt_bytes": 81
+            },
+            "encoded_length": 83,
+            "encoded_merkle_root": "fixture-65",
+            "gas_limit": 40,
+            "gas_used": 4,
+            "height_created": 52,
+            "height_included": 75,
+            "outcome_root": "fixture-66",
+            "outgoing_receipts_root": "fixture-67",
+            "prev_block_hash": "fixture-68",
+            "prev_state_root": "fixture-69",
+            "proposed_split": null,
+            "rent_paid": "fixture-70",
+            "shard_id": 49,
+            "signature": "fixture-71",
+            "tx_root": "fixture-72",
+            "validator_proposals": []
+        }
+    ],
+    "header": {
+        "approvals": [
+            null
+        ],
+        "block_body_hash": null,
+        "block_merkle_root": "fixture-73",
+        "challenges_result": [
+            {
+                "account_id": "fixture-74",
+                "is_double_sign": false
+            }
+        ],
+        "challenges_root": "fixture-75",
+        "chunk_headers_root": "fixture-76",
+        "chunk_mask": [],
+        "chunk_receipts_root": "fixture-77",
+        "chunk_tx_root": "fixture-78",
+        "chunks_included": 1,
+        "epoch_id": "fixture-79",
+        "epoch_sync_data_hash": null,
+        "gas_price": "fixture-80",
+        "hash": "fixture-81",
+        "height": 41,
+        "last_ds_final_block": "fixture-82",
+        "last_final_block": "fixture-83",
+        "latest_protocol_version": 21,
+        "next_bp_hash": "fixture-84",
+        "next_epoch_id": "fixture-85",
+        "outcome_root": "fixture-86",
+        "prev_hash": "fixture-87",
+        "prev_state_root": "fixture-88",
+        "random_value": "fixture-89",
+        "signature": "fixture-90",
+        "timestamp": 82,
+        "timestamp_nanosec": "fixture-91",
+        "total_supply": "fixture-92",
+        "validator_proposals": [
+            {
+                "validator_stake_struct_version": "V1",
+                "account_id": "fixture-93",
+                "public_key": "fixture-94",
+                "stake": "fixture-95"
+            }
+        ],
+        "validator_reward": "fixture-96"
+    }
+}

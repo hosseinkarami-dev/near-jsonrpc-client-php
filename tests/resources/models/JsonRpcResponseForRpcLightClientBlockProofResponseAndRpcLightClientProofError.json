@@ -1,0 +1,13 @@
+{
+    "id": "fixture-481",
+    "jsonrpc": "fixture-482",
+    "error": {
+        "cause": {
+            "info": {
+                "error_message": "fixture-483"
+            },
+            "name": "PARSE_ERROR"
+        },
+        "name": "REQUEST_VALIDATION_ERROR"
+    }
+}
