@@ -1,8 +1,0 @@
-{
-    "id": "fixture-321",
-    "jsonrpc": "fixture-322",
-    "method": "EXPERIMENTAL_congestion_level",
-    "params": {
-        "chunk_id": "fixture-323"
-    }
-}

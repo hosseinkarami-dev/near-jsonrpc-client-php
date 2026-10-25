@@ -1,9 +1,0 @@
-{
-    "id": "fixture-384",
-    "jsonrpc": "fixture-385",
-    "method": "chunk",
-    "params": {
-        "block_id": 90,
-        "shard_id": 76
-    }
-}

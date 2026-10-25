@@ -1,9 +1,0 @@
-{
-    "account_id": "fixture-883",
-    "reason": {
-        "ProtocolVersionTooOld": {
-            "network_version": 16,
-            "version": 55
-        }
-    }
-}

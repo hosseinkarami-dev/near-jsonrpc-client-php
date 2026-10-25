@@ -1,8 +1,0 @@
-{
-    "id": "fixture-343",
-    "jsonrpc": "fixture-344",
-    "method": "EXPERIMENTAL_receipt",
-    "params": {
-        "receipt_id": "fixture-345"
-    }
-}

@@ -1,9 +1,0 @@
-{
-    "nonce": 80,
-    "permission": {
-        "GasKeyFullAccess": {
-            "balance": "fixture-1",
-            "num_nonces": 28
-        }
-    }
-}

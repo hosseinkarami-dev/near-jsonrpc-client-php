@@ -1,8 +1,0 @@
-{
-    "id": "fixture-380",
-    "jsonrpc": "fixture-381",
-    "method": "broadcast_tx_commit",
-    "params": {
-        "signed_tx_base64": "Zml4dHVyZQ=="
-    }
-}

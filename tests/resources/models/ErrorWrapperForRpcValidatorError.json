@@ -1,9 +1,0 @@
-{
-    "cause": {
-        "info": {
-            "error_message": "fixture-176"
-        },
-        "name": "PARSE_ERROR"
-    },
-    "name": "REQUEST_VALIDATION_ERROR"
-}

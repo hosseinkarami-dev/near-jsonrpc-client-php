@@ -1,8 +1,0 @@
-{
-    "id": "fixture-338",
-    "jsonrpc": "fixture-339",
-    "method": "EXPERIMENTAL_maintenance_windows",
-    "params": {
-        "account_id": "fixture-340"
-    }
-}

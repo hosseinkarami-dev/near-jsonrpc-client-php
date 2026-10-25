@@ -1,6 +1,0 @@
-{
-    "finality": "near-final",
-    "account_id": "fixture-751",
-    "public_key": "fixture-752",
-    "request_type": "view_gas_key_nonces"
-}

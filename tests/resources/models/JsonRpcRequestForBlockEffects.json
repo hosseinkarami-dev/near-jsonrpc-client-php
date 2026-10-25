@@ -1,8 +1,0 @@
-{
-    "id": "fixture-376",
-    "jsonrpc": "fixture-377",
-    "method": "block_effects",
-    "params": {
-        "finality": "near-final"
-    }
-}

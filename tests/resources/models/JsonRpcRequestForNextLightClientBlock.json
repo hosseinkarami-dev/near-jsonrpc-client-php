@@ -1,8 +1,0 @@
-{
-    "id": "fixture-404",
-    "jsonrpc": "fixture-405",
-    "method": "next_light_client_block",
-    "params": {
-        "last_block_hash": "fixture-406"
-    }
-}

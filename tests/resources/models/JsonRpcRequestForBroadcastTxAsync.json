@@ -1,9 +1,0 @@
-{
-    "id": "fixture-378",
-    "jsonrpc": "fixture-379",
-    "method": "broadcast_tx_async",
-    "params": {
-        "signed_tx_base64": "Zml4dHVyZQ==",
-        "wait_until": "NONE"
-    }
-}

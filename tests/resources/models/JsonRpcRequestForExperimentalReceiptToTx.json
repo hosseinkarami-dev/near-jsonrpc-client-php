@@ -1,9 +1,0 @@
-{
-    "id": "fixture-346",
-    "jsonrpc": "fixture-347",
-    "method": "EXPERIMENTAL_receipt_to_tx",
-    "params": {
-        "receipt_id": "fixture-348",
-        "shard_id": 24
-    }
-}

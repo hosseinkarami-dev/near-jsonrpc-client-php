@@ -1,9 +1,0 @@
-{
-    "id": "fixture-351",
-    "jsonrpc": "fixture-352",
-    "method": "EXPERIMENTAL_tx_status",
-    "params": {
-        "sender_account_id": "fixture-353",
-        "tx_hash": "fixture-354"
-    }
-}

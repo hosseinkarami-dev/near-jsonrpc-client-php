@@ -1,6 +1,0 @@
-{
-    "allowed_shard": 59,
-    "buffered_receipts_gas": "fixture-115",
-    "delayed_receipts_gas": "fixture-116",
-    "receipt_bytes": 22
-}

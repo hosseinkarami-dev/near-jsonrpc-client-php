@@ -1,9 +1,0 @@
-{
-    "id": "fixture-367",
-    "jsonrpc": "fixture-368",
-    "method": "EXPERIMENTAL_view_code",
-    "params": {
-        "account_id": "fixture-369",
-        "block_id": "fixture-370"
-    }
-}

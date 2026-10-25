@@ -1,8 +1,0 @@
-{
-    "id": "fixture-341",
-    "jsonrpc": "fixture-342",
-    "method": "EXPERIMENTAL_protocol_config",
-    "params": {
-        "finality": "final"
-    }
-}

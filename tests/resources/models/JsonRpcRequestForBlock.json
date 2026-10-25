@@ -1,8 +1,0 @@
-{
-    "id": "fixture-374",
-    "jsonrpc": "fixture-375",
-    "method": "block",
-    "params": {
-        "block_id": 86
-    }
-}

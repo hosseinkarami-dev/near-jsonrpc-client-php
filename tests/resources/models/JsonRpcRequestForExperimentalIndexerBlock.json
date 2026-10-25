@@ -1,8 +1,0 @@
-{
-    "id": "fixture-326",
-    "jsonrpc": "fixture-327",
-    "method": "EXPERIMENTAL_indexer_block",
-    "params": {
-        "block_hash": "fixture-328"
-    }
-}

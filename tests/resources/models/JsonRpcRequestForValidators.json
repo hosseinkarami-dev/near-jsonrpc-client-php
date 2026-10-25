@@ -1,8 +1,0 @@
-{
-    "id": "fixture-421",
-    "jsonrpc": "fixture-422",
-    "method": "validators",
-    "params": {
-        "latest": null
-    }
-}

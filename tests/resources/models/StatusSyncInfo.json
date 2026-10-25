@@ -1,8 +1,0 @@
-{
-    "earliest_block_time": null,
-    "latest_block_hash": "fixture-864",
-    "latest_block_height": 45,
-    "latest_block_time": "fixture-865",
-    "latest_state_root": "fixture-866",
-    "syncing": true
-}

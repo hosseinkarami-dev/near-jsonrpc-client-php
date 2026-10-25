@@ -1,6 +1,0 @@
-{
-    "gc_step_period": {
-        "nanos": 65,
-        "secs": 16
-    }
-}

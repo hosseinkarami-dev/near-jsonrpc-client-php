@@ -1,9 +1,0 @@
-{
-    "id": "fixture-560",
-    "jsonrpc": "fixture-561",
-    "result": {
-        "block_hash": "fixture-562",
-        "block_height": 80,
-        "keys": []
-    }
-}

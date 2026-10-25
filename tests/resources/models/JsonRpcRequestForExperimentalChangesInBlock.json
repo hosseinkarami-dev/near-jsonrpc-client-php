@@ -1,8 +1,0 @@
-{
-    "id": "fixture-319",
-    "jsonrpc": "fixture-320",
-    "method": "EXPERIMENTAL_changes_in_block",
-    "params": {
-        "block_id": 78
-    }
-}
