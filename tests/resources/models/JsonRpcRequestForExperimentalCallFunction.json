@@ -1,0 +1,11 @@
+{
+    "id": "fixture-312",
+    "jsonrpc": "fixture-313",
+    "method": "EXPERIMENTAL_call_function",
+    "params": {
+        "account_id": "fixture-314",
+        "args_base64": "Zml4dHVyZQ==",
+        "method_name": "fixture-315",
+        "block_id": 100
+    }
+}

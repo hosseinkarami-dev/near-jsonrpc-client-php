@@ -1,0 +1,10 @@
+{
+    "catch_up_throttle": {
+        "nanos": 8,
+        "secs": 82
+    },
+    "polling_interval": {
+        "nanos": 16,
+        "secs": 57
+    }
+}

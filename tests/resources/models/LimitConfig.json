@@ -1,0 +1,13 @@
+{
+    "max_actions_per_receipt": 61,
+    "max_arguments_length": 48,
+    "max_blocks_per_function": 45,
+    "max_function_body_size": null,
+    "max_functions_number_per_contract": 1,
+    "max_gas_burnt_external": 41,
+    "max_length_storage_value": 52,
+    "max_number_registers": 89,
+    "max_params_per_function": 29,
+    "max_state_init_entries": 0,
+    "max_yield_payload_size": 42
+}

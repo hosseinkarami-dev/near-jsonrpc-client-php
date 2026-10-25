@@ -1,0 +1,8 @@
+{
+    "id": "fixture-415",
+    "jsonrpc": "fixture-416",
+    "method": "tx",
+    "params": {
+        "signed_tx_base64": "Zml4dHVyZQ=="
+    }
+}

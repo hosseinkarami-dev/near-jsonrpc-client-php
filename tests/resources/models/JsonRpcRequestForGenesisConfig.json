@@ -1,0 +1,6 @@
+{
+    "id": "fixture-390",
+    "jsonrpc": "fixture-391",
+    "method": "genesis_config",
+    "params": null
+}
