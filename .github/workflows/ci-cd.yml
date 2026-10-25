@@ -119,6 +119,7 @@ jobs:
             echo 'Set PACKAGIST_USERNAME and PACKAGIST_API_TOKEN in the repository Actions secrets.' >&2
             exit 1
           fi
+          echo 'PACKAGIST_API_TOKEN must be the main API token until the package is registered on Packagist.'
       - name: Calculate the next patch version for this generated merge
         id: generated-version
         if: steps.merged-pr.outputs.sha != ''
@@ -192,6 +193,34 @@ jobs:
         with:
           tag_name: ${{ steps.tag-release.outputs.tag }}
           generate_release_notes: true
+      - name: Create Packagist package if it has not been registered yet
+        if: steps.merged-pr.outputs.sha != ''
+        env:
+          PACKAGIST_USERNAME: ${{ secrets.PACKAGIST_USERNAME }}
+          PACKAGIST_API_TOKEN: ${{ secrets.PACKAGIST_API_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        shell: bash
+        run: |
+          package_name=$(php -r '$composer = json_decode(file_get_contents("composer.json"), true, 512, JSON_THROW_ON_ERROR); echo $composer["name"];')
+          package_url="https://packagist.org/packages/${package_name}.json"
+          http_status=$(curl --silent --show-error --output /dev/null --write-out '%{http_code}' "$package_url")
+
+          if [[ "$http_status" == '200' ]]; then
+            echo "Packagist package ${package_name} is already registered."
+          elif [[ "$http_status" == '404' ]]; then
+            echo "Packagist package ${package_name} is not registered; creating it."
+            response=$(curl --fail-with-body --silent --show-error \
+              --request POST \
+              --header 'Content-Type: application/json' \
+              --header "Authorization: Bearer ${PACKAGIST_USERNAME}:${PACKAGIST_API_TOKEN}" \
+              --data "{\"repository\":\"https://github.com/${GITHUB_REPOSITORY}\"}" \
+              https://packagist.org/api/create-package)
+            echo "$response"
+            echo "$response" | jq --exit-status '.status == "success"' > /dev/null
+          else
+            echo "Packagist package lookup returned HTTP ${http_status}; refusing to continue." >&2
+            exit 1
+          fi
       - name: Update Packagist after the generated merge
         if: steps.merged-pr.outputs.sha != ''
         env:
