@@ -1,0 +1,13 @@
+{
+    "id": "fixture-563",
+    "jsonrpc": "fixture-564",
+    "error": {
+        "cause": {
+            "info": {
+                "method_name": "fixture-565"
+            },
+            "name": "METHOD_NOT_FOUND"
+        },
+        "name": "REQUEST_VALIDATION_ERROR"
+    }
+}

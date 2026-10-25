@@ -1,0 +1,9 @@
+{
+    "cause": {
+        "info": {
+            "error_message": "fixture-162"
+        },
+        "name": "INTERNAL_ERROR"
+    },
+    "name": "HANDLER_ERROR"
+}

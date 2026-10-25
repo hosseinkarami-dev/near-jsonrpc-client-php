@@ -1,0 +1,40 @@
+{
+    "author": "fixture-647",
+    "header": {
+        "balance_burnt": "fixture-648",
+        "chunk_hash": "fixture-649",
+        "encoded_length": 85,
+        "encoded_merkle_root": "fixture-650",
+        "gas_limit": 2,
+        "gas_used": 69,
+        "height_created": 62,
+        "height_included": 84,
+        "outcome_root": "fixture-651",
+        "outgoing_receipts_root": "fixture-652",
+        "prev_block_hash": "fixture-653",
+        "prev_state_root": "fixture-654",
+        "proposed_split": {
+            "boundary_account": "fixture-655",
+            "left_memory": 43,
+            "right_memory": 21
+        },
+        "shard_id": 96,
+        "signature": "fixture-656",
+        "tx_root": "fixture-657",
+        "validator_proposals": []
+    },
+    "receipts": [
+        {
+            "predecessor_id": "fixture-658",
+            "receipt": {
+                "Data": {
+                    "data_id": "fixture-659",
+                    "is_promise_resume": false
+                }
+            },
+            "receipt_id": "fixture-660",
+            "receiver_id": "fixture-661"
+        }
+    ],
+    "transactions": []
+}

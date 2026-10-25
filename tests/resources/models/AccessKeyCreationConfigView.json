@@ -1,0 +1,17 @@
+{
+    "full_access_cost": {
+        "execution": 6,
+        "send_not_sir": 86,
+        "send_sir": 50
+    },
+    "function_call_cost": {
+        "execution": 3,
+        "send_not_sir": 28,
+        "send_sir": 61
+    },
+    "function_call_cost_per_byte": {
+        "execution": 79,
+        "send_not_sir": 20,
+        "send_sir": 85
+    }
+}

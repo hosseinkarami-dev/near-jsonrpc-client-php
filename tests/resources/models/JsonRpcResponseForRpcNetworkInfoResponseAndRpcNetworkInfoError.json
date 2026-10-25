@@ -1,0 +1,12 @@
+{
+    "id": "fixture-503",
+    "jsonrpc": "fixture-504",
+    "result": {
+        "active_peers": [],
+        "known_producers": [],
+        "num_active_peers": 83,
+        "peer_max_count": 7,
+        "received_bytes_per_sec": 49,
+        "sent_bytes_per_sec": 28
+    }
+}

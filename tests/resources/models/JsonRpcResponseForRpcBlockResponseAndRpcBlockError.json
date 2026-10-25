@@ -1,0 +1,13 @@
+{
+    "id": "fixture-442",
+    "jsonrpc": "fixture-443",
+    "error": {
+        "cause": {
+            "info": {
+                "error_message": "fixture-444"
+            },
+            "name": "INTERNAL_ERROR"
+        },
+        "name": "HANDLER_ERROR"
+    }
+}

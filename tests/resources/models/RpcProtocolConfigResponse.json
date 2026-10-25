@@ -1,0 +1,9 @@
+{
+    "chain_id": "fixture-748",
+    "online_max_threshold": [
+        97,
+        63
+    ],
+    "shuffle_shard_assignment_for_chunk_producers": false,
+    "transaction_validity_period": 38
+}

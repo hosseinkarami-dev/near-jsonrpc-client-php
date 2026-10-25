@@ -1,0 +1,11 @@
+{
+    "block_hash": "fixture-815",
+    "block_height": 47,
+    "nonce": 95,
+    "permission": {
+        "GasKeyFullAccess": {
+            "balance": "fixture-816",
+            "num_nonces": 33
+        }
+    }
+}
