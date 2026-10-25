@@ -2,10 +2,8 @@ name: PHP CI/CD
 
 on:
   push:
-  pull_request:
-    types: [opened, synchronize, reopened, closed]
+    branches: [main]
   workflow_dispatch:
-    # Manual runs execute validation only. Generated source is not auto-published.
   schedule:
     - cron: "0 0 * * *" # Daily at midnight UTC
 
@@ -15,7 +13,6 @@ permissions:
 jobs:
   test:
     name: Tests (PHP ${{ matrix.php }})
-    if: github.event_name != 'pull_request' || github.event.action != 'closed' || github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -32,19 +29,12 @@ jobs:
       - run: composer install --no-interaction --prefer-dist
       - name: Generate ignored PHPUnit suites and fixtures
         run: php bin/near-rpc-generate --seed=807541509
-      - name: Check generated source diff
-        if: github.event_name == 'pull_request' || startsWith(github.ref, 'refs/tags/v')
-        shell: bash
-        run: |
-          git add --intent-to-add src/Generated/Models src/Generated/Client tests/resources/models
-          git diff --exit-code -- src/Generated/Models src/Generated/Client
       - name: Syntax check
         run: find src tests bin -type f \( -name '*.php' -o -name 'near-rpc-generate' \) -print0 | xargs -0 -n1 php -l
       - run: composer test
 
   update-generated-pr:
     name: Create or update generated-code pull request
-    if: false # Automatic source regeneration and generated-code PR merging are disabled.
     needs: test
     runs-on: ubuntu-latest
     permissions:
@@ -70,7 +60,9 @@ jobs:
         id: generated-diff
         shell: bash
         run: |
-          git add -A -- src/Generated/Models src/Generated/Client tests/resources/models
+          # Generated source and fixtures are intentionally ignored in the main branch.
+          # Force-add them so the initial absence and every subsequent generated diff are detected.
+          git add -f -A -- src/Generated/Models src/Generated/Client tests/resources/models
           if git diff --cached --quiet; then
             echo 'changed=false' >> "$GITHUB_OUTPUT"
             echo 'Generated models, client methods, and fixtures are up to date.'
@@ -116,40 +108,8 @@ jobs:
             exit 1
           fi
           echo "sha=$merge_sha" >> "$GITHUB_OUTPUT"
-      - name: Find pending generated changes for a recovery release
-        id: pending-release
-        if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && inputs.release_pending_generated
-        env:
-          RELEASE_SHA: ${{ github.sha }}
-        shell: bash
-        run: |
-          latest_tag=$(git tag --list 'v[0-9]*' | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -n 1 || true)
-          if [[ -n "$latest_tag" ]]; then
-            if git diff --quiet "$latest_tag" "$RELEASE_SHA" -- src/Generated/Models src/Generated/Client; then
-              echo 'No untagged generated model or client API changes exist on main.'
-              exit 0
-            fi
-          elif [[ -z "$(git ls-tree -r --name-only "$RELEASE_SHA" -- src/Generated/Models src/Generated/Client)" ]]; then
-            echo 'No generated model or client API files exist on main.'
-            exit 0
-          fi
-          echo "sha=$RELEASE_SHA" >> "$GITHUB_OUTPUT"
-          echo "Found untagged generated API changes at $RELEASE_SHA."
-      - name: Select the generated commit to release
-        id: release-target
-        if: steps.merged-pr.outputs.sha != '' || steps.pending-release.outputs.sha != ''
-        env:
-          MERGED_SHA: ${{ steps.merged-pr.outputs.sha }}
-          PENDING_SHA: ${{ steps.pending-release.outputs.sha }}
-        shell: bash
-        run: |
-          release_sha="$MERGED_SHA"
-          if [[ -z "$release_sha" ]]; then
-            release_sha="$PENDING_SHA"
-          fi
-          echo "sha=$release_sha" >> "$GITHUB_OUTPUT"
       - name: Verify Packagist credentials are configured
-        if: steps.release-target.outputs.sha != ''
+        if: steps.merged-pr.outputs.sha != ''
         env:
           PACKAGIST_USERNAME: ${{ secrets.PACKAGIST_USERNAME }}
           PACKAGIST_API_TOKEN: ${{ secrets.PACKAGIST_API_TOKEN }}
@@ -161,9 +121,9 @@ jobs:
           fi
       - name: Calculate the next patch version for this generated merge
         id: generated-version
-        if: steps.release-target.outputs.sha != ''
+        if: steps.merged-pr.outputs.sha != ''
         env:
-          RELEASE_SHA: ${{ steps.release-target.outputs.sha }}
+          RELEASE_SHA: ${{ steps.merged-pr.outputs.sha }}
         shell: bash
         run: |
           latest_tag=$(git tag --list 'v[0-9]*' | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -n 1 || true)
@@ -178,10 +138,10 @@ jobs:
           echo "tag=$next_tag" >> "$GITHUB_OUTPUT"
       - name: Tag the generated merge
         id: tag-release
-        if: steps.release-target.outputs.sha != ''
+        if: steps.merged-pr.outputs.sha != ''
         env:
           RELEASE_TAG: ${{ steps.generated-version.outputs.tag }}
-          RELEASE_SHA: ${{ steps.release-target.outputs.sha }}
+          RELEASE_SHA: ${{ steps.merged-pr.outputs.sha }}
           GH_TOKEN: ${{ github.token }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         shell: bash
@@ -227,157 +187,13 @@ jobs:
           echo 'Could not allocate an unused release tag after 100 attempts.' >&2
           exit 1
       - name: Create GitHub release for the generated merge
-        if: steps.release-target.outputs.sha != ''
+        if: steps.merged-pr.outputs.sha != ''
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.tag-release.outputs.tag }}
           generate_release_notes: true
       - name: Update Packagist after the generated merge
-        if: steps.release-target.outputs.sha != ''
-        env:
-          PACKAGIST_USERNAME: ${{ secrets.PACKAGIST_USERNAME }}
-          PACKAGIST_API_TOKEN: ${{ secrets.PACKAGIST_API_TOKEN }}
-          GITHUB_REPOSITORY: ${{ github.repository }}
-        shell: bash
-        run: |
-          response=$(curl --fail-with-body --silent --show-error \
-            --request POST \
-            --header 'Content-Type: application/json' \
-            --header "Authorization: Bearer ${PACKAGIST_USERNAME}:${PACKAGIST_API_TOKEN}" \
-            --data "{\"repository\":\"https://github.com/${GITHUB_REPOSITORY}\"}" \
-            https://packagist.org/api/update-package)
-          echo "$response"
-          echo "$response" | jq --exit-status '.status == "success"' > /dev/null
-
-  detect-generated-diff:
-    name: Detect generated API changes in merged PR
-    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
-    needs: test
-    runs-on: ubuntu-latest
-    permissions:
-      pull-requests: read
-    outputs:
-      changed: ${{ steps.diff.outputs.changed }}
-    steps:
-      - uses: actions/checkout@v4
-      - name: Check the merged pull request's actual file diff
-        id: diff
-        env:
-          GH_TOKEN: ${{ github.token }}
-          PR_NUMBER: ${{ github.event.pull_request.number }}
-        shell: bash
-        run: |
-          changed_paths=$(gh api --paginate "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}/files" --jq '.[] | select(.status != "removed") | .filename')
-          generated_paths=$(printf '%s\n' "$changed_paths" | grep -E '^(src/Generated/Models/|src/Generated/Client/)' || true)
-          if [[ -z "$generated_paths" ]]; then
-            echo 'changed=false' >> "$GITHUB_OUTPUT"
-            echo 'The merged pull request contains no generated model or client API changes.'
-          else
-            echo 'changed=true' >> "$GITHUB_OUTPUT"
-            echo 'Generated model or client API changes detected in the merged pull request:'
-            printf '%s\n' "$generated_paths"
-          fi
-
-  publish:
-    name: Publish release to GitHub and Packagist
-    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main' && github.actor != 'github-actions[bot]' && needs.detect-generated-diff.outputs.changed == 'true'
-    needs: [test, detect-generated-diff]
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          ref: ${{ github.event.pull_request.merge_commit_sha }}
-      - uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.2'
-          extensions: curl, json
-          coverage: none
-      - run: composer install --no-interaction --prefer-dist
-      - name: Verify Packagist credentials are configured
-        env:
-          PACKAGIST_USERNAME: ${{ secrets.PACKAGIST_USERNAME }}
-          PACKAGIST_API_TOKEN: ${{ secrets.PACKAGIST_API_TOKEN }}
-        shell: bash
-        run: |
-          if [[ -z "$PACKAGIST_USERNAME" || -z "$PACKAGIST_API_TOKEN" ]]; then
-            echo 'Set PACKAGIST_USERNAME and PACKAGIST_API_TOKEN in the repository Actions secrets.' >&2
-            exit 1
-          fi
-      - name: Calculate next patch version
-        id: version
-        env:
-          RELEASE_SHA: ${{ github.event.pull_request.merge_commit_sha }}
-        shell: bash
-        run: |
-          latest_tag=$(git tag --list 'v[0-9]*' | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -n 1 || true)
-          if [[ -z "$latest_tag" ]]; then
-            next_tag='v0.1.0'
-          elif [[ "$(git rev-list -n 1 "$latest_tag")" == "$RELEASE_SHA" ]]; then
-            next_tag="$latest_tag"
-          else
-            IFS=. read -r major minor patch <<< "${latest_tag#v}"
-            next_tag="v${major}.${minor}.$((patch + 1))"
-          fi
-          echo "tag=$next_tag" >> "$GITHUB_OUTPUT"
-          echo "Release version: $next_tag"
-      - name: Create and push release tag
-        id: create-tag
-        env:
-          RELEASE_TAG: ${{ steps.version.outputs.tag }}
-          RELEASE_SHA: ${{ github.event.pull_request.merge_commit_sha }}
-          GH_TOKEN: ${{ github.token }}
-          GITHUB_REPOSITORY: ${{ github.repository }}
-        shell: bash
-        run: |
-          resolve_tag_commit() {
-            local tag_name="$1" ref_data object_sha object_type
-            ref_data=$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/tags/${tag_name}" --jq '[.object.sha, .object.type] | @tsv' 2>/dev/null) || return 1
-            IFS=$'\t' read -r object_sha object_type <<< "$ref_data"
-            while [[ "$object_type" == 'tag' ]]; do
-              ref_data=$(gh api "repos/${GITHUB_REPOSITORY}/git/tags/${object_sha}" --jq '[.object.sha, .object.type] | @tsv')
-              IFS=$'\t' read -r object_sha object_type <<< "$ref_data"
-            done
-            [[ "$object_type" == 'commit' ]] || return 1
-            printf '%s' "$object_sha"
-          }
-
-          release_tag="$RELEASE_TAG"
-          for attempt in $(seq 1 100); do
-            if remote_sha=$(resolve_tag_commit "$release_tag"); then
-              if [[ "$remote_sha" == "$RELEASE_SHA" ]]; then
-                echo "tag=$release_tag" >> "$GITHUB_OUTPUT"
-                exit 0
-              fi
-              echo "Release tag $release_tag points to $remote_sha, not $RELEASE_SHA; trying the next patch version."
-            else
-              if gh api --method POST "repos/${GITHUB_REPOSITORY}/git/refs" \
-                -f ref="refs/tags/${release_tag}" \
-                -f sha="$RELEASE_SHA" \
-                --jq '.ref'; then
-                echo "tag=$release_tag" >> "$GITHUB_OUTPUT"
-                exit 0
-              fi
-              # Another run may have created this ref between the lookup and POST.
-              if remote_sha=$(resolve_tag_commit "$release_tag") && [[ "$remote_sha" == "$RELEASE_SHA" ]]; then
-                echo "tag=$release_tag" >> "$GITHUB_OUTPUT"
-                exit 0
-              fi
-              echo "Could not create release tag $release_tag; trying the next patch version."
-            fi
-            IFS=. read -r major minor patch <<< "${release_tag#v}"
-            release_tag="v${major}.${minor}.$((patch + 1))"
-          done
-          echo 'Could not allocate an unused release tag after 100 attempts.' >&2
-          exit 1
-      - name: Create GitHub release
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: ${{ steps.create-tag.outputs.tag }}
-          generate_release_notes: true
-      - name: Update Packagist
+        if: steps.merged-pr.outputs.sha != ''
         env:
           PACKAGIST_USERNAME: ${{ secrets.PACKAGIST_USERNAME }}
           PACKAGIST_API_TOKEN: ${{ secrets.PACKAGIST_API_TOKEN }}
