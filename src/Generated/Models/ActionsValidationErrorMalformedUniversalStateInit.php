@@ -4,7 +4,8 @@ declare(strict_types=1);
 namespace Near\JsonRpc\Generated\Models;
 
 /**
- * The bytes in `RawStateInit` do not decode into `UniversalStateInit`.
+ * The bytes in `RawStateInit` do not decode into `UniversalStateInit`, or they are not the
+ * canonical representation of the struct.
  */
 enum ActionsValidationErrorMalformedUniversalStateInit: string implements \JsonSerializable
 {

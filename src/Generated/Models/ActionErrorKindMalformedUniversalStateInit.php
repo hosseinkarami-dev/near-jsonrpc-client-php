@@ -4,9 +4,9 @@ declare(strict_types=1);
 namespace Near\JsonRpc\Generated\Models;
 
 /**
- * The bytes of a `UniversalStateInit` action do not decode into a state init.
- * Action validation rejects such an action before it runs, so this only fires
- * if that check was bypassed.
+ * The bytes of a `UniversalStateInit` action are not the canonical borsh of a
+ * state init. Action validation rejects such an action before it runs, so this
+ * only fires if that check was bypassed.
  */
 enum ActionErrorKindMalformedUniversalStateInit: string implements \JsonSerializable
 {
