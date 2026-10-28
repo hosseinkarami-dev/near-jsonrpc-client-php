@@ -19,12 +19,6 @@ final readonly class VMConfigView implements \Near\JsonRpc\Models\ModelJsonSeria
          */
         public bool|null $bls12381NotInGroupFix = null,
         /**
-         * See [VMConfig::chain_id_host_fn](crate::vm::Config::chain_id_host_fn).
-         *
-         * @var bool|null
-         */
-        public bool|null $chainIdHostFn = null,
-        /**
          * Deprecated: custom sections are always discarded, so this is always `true`.
          *
          * @var bool|null
@@ -48,12 +42,6 @@ final readonly class VMConfigView implements \Near\JsonRpc\Models\ModelJsonSeria
          * @var bool|null
          */
         public bool|null $fixContractLoadingCost = null,
-        /**
-         * See [VMConfig::gas_key_host_fns](crate::vm::Config::gas_key_host_fns).
-         *
-         * @var bool|null
-         */
-        public bool|null $gasKeyHostFns = null,
         /**
          * Deprecated: the global contract host functions are always enabled, so this is
          * always `true`.
@@ -101,18 +89,6 @@ final readonly class VMConfigView implements \Near\JsonRpc\Models\ModelJsonSeria
          */
         public bool|null $mlDsaVerifyHostFn = null,
         /**
-         * See [VMConfig::one_yocto_on_promise](crate::vm::Config::one_yocto_on_promise).
-         *
-         * @var bool|null
-         */
-        public bool|null $oneYoctoOnPromise = null,
-        /**
-         * See [VMConfig::p256_verify_host_fn](crate::vm::Config::p256_verify_host_fn).
-         *
-         * @var bool|null
-         */
-        public bool|null $p256VerifyHostFn = null,
-        /**
          * Deprecated: reference types and bulk memory wasm extensions are always
          * enabled, so this is always `true`.
          *
@@ -150,12 +126,6 @@ final readonly class VMConfigView implements \Near\JsonRpc\Models\ModelJsonSeria
          * @var \Near\JsonRpc\Generated\Models\VMKind|null
          */
         public \Near\JsonRpc\Generated\Models\VMKind|null $vmKind = null,
-        /**
-         * See [VMConfig::yield_with_id_host_fns](crate::vm::Config::yield_with_id_host_fns).
-         *
-         * @var bool|null
-         */
-        public bool|null $yieldWithIdHostFns = null,
         /** @var array<string, mixed> */
         array $_extra = [],
     ) {
@@ -163,9 +133,6 @@ final readonly class VMConfigView implements \Near\JsonRpc\Models\ModelJsonSeria
         if ($this->bls12381NotInGroupFix !== null) \Near\JsonRpc\Models\TypeGuard::assert($this->bls12381NotInGroupFix, array (
   'type' => 'boolean',
 ), 'bls12381_not_in_group_fix');
-        if ($this->chainIdHostFn !== null) \Near\JsonRpc\Models\TypeGuard::assert($this->chainIdHostFn, array (
-  'type' => 'boolean',
-), 'chain_id_host_fn');
         if ($this->discardCustomSections !== null) \Near\JsonRpc\Models\TypeGuard::assert($this->discardCustomSections, array (
   'type' => 'boolean',
 ), 'discard_custom_sections');
@@ -179,9 +146,6 @@ final readonly class VMConfigView implements \Near\JsonRpc\Models\ModelJsonSeria
         if ($this->fixContractLoadingCost !== null) \Near\JsonRpc\Models\TypeGuard::assert($this->fixContractLoadingCost, array (
   'type' => 'boolean',
 ), 'fix_contract_loading_cost');
-        if ($this->gasKeyHostFns !== null) \Near\JsonRpc\Models\TypeGuard::assert($this->gasKeyHostFns, array (
-  'type' => 'boolean',
-), 'gas_key_host_fns');
         if ($this->globalContractHostFns !== null) \Near\JsonRpc\Models\TypeGuard::assert($this->globalContractHostFns, array (
   'type' => 'boolean',
 ), 'global_contract_host_fns');
@@ -210,12 +174,6 @@ final readonly class VMConfigView implements \Near\JsonRpc\Models\ModelJsonSeria
         if ($this->mlDsaVerifyHostFn !== null) \Near\JsonRpc\Models\TypeGuard::assert($this->mlDsaVerifyHostFn, array (
   'type' => 'boolean',
 ), 'ml_dsa_verify_host_fn');
-        if ($this->oneYoctoOnPromise !== null) \Near\JsonRpc\Models\TypeGuard::assert($this->oneYoctoOnPromise, array (
-  'type' => 'boolean',
-), 'one_yocto_on_promise');
-        if ($this->p256VerifyHostFn !== null) \Near\JsonRpc\Models\TypeGuard::assert($this->p256VerifyHostFn, array (
-  'type' => 'boolean',
-), 'p256_verify_host_fn');
         if ($this->reftypesBulkMemory !== null) \Near\JsonRpc\Models\TypeGuard::assert($this->reftypesBulkMemory, array (
   'type' => 'boolean',
 ), 'reftypes_bulk_memory');
@@ -238,9 +196,6 @@ final readonly class VMConfigView implements \Near\JsonRpc\Models\ModelJsonSeria
   'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\VMKind',
   'nullable' => false,
 ), 'vm_kind');
-        if ($this->yieldWithIdHostFns !== null) \Near\JsonRpc\Models\TypeGuard::assert($this->yieldWithIdHostFns, array (
-  'type' => 'boolean',
-), 'yield_with_id_host_fns');
     }
 
     public static function fromValue(mixed $value): self
@@ -256,12 +211,10 @@ final readonly class VMConfigView implements \Near\JsonRpc\Models\ModelJsonSeria
     {
         $extra = array_diff_key($data, array (
   'bls12381_not_in_group_fix' => true,
-  'chain_id_host_fn' => true,
   'discard_custom_sections' => true,
   'eth_implicit_accounts' => true,
   'ext_costs' => true,
   'fix_contract_loading_cost' => true,
-  'gas_key_host_fns' => true,
   'global_contract_host_fns' => true,
   'grow_mem_cost' => true,
   'implicit_account_creation' => true,
@@ -269,23 +222,17 @@ final readonly class VMConfigView implements \Near\JsonRpc\Models\ModelJsonSeria
   'linear_op_base_cost' => true,
   'linear_op_unit_cost' => true,
   'ml_dsa_verify_host_fn' => true,
-  'one_yocto_on_promise' => true,
-  'p256_verify_host_fn' => true,
   'reftypes_bulk_memory' => true,
   'regular_op_cost' => true,
   'sha3_host_fns' => true,
   'storage_get_mode' => true,
   'universal_accounts' => true,
   'vm_kind' => true,
-  'yield_with_id_host_fns' => true,
 ));
         return new self(
             bls12381NotInGroupFix: array_key_exists('bls12381_not_in_group_fix', $data) ? \Near\JsonRpc\Models\ModelHydrator::hydrate($data['bls12381_not_in_group_fix'], array (
   'type' => 'boolean',
 ), 'bls12381_not_in_group_fix') : null,
-            chainIdHostFn: array_key_exists('chain_id_host_fn', $data) ? \Near\JsonRpc\Models\ModelHydrator::hydrate($data['chain_id_host_fn'], array (
-  'type' => 'boolean',
-), 'chain_id_host_fn') : null,
             discardCustomSections: array_key_exists('discard_custom_sections', $data) ? \Near\JsonRpc\Models\ModelHydrator::hydrate($data['discard_custom_sections'], array (
   'type' => 'boolean',
 ), 'discard_custom_sections') : null,
@@ -299,9 +246,6 @@ final readonly class VMConfigView implements \Near\JsonRpc\Models\ModelJsonSeria
             fixContractLoadingCost: array_key_exists('fix_contract_loading_cost', $data) ? \Near\JsonRpc\Models\ModelHydrator::hydrate($data['fix_contract_loading_cost'], array (
   'type' => 'boolean',
 ), 'fix_contract_loading_cost') : null,
-            gasKeyHostFns: array_key_exists('gas_key_host_fns', $data) ? \Near\JsonRpc\Models\ModelHydrator::hydrate($data['gas_key_host_fns'], array (
-  'type' => 'boolean',
-), 'gas_key_host_fns') : null,
             globalContractHostFns: array_key_exists('global_contract_host_fns', $data) ? \Near\JsonRpc\Models\ModelHydrator::hydrate($data['global_contract_host_fns'], array (
   'type' => 'boolean',
 ), 'global_contract_host_fns') : null,
@@ -330,12 +274,6 @@ final readonly class VMConfigView implements \Near\JsonRpc\Models\ModelJsonSeria
             mlDsaVerifyHostFn: array_key_exists('ml_dsa_verify_host_fn', $data) ? \Near\JsonRpc\Models\ModelHydrator::hydrate($data['ml_dsa_verify_host_fn'], array (
   'type' => 'boolean',
 ), 'ml_dsa_verify_host_fn') : null,
-            oneYoctoOnPromise: array_key_exists('one_yocto_on_promise', $data) ? \Near\JsonRpc\Models\ModelHydrator::hydrate($data['one_yocto_on_promise'], array (
-  'type' => 'boolean',
-), 'one_yocto_on_promise') : null,
-            p256VerifyHostFn: array_key_exists('p256_verify_host_fn', $data) ? \Near\JsonRpc\Models\ModelHydrator::hydrate($data['p256_verify_host_fn'], array (
-  'type' => 'boolean',
-), 'p256_verify_host_fn') : null,
             reftypesBulkMemory: array_key_exists('reftypes_bulk_memory', $data) ? \Near\JsonRpc\Models\ModelHydrator::hydrate($data['reftypes_bulk_memory'], array (
   'type' => 'boolean',
 ), 'reftypes_bulk_memory') : null,
@@ -358,9 +296,6 @@ final readonly class VMConfigView implements \Near\JsonRpc\Models\ModelJsonSeria
   'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\VMKind',
   'nullable' => false,
 ), 'vm_kind') : null,
-            yieldWithIdHostFns: array_key_exists('yield_with_id_host_fns', $data) ? \Near\JsonRpc\Models\ModelHydrator::hydrate($data['yield_with_id_host_fns'], array (
-  'type' => 'boolean',
-), 'yield_with_id_host_fns') : null,
             _extra: $extra
         );
     }
@@ -374,12 +309,10 @@ final readonly class VMConfigView implements \Near\JsonRpc\Models\ModelJsonSeria
     {
         $data = $this->extra;
         if ($this->bls12381NotInGroupFix !== null) $data['bls12381_not_in_group_fix'] = $this->bls12381NotInGroupFix;
-        if ($this->chainIdHostFn !== null) $data['chain_id_host_fn'] = $this->chainIdHostFn;
         if ($this->discardCustomSections !== null) $data['discard_custom_sections'] = $this->discardCustomSections;
         if ($this->ethImplicitAccounts !== null) $data['eth_implicit_accounts'] = $this->ethImplicitAccounts;
         if ($this->extCosts !== null) $data['ext_costs'] = $this->extCosts;
         if ($this->fixContractLoadingCost !== null) $data['fix_contract_loading_cost'] = $this->fixContractLoadingCost;
-        if ($this->gasKeyHostFns !== null) $data['gas_key_host_fns'] = $this->gasKeyHostFns;
         if ($this->globalContractHostFns !== null) $data['global_contract_host_fns'] = $this->globalContractHostFns;
         if ($this->growMemCost !== null) $data['grow_mem_cost'] = $this->growMemCost;
         if ($this->implicitAccountCreation !== null) $data['implicit_account_creation'] = $this->implicitAccountCreation;
@@ -387,15 +320,12 @@ final readonly class VMConfigView implements \Near\JsonRpc\Models\ModelJsonSeria
         if ($this->linearOpBaseCost !== null) $data['linear_op_base_cost'] = $this->linearOpBaseCost;
         if ($this->linearOpUnitCost !== null) $data['linear_op_unit_cost'] = $this->linearOpUnitCost;
         if ($this->mlDsaVerifyHostFn !== null) $data['ml_dsa_verify_host_fn'] = $this->mlDsaVerifyHostFn;
-        if ($this->oneYoctoOnPromise !== null) $data['one_yocto_on_promise'] = $this->oneYoctoOnPromise;
-        if ($this->p256VerifyHostFn !== null) $data['p256_verify_host_fn'] = $this->p256VerifyHostFn;
         if ($this->reftypesBulkMemory !== null) $data['reftypes_bulk_memory'] = $this->reftypesBulkMemory;
         if ($this->regularOpCost !== null) $data['regular_op_cost'] = $this->regularOpCost;
         if ($this->sha3HostFns !== null) $data['sha3_host_fns'] = $this->sha3HostFns;
         if ($this->storageGetMode !== null) $data['storage_get_mode'] = $this->storageGetMode;
         if ($this->universalAccounts !== null) $data['universal_accounts'] = $this->universalAccounts;
         if ($this->vmKind !== null) $data['vm_kind'] = $this->vmKind;
-        if ($this->yieldWithIdHostFns !== null) $data['yield_with_id_host_fns'] = $this->yieldWithIdHostFns;
         return (object) $data;
     }
 
@@ -406,10 +336,6 @@ final readonly class VMConfigView implements \Near\JsonRpc\Models\ModelJsonSeria
   'properties' => 
   array (
     'bls12381_not_in_group_fix' => 
-    array (
-      'type' => 'boolean',
-    ),
-    'chain_id_host_fn' => 
     array (
       'type' => 'boolean',
     ),
@@ -427,10 +353,6 @@ final readonly class VMConfigView implements \Near\JsonRpc\Models\ModelJsonSeria
       'nullable' => false,
     ),
     'fix_contract_loading_cost' => 
-    array (
-      'type' => 'boolean',
-    ),
-    'gas_key_host_fns' => 
     array (
       'type' => 'boolean',
     ),
@@ -469,14 +391,6 @@ final readonly class VMConfigView implements \Near\JsonRpc\Models\ModelJsonSeria
     array (
       'type' => 'boolean',
     ),
-    'one_yocto_on_promise' => 
-    array (
-      'type' => 'boolean',
-    ),
-    'p256_verify_host_fn' => 
-    array (
-      'type' => 'boolean',
-    ),
     'reftypes_bulk_memory' => 
     array (
       'type' => 'boolean',
@@ -504,10 +418,6 @@ final readonly class VMConfigView implements \Near\JsonRpc\Models\ModelJsonSeria
     array (
       'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\VMKind',
       'nullable' => false,
-    ),
-    'yield_with_id_host_fns' => 
-    array (
-      'type' => 'boolean',
     ),
   ),
   'type' => 'object',
@@ -527,10 +437,6 @@ final readonly class VMConfigView implements \Near\JsonRpc\Models\ModelJsonSeria
     array (
       'type' => 'boolean',
     ),
-    'chain_id_host_fn' => 
-    array (
-      'type' => 'boolean',
-    ),
     'discard_custom_sections' => 
     array (
       'type' => 'boolean',
@@ -545,10 +451,6 @@ final readonly class VMConfigView implements \Near\JsonRpc\Models\ModelJsonSeria
       'nullable' => false,
     ),
     'fix_contract_loading_cost' => 
-    array (
-      'type' => 'boolean',
-    ),
-    'gas_key_host_fns' => 
     array (
       'type' => 'boolean',
     ),
@@ -587,14 +489,6 @@ final readonly class VMConfigView implements \Near\JsonRpc\Models\ModelJsonSeria
     array (
       'type' => 'boolean',
     ),
-    'one_yocto_on_promise' => 
-    array (
-      'type' => 'boolean',
-    ),
-    'p256_verify_host_fn' => 
-    array (
-      'type' => 'boolean',
-    ),
     'reftypes_bulk_memory' => 
     array (
       'type' => 'boolean',
@@ -622,10 +516,6 @@ final readonly class VMConfigView implements \Near\JsonRpc\Models\ModelJsonSeria
     array (
       'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\VMKind',
       'nullable' => false,
-    ),
-    'yield_with_id_host_fns' => 
-    array (
-      'type' => 'boolean',
     ),
   ),
   'type' => 'object',
