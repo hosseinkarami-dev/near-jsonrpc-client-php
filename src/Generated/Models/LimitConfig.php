@@ -14,13 +14,6 @@ final readonly class LimitConfig implements \Near\JsonRpc\Models\ModelJsonSerial
 
     public function __construct(
         /**
-         * Deprecated: full account id validation is always enforced, so this is
-         * always `2`.
-         *
-         * @var int|string|null
-         */
-        public int|string|null $accountIdValidityRulesVersion = null,
-        /**
          * The initial number of memory pages.
          * NOTE: It's not a limiter itself, but it's a value we use for initial_memory_pages.
          *
@@ -319,12 +312,6 @@ final readonly class LimitConfig implements \Near\JsonRpc\Models\ModelJsonSerial
         array $_extra = [],
     ) {
         $this->extra = $_extra;
-        if ($this->accountIdValidityRulesVersion !== null) \Near\JsonRpc\Models\TypeGuard::assert($this->accountIdValidityRulesVersion, array (
-  'default' => 2,
-  'format' => 'uint64',
-  'minimum' => 0,
-  'type' => 'integer',
-), 'account_id_validity_rules_version');
         if ($this->initialMemoryPages !== null) \Near\JsonRpc\Models\TypeGuard::assert($this->initialMemoryPages, array (
   'format' => 'uint32',
   'minimum' => 0,
@@ -570,7 +557,6 @@ final readonly class LimitConfig implements \Near\JsonRpc\Models\ModelJsonSerial
     public static function fromArray(array $data): self
     {
         $extra = array_diff_key($data, array (
-  'account_id_validity_rules_version' => true,
   'initial_memory_pages' => true,
   'max_actions_per_receipt' => true,
   'max_arguments_length' => true,
@@ -617,12 +603,6 @@ final readonly class LimitConfig implements \Near\JsonRpc\Models\ModelJsonSerial
   'yield_timeout_length_in_blocks' => true,
 ));
         return new self(
-            accountIdValidityRulesVersion: array_key_exists('account_id_validity_rules_version', $data) ? \Near\JsonRpc\Models\ModelHydrator::hydrate($data['account_id_validity_rules_version'], array (
-  'default' => 2,
-  'format' => 'uint64',
-  'minimum' => 0,
-  'type' => 'integer',
-), 'account_id_validity_rules_version') : null,
             initialMemoryPages: array_key_exists('initial_memory_pages', $data) ? \Near\JsonRpc\Models\ModelHydrator::hydrate($data['initial_memory_pages'], array (
   'format' => 'uint32',
   'minimum' => 0,
@@ -866,7 +846,6 @@ final readonly class LimitConfig implements \Near\JsonRpc\Models\ModelJsonSerial
     private function jsonSerializeValue(): \stdClass
     {
         $data = $this->extra;
-        if ($this->accountIdValidityRulesVersion !== null) $data['account_id_validity_rules_version'] = $this->accountIdValidityRulesVersion;
         if ($this->initialMemoryPages !== null) $data['initial_memory_pages'] = $this->initialMemoryPages;
         if ($this->maxActionsPerReceipt !== null) $data['max_actions_per_receipt'] = $this->maxActionsPerReceipt;
         if ($this->maxArgumentsLength !== null) $data['max_arguments_length'] = $this->maxArgumentsLength;
@@ -920,13 +899,6 @@ final readonly class LimitConfig implements \Near\JsonRpc\Models\ModelJsonSerial
         \Near\JsonRpc\Models\JsonEncoder::assertNativeEncodingSafe(\Near\JsonRpc\Models\ModelHydrator::normalizeForJson($data, array (
   'properties' => 
   array (
-    'account_id_validity_rules_version' => 
-    array (
-      'default' => 2,
-      'format' => 'uint64',
-      'minimum' => 0,
-      'type' => 'integer',
-    ),
     'initial_memory_pages' => 
     array (
       'format' => 'uint32',
@@ -1216,13 +1188,6 @@ final readonly class LimitConfig implements \Near\JsonRpc\Models\ModelJsonSerial
         return \Near\JsonRpc\Models\ModelHydrator::normalizeForJson($this->jsonSerializeValue(), array (
   'properties' => 
   array (
-    'account_id_validity_rules_version' => 
-    array (
-      'default' => 2,
-      'format' => 'uint64',
-      'minimum' => 0,
-      'type' => 'integer',
-    ),
     'initial_memory_pages' => 
     array (
       'format' => 'uint32',
