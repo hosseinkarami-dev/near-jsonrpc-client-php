@@ -128,14 +128,6 @@ final readonly class ExtCostsConfigView implements \Near\JsonRpc\Models\ModelJso
          */
         public \Near\JsonRpc\Generated\Models\NearGas|null $bls12381PairingElement = null,
         /**
-         * @var \Near\JsonRpc\Generated\Models\NearGas|null
-         */
-        public \Near\JsonRpc\Generated\Models\NearGas|null $contractCompileBase = null,
-        /**
-         * @var \Near\JsonRpc\Generated\Models\NearGas|null
-         */
-        public \Near\JsonRpc\Generated\Models\NearGas|null $contractCompileBytes = null,
-        /**
          * Base cost of loading a pre-compiled contract
          *
          * @var \Near\JsonRpc\Generated\Models\NearGas|null
@@ -678,14 +670,6 @@ final readonly class ExtCostsConfigView implements \Near\JsonRpc\Models\ModelJso
   'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\NearGas',
   'nullable' => false,
 ), 'bls12381_pairing_element');
-        if ($this->contractCompileBase !== null) \Near\JsonRpc\Models\TypeGuard::assert($this->contractCompileBase, array (
-  'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\NearGas',
-  'nullable' => false,
-), 'contract_compile_base');
-        if ($this->contractCompileBytes !== null) \Near\JsonRpc\Models\TypeGuard::assert($this->contractCompileBytes, array (
-  'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\NearGas',
-  'nullable' => false,
-), 'contract_compile_bytes');
         if ($this->contractLoadingBase !== null) \Near\JsonRpc\Models\TypeGuard::assert($this->contractLoadingBase, array (
   'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\NearGas',
   'nullable' => false,
@@ -1017,8 +1001,6 @@ final readonly class ExtCostsConfigView implements \Near\JsonRpc\Models\ModelJso
   'bls12381_p2_sum_element' => true,
   'bls12381_pairing_base' => true,
   'bls12381_pairing_element' => true,
-  'contract_compile_base' => true,
-  'contract_compile_bytes' => true,
   'contract_loading_base' => true,
   'contract_loading_bytes' => true,
   'ecrecover_base' => true,
@@ -1194,14 +1176,6 @@ final readonly class ExtCostsConfigView implements \Near\JsonRpc\Models\ModelJso
   'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\NearGas',
   'nullable' => false,
 ), 'bls12381_pairing_element') : null,
-            contractCompileBase: array_key_exists('contract_compile_base', $data) ? \Near\JsonRpc\Models\ModelHydrator::hydrate($data['contract_compile_base'], array (
-  'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\NearGas',
-  'nullable' => false,
-), 'contract_compile_base') : null,
-            contractCompileBytes: array_key_exists('contract_compile_bytes', $data) ? \Near\JsonRpc\Models\ModelHydrator::hydrate($data['contract_compile_bytes'], array (
-  'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\NearGas',
-  'nullable' => false,
-), 'contract_compile_bytes') : null,
             contractLoadingBase: array_key_exists('contract_loading_base', $data) ? \Near\JsonRpc\Models\ModelHydrator::hydrate($data['contract_loading_base'], array (
   'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\NearGas',
   'nullable' => false,
@@ -1531,8 +1505,6 @@ final readonly class ExtCostsConfigView implements \Near\JsonRpc\Models\ModelJso
         if ($this->bls12381P2SumElement !== null) $data['bls12381_p2_sum_element'] = $this->bls12381P2SumElement;
         if ($this->bls12381PairingBase !== null) $data['bls12381_pairing_base'] = $this->bls12381PairingBase;
         if ($this->bls12381PairingElement !== null) $data['bls12381_pairing_element'] = $this->bls12381PairingElement;
-        if ($this->contractCompileBase !== null) $data['contract_compile_base'] = $this->contractCompileBase;
-        if ($this->contractCompileBytes !== null) $data['contract_compile_bytes'] = $this->contractCompileBytes;
         if ($this->contractLoadingBase !== null) $data['contract_loading_base'] = $this->contractLoadingBase;
         if ($this->contractLoadingBytes !== null) $data['contract_loading_bytes'] = $this->contractLoadingBytes;
         if ($this->ecrecoverBase !== null) $data['ecrecover_base'] = $this->ecrecoverBase;
@@ -1736,16 +1708,6 @@ final readonly class ExtCostsConfigView implements \Near\JsonRpc\Models\ModelJso
       'nullable' => false,
     ),
     'bls12381_pairing_element' => 
-    array (
-      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\NearGas',
-      'nullable' => false,
-    ),
-    'contract_compile_base' => 
-    array (
-      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\NearGas',
-      'nullable' => false,
-    ),
-    'contract_compile_bytes' => 
     array (
       'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\NearGas',
       'nullable' => false,
@@ -2250,16 +2212,6 @@ final readonly class ExtCostsConfigView implements \Near\JsonRpc\Models\ModelJso
       'nullable' => false,
     ),
     'bls12381_pairing_element' => 
-    array (
-      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\NearGas',
-      'nullable' => false,
-    ),
-    'contract_compile_base' => 
-    array (
-      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\NearGas',
-      'nullable' => false,
-    ),
-    'contract_compile_bytes' => 
     array (
       'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\NearGas',
       'nullable' => false,
