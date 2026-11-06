@@ -8,10 +8,10 @@ namespace Near\JsonRpc\Generated\Models;
  */
 final readonly class InvalidTxError implements \Near\JsonRpc\Models\ModelJsonSerializable
 {
-    /** @var \Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidAccessKeyError|\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidSignerId|\Near\JsonRpc\Generated\Models\InvalidTxErrorSignerDoesNotExist|\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidNonce|\Near\JsonRpc\Generated\Models\InvalidTxErrorNonceTooLarge|\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidReceiverId|\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidSignature|\Near\JsonRpc\Generated\Models\InvalidTxErrorNotEnoughBalance|\Near\JsonRpc\Generated\Models\InvalidTxErrorLackBalanceForState|\Near\JsonRpc\Generated\Models\InvalidTxErrorCostOverflow|\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidChain|\Near\JsonRpc\Generated\Models\InvalidTxErrorExpired|\Near\JsonRpc\Generated\Models\InvalidTxErrorActionsValidation|\Near\JsonRpc\Generated\Models\InvalidTxErrorTransactionSizeExceeded|\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidTransactionVersion|\Near\JsonRpc\Generated\Models\InvalidTxErrorStorageError|\Near\JsonRpc\Generated\Models\InvalidTxErrorShardCongested|\Near\JsonRpc\Generated\Models\InvalidTxErrorShardStuck|\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidNonceIndex|\Near\JsonRpc\Generated\Models\InvalidTxErrorNotEnoughGasKeyBalance|\Near\JsonRpc\Generated\Models\InvalidTxErrorNotEnoughBalanceForDeposit */
-    public \Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidAccessKeyError|\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidSignerId|\Near\JsonRpc\Generated\Models\InvalidTxErrorSignerDoesNotExist|\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidNonce|\Near\JsonRpc\Generated\Models\InvalidTxErrorNonceTooLarge|\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidReceiverId|\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidSignature|\Near\JsonRpc\Generated\Models\InvalidTxErrorNotEnoughBalance|\Near\JsonRpc\Generated\Models\InvalidTxErrorLackBalanceForState|\Near\JsonRpc\Generated\Models\InvalidTxErrorCostOverflow|\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidChain|\Near\JsonRpc\Generated\Models\InvalidTxErrorExpired|\Near\JsonRpc\Generated\Models\InvalidTxErrorActionsValidation|\Near\JsonRpc\Generated\Models\InvalidTxErrorTransactionSizeExceeded|\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidTransactionVersion|\Near\JsonRpc\Generated\Models\InvalidTxErrorStorageError|\Near\JsonRpc\Generated\Models\InvalidTxErrorShardCongested|\Near\JsonRpc\Generated\Models\InvalidTxErrorShardStuck|\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidNonceIndex|\Near\JsonRpc\Generated\Models\InvalidTxErrorNotEnoughGasKeyBalance|\Near\JsonRpc\Generated\Models\InvalidTxErrorNotEnoughBalanceForDeposit $root;
+    /** @var \Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidAccessKeyError|\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidSignerId|\Near\JsonRpc\Generated\Models\InvalidTxErrorSignerDoesNotExist|\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidNonce|\Near\JsonRpc\Generated\Models\InvalidTxErrorNonceTooLarge|\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidReceiverId|\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidSignature|\Near\JsonRpc\Generated\Models\InvalidTxErrorNotEnoughBalance|\Near\JsonRpc\Generated\Models\InvalidTxErrorLackBalanceForState|\Near\JsonRpc\Generated\Models\InvalidTxErrorCostOverflow|\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidChain|\Near\JsonRpc\Generated\Models\InvalidTxErrorExpired|\Near\JsonRpc\Generated\Models\InvalidTxErrorActionsValidation|\Near\JsonRpc\Generated\Models\InvalidTxErrorTransactionSizeExceeded|\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidTransactionVersion|\Near\JsonRpc\Generated\Models\InvalidTxErrorStorageError|\Near\JsonRpc\Generated\Models\InvalidTxErrorShardCongested|\Near\JsonRpc\Generated\Models\InvalidTxErrorShardStuck|\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidNonceIndex|\Near\JsonRpc\Generated\Models\InvalidTxErrorNotEnoughGasKeyBalance|\Near\JsonRpc\Generated\Models\InvalidTxErrorNotEnoughBalanceForDeposit|\Near\JsonRpc\Generated\Models\InvalidTxErrorContractNotFound */
+    public \Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidAccessKeyError|\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidSignerId|\Near\JsonRpc\Generated\Models\InvalidTxErrorSignerDoesNotExist|\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidNonce|\Near\JsonRpc\Generated\Models\InvalidTxErrorNonceTooLarge|\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidReceiverId|\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidSignature|\Near\JsonRpc\Generated\Models\InvalidTxErrorNotEnoughBalance|\Near\JsonRpc\Generated\Models\InvalidTxErrorLackBalanceForState|\Near\JsonRpc\Generated\Models\InvalidTxErrorCostOverflow|\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidChain|\Near\JsonRpc\Generated\Models\InvalidTxErrorExpired|\Near\JsonRpc\Generated\Models\InvalidTxErrorActionsValidation|\Near\JsonRpc\Generated\Models\InvalidTxErrorTransactionSizeExceeded|\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidTransactionVersion|\Near\JsonRpc\Generated\Models\InvalidTxErrorStorageError|\Near\JsonRpc\Generated\Models\InvalidTxErrorShardCongested|\Near\JsonRpc\Generated\Models\InvalidTxErrorShardStuck|\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidNonceIndex|\Near\JsonRpc\Generated\Models\InvalidTxErrorNotEnoughGasKeyBalance|\Near\JsonRpc\Generated\Models\InvalidTxErrorNotEnoughBalanceForDeposit|\Near\JsonRpc\Generated\Models\InvalidTxErrorContractNotFound $root;
 
-    public function __construct(\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidAccessKeyError|\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidSignerId|\Near\JsonRpc\Generated\Models\InvalidTxErrorSignerDoesNotExist|\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidNonce|\Near\JsonRpc\Generated\Models\InvalidTxErrorNonceTooLarge|\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidReceiverId|\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidSignature|\Near\JsonRpc\Generated\Models\InvalidTxErrorNotEnoughBalance|\Near\JsonRpc\Generated\Models\InvalidTxErrorLackBalanceForState|\Near\JsonRpc\Generated\Models\InvalidTxErrorCostOverflow|\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidChain|\Near\JsonRpc\Generated\Models\InvalidTxErrorExpired|\Near\JsonRpc\Generated\Models\InvalidTxErrorActionsValidation|\Near\JsonRpc\Generated\Models\InvalidTxErrorTransactionSizeExceeded|\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidTransactionVersion|\Near\JsonRpc\Generated\Models\InvalidTxErrorStorageError|\Near\JsonRpc\Generated\Models\InvalidTxErrorShardCongested|\Near\JsonRpc\Generated\Models\InvalidTxErrorShardStuck|\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidNonceIndex|\Near\JsonRpc\Generated\Models\InvalidTxErrorNotEnoughGasKeyBalance|\Near\JsonRpc\Generated\Models\InvalidTxErrorNotEnoughBalanceForDeposit $root) { $this->root = $root; }
+    public function __construct(\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidAccessKeyError|\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidSignerId|\Near\JsonRpc\Generated\Models\InvalidTxErrorSignerDoesNotExist|\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidNonce|\Near\JsonRpc\Generated\Models\InvalidTxErrorNonceTooLarge|\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidReceiverId|\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidSignature|\Near\JsonRpc\Generated\Models\InvalidTxErrorNotEnoughBalance|\Near\JsonRpc\Generated\Models\InvalidTxErrorLackBalanceForState|\Near\JsonRpc\Generated\Models\InvalidTxErrorCostOverflow|\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidChain|\Near\JsonRpc\Generated\Models\InvalidTxErrorExpired|\Near\JsonRpc\Generated\Models\InvalidTxErrorActionsValidation|\Near\JsonRpc\Generated\Models\InvalidTxErrorTransactionSizeExceeded|\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidTransactionVersion|\Near\JsonRpc\Generated\Models\InvalidTxErrorStorageError|\Near\JsonRpc\Generated\Models\InvalidTxErrorShardCongested|\Near\JsonRpc\Generated\Models\InvalidTxErrorShardStuck|\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidNonceIndex|\Near\JsonRpc\Generated\Models\InvalidTxErrorNotEnoughGasKeyBalance|\Near\JsonRpc\Generated\Models\InvalidTxErrorNotEnoughBalanceForDeposit|\Near\JsonRpc\Generated\Models\InvalidTxErrorContractNotFound $root) { $this->root = $root; }
 
     public static function fromValue(mixed $value): self
     {
@@ -37,6 +37,7 @@ final readonly class InvalidTxError implements \Near\JsonRpc\Models\ModelJsonSer
         try { $matched[18] = \Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidNonceIndex::fromValue($value); } catch (\InvalidArgumentException) {}
         try { $matched[19] = \Near\JsonRpc\Generated\Models\InvalidTxErrorNotEnoughGasKeyBalance::fromValue($value); } catch (\InvalidArgumentException) {}
         try { $matched[20] = \Near\JsonRpc\Generated\Models\InvalidTxErrorNotEnoughBalanceForDeposit::fromValue($value); } catch (\InvalidArgumentException) {}
+        try { $matched[21] = \Near\JsonRpc\Generated\Models\InvalidTxErrorContractNotFound::fromValue($value); } catch (\InvalidArgumentException) {}
         if ($matched === [] || (true && count($matched) !== 1)) throw new \InvalidArgumentException('Value does not match its oneOf schema for InvalidTxError.');
         return new self($matched[array_key_first($matched)]);
     }
@@ -65,6 +66,7 @@ final readonly class InvalidTxError implements \Near\JsonRpc\Models\ModelJsonSer
             $this->root instanceof \Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidNonceIndex => 'InvalidNonceIndex',
             $this->root instanceof \Near\JsonRpc\Generated\Models\InvalidTxErrorNotEnoughGasKeyBalance => 'NotEnoughGasKeyBalance',
             $this->root instanceof \Near\JsonRpc\Generated\Models\InvalidTxErrorNotEnoughBalanceForDeposit => 'NotEnoughBalanceForDeposit',
+            $this->root instanceof \Near\JsonRpc\Generated\Models\InvalidTxErrorContractNotFound => 'ContractNotFound',
             default => throw new \LogicException('Unknown InvalidTxError variant.'),
         };
     }
@@ -89,6 +91,7 @@ final readonly class InvalidTxError implements \Near\JsonRpc\Models\ModelJsonSer
     public static function invalidNonceIndex(\Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidNonceIndexPayload $payload): self { return new self(new \Near\JsonRpc\Generated\Models\InvalidTxErrorInvalidNonceIndex($payload)); }
     public static function notEnoughGasKeyBalance(\Near\JsonRpc\Generated\Models\InvalidTxErrorNotEnoughGasKeyBalancePayload $payload): self { return new self(new \Near\JsonRpc\Generated\Models\InvalidTxErrorNotEnoughGasKeyBalance($payload)); }
     public static function notEnoughBalanceForDeposit(\Near\JsonRpc\Generated\Models\InvalidTxErrorNotEnoughBalanceForDepositPayload $payload): self { return new self(new \Near\JsonRpc\Generated\Models\InvalidTxErrorNotEnoughBalanceForDeposit($payload)); }
+    public static function contractNotFound(\Near\JsonRpc\Generated\Models\InvalidTxErrorContractNotFoundPayload $payload): self { return new self(new \Near\JsonRpc\Generated\Models\InvalidTxErrorContractNotFound($payload)); }
     public static function fromArray(array $data): self { return self::fromValue($data); }
     public static function fromJson(string $json): self { return self::fromValue(\Near\JsonRpc\Models\ModelHydrator::decodeJsonValue($json)); }
     public function jsonSerialize(): mixed
@@ -201,6 +204,11 @@ final readonly class InvalidTxError implements \Near\JsonRpc\Models\ModelJsonSer
       'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\InvalidTxErrorNotEnoughBalanceForDeposit',
       'nullable' => false,
     ),
+    21 => 
+    array (
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\InvalidTxErrorContractNotFound',
+      'nullable' => false,
+    ),
   ),
 ), 'root'));
         return $this->root;
@@ -311,6 +319,11 @@ final readonly class InvalidTxError implements \Near\JsonRpc\Models\ModelJsonSer
     20 => 
     array (
       'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\InvalidTxErrorNotEnoughBalanceForDeposit',
+      'nullable' => false,
+    ),
+    21 => 
+    array (
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\InvalidTxErrorContractNotFound',
       'nullable' => false,
     ),
   ),

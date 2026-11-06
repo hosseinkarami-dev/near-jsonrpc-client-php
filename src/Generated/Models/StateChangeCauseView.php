@@ -8,10 +8,10 @@ namespace Near\JsonRpc\Generated\Models;
  */
 final readonly class StateChangeCauseView implements \Near\JsonRpc\Models\ModelJsonSerializable
 {
-    /** @var \Near\JsonRpc\Generated\Models\StateChangeCauseViewNotWritableToDisk|\Near\JsonRpc\Generated\Models\StateChangeCauseViewInitialState|\Near\JsonRpc\Generated\Models\StateChangeCauseViewTransactionProcessing|\Near\JsonRpc\Generated\Models\StateChangeCauseViewActionReceiptProcessingStarted|\Near\JsonRpc\Generated\Models\StateChangeCauseViewActionReceiptGasReward|\Near\JsonRpc\Generated\Models\StateChangeCauseViewReceiptProcessing|\Near\JsonRpc\Generated\Models\StateChangeCauseViewPostponedReceipt|\Near\JsonRpc\Generated\Models\StateChangeCauseViewUpdatedDelayedReceipts|\Near\JsonRpc\Generated\Models\StateChangeCauseViewValidatorAccountsUpdate|\Near\JsonRpc\Generated\Models\StateChangeCauseViewMigration|\Near\JsonRpc\Generated\Models\StateChangeCauseViewBandwidthSchedulerStateUpdate */
-    public \Near\JsonRpc\Generated\Models\StateChangeCauseViewNotWritableToDisk|\Near\JsonRpc\Generated\Models\StateChangeCauseViewInitialState|\Near\JsonRpc\Generated\Models\StateChangeCauseViewTransactionProcessing|\Near\JsonRpc\Generated\Models\StateChangeCauseViewActionReceiptProcessingStarted|\Near\JsonRpc\Generated\Models\StateChangeCauseViewActionReceiptGasReward|\Near\JsonRpc\Generated\Models\StateChangeCauseViewReceiptProcessing|\Near\JsonRpc\Generated\Models\StateChangeCauseViewPostponedReceipt|\Near\JsonRpc\Generated\Models\StateChangeCauseViewUpdatedDelayedReceipts|\Near\JsonRpc\Generated\Models\StateChangeCauseViewValidatorAccountsUpdate|\Near\JsonRpc\Generated\Models\StateChangeCauseViewMigration|\Near\JsonRpc\Generated\Models\StateChangeCauseViewBandwidthSchedulerStateUpdate $root;
+    /** @var \Near\JsonRpc\Generated\Models\StateChangeCauseViewNotWritableToDisk|\Near\JsonRpc\Generated\Models\StateChangeCauseViewInitialState|\Near\JsonRpc\Generated\Models\StateChangeCauseViewTransactionProcessing|\Near\JsonRpc\Generated\Models\StateChangeCauseViewActionReceiptProcessingStarted|\Near\JsonRpc\Generated\Models\StateChangeCauseViewActionReceiptGasReward|\Near\JsonRpc\Generated\Models\StateChangeCauseViewReceiptProcessing|\Near\JsonRpc\Generated\Models\StateChangeCauseViewPostponedReceipt|\Near\JsonRpc\Generated\Models\StateChangeCauseViewUpdatedDelayedReceipts|\Near\JsonRpc\Generated\Models\StateChangeCauseViewValidatorAccountsUpdate|\Near\JsonRpc\Generated\Models\StateChangeCauseViewMigration|\Near\JsonRpc\Generated\Models\StateChangeCauseViewBandwidthSchedulerStateUpdate|\Near\JsonRpc\Generated\Models\StateChangeCauseViewContractCompilationStatusUpdate */
+    public \Near\JsonRpc\Generated\Models\StateChangeCauseViewNotWritableToDisk|\Near\JsonRpc\Generated\Models\StateChangeCauseViewInitialState|\Near\JsonRpc\Generated\Models\StateChangeCauseViewTransactionProcessing|\Near\JsonRpc\Generated\Models\StateChangeCauseViewActionReceiptProcessingStarted|\Near\JsonRpc\Generated\Models\StateChangeCauseViewActionReceiptGasReward|\Near\JsonRpc\Generated\Models\StateChangeCauseViewReceiptProcessing|\Near\JsonRpc\Generated\Models\StateChangeCauseViewPostponedReceipt|\Near\JsonRpc\Generated\Models\StateChangeCauseViewUpdatedDelayedReceipts|\Near\JsonRpc\Generated\Models\StateChangeCauseViewValidatorAccountsUpdate|\Near\JsonRpc\Generated\Models\StateChangeCauseViewMigration|\Near\JsonRpc\Generated\Models\StateChangeCauseViewBandwidthSchedulerStateUpdate|\Near\JsonRpc\Generated\Models\StateChangeCauseViewContractCompilationStatusUpdate $root;
 
-    public function __construct(\Near\JsonRpc\Generated\Models\StateChangeCauseViewNotWritableToDisk|\Near\JsonRpc\Generated\Models\StateChangeCauseViewInitialState|\Near\JsonRpc\Generated\Models\StateChangeCauseViewTransactionProcessing|\Near\JsonRpc\Generated\Models\StateChangeCauseViewActionReceiptProcessingStarted|\Near\JsonRpc\Generated\Models\StateChangeCauseViewActionReceiptGasReward|\Near\JsonRpc\Generated\Models\StateChangeCauseViewReceiptProcessing|\Near\JsonRpc\Generated\Models\StateChangeCauseViewPostponedReceipt|\Near\JsonRpc\Generated\Models\StateChangeCauseViewUpdatedDelayedReceipts|\Near\JsonRpc\Generated\Models\StateChangeCauseViewValidatorAccountsUpdate|\Near\JsonRpc\Generated\Models\StateChangeCauseViewMigration|\Near\JsonRpc\Generated\Models\StateChangeCauseViewBandwidthSchedulerStateUpdate $root) { $this->root = $root; }
+    public function __construct(\Near\JsonRpc\Generated\Models\StateChangeCauseViewNotWritableToDisk|\Near\JsonRpc\Generated\Models\StateChangeCauseViewInitialState|\Near\JsonRpc\Generated\Models\StateChangeCauseViewTransactionProcessing|\Near\JsonRpc\Generated\Models\StateChangeCauseViewActionReceiptProcessingStarted|\Near\JsonRpc\Generated\Models\StateChangeCauseViewActionReceiptGasReward|\Near\JsonRpc\Generated\Models\StateChangeCauseViewReceiptProcessing|\Near\JsonRpc\Generated\Models\StateChangeCauseViewPostponedReceipt|\Near\JsonRpc\Generated\Models\StateChangeCauseViewUpdatedDelayedReceipts|\Near\JsonRpc\Generated\Models\StateChangeCauseViewValidatorAccountsUpdate|\Near\JsonRpc\Generated\Models\StateChangeCauseViewMigration|\Near\JsonRpc\Generated\Models\StateChangeCauseViewBandwidthSchedulerStateUpdate|\Near\JsonRpc\Generated\Models\StateChangeCauseViewContractCompilationStatusUpdate $root) { $this->root = $root; }
 
     public static function fromValue(mixed $value): self
     {
@@ -27,6 +27,7 @@ final readonly class StateChangeCauseView implements \Near\JsonRpc\Models\ModelJ
         try { $matched[8] = \Near\JsonRpc\Generated\Models\StateChangeCauseViewValidatorAccountsUpdate::fromValue($value); } catch (\InvalidArgumentException) {}
         try { $matched[9] = \Near\JsonRpc\Generated\Models\StateChangeCauseViewMigration::fromValue($value); } catch (\InvalidArgumentException) {}
         try { $matched[10] = \Near\JsonRpc\Generated\Models\StateChangeCauseViewBandwidthSchedulerStateUpdate::fromValue($value); } catch (\InvalidArgumentException) {}
+        try { $matched[11] = \Near\JsonRpc\Generated\Models\StateChangeCauseViewContractCompilationStatusUpdate::fromValue($value); } catch (\InvalidArgumentException) {}
         if ($matched === [] || (true && count($matched) !== 1)) throw new \InvalidArgumentException('Value does not match its oneOf schema for StateChangeCauseView.');
         return new self($matched[array_key_first($matched)]);
     }
@@ -45,6 +46,7 @@ final readonly class StateChangeCauseView implements \Near\JsonRpc\Models\ModelJ
             $this->root instanceof \Near\JsonRpc\Generated\Models\StateChangeCauseViewValidatorAccountsUpdate => 'validator_accounts_update',
             $this->root instanceof \Near\JsonRpc\Generated\Models\StateChangeCauseViewMigration => 'migration',
             $this->root instanceof \Near\JsonRpc\Generated\Models\StateChangeCauseViewBandwidthSchedulerStateUpdate => 'bandwidth_scheduler_state_update',
+            $this->root instanceof \Near\JsonRpc\Generated\Models\StateChangeCauseViewContractCompilationStatusUpdate => 'contract_compilation_status_update',
             default => throw new \LogicException('Unknown StateChangeCauseView variant.'),
         };
     }
@@ -59,6 +61,7 @@ final readonly class StateChangeCauseView implements \Near\JsonRpc\Models\ModelJ
     public static function validatorAccountsUpdate(\Near\JsonRpc\Generated\Models\StateChangeCauseViewValidatorAccountsUpdate $variant): self { return new self($variant); }
     public static function migration(\Near\JsonRpc\Generated\Models\StateChangeCauseViewMigration $variant): self { return new self($variant); }
     public static function bandwidthSchedulerStateUpdate(\Near\JsonRpc\Generated\Models\StateChangeCauseViewBandwidthSchedulerStateUpdate $variant): self { return new self($variant); }
+    public static function contractCompilationStatusUpdate(\Near\JsonRpc\Generated\Models\StateChangeCauseViewContractCompilationStatusUpdate $variant): self { return new self($variant); }
     public static function fromArray(array $data): self { return self::fromValue($data); }
     public static function fromJson(string $json): self { return self::fromValue(\Near\JsonRpc\Models\ModelHydrator::decodeJsonValue($json)); }
     public function jsonSerialize(): mixed
@@ -121,6 +124,11 @@ final readonly class StateChangeCauseView implements \Near\JsonRpc\Models\ModelJ
       'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\StateChangeCauseViewBandwidthSchedulerStateUpdate',
       'nullable' => false,
     ),
+    11 => 
+    array (
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\StateChangeCauseViewContractCompilationStatusUpdate',
+      'nullable' => false,
+    ),
   ),
 ), 'root'));
         return $this->root;
@@ -181,6 +189,11 @@ final readonly class StateChangeCauseView implements \Near\JsonRpc\Models\ModelJ
     10 => 
     array (
       'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\StateChangeCauseViewBandwidthSchedulerStateUpdate',
+      'nullable' => false,
+    ),
+    11 => 
+    array (
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\StateChangeCauseViewContractCompilationStatusUpdate',
       'nullable' => false,
     ),
   ),
