@@ -8,10 +8,10 @@ namespace Near\JsonRpc\Generated\Models;
  */
 final readonly class RpcViewStateError implements \Near\JsonRpc\Models\ModelJsonSerializable
 {
-    /** @var \Near\JsonRpc\Generated\Models\RpcViewStateErrorUnknownBlock|\Near\JsonRpc\Generated\Models\RpcViewStateErrorInvalidAccount|\Near\JsonRpc\Generated\Models\RpcViewStateErrorUnknownAccount|\Near\JsonRpc\Generated\Models\RpcViewStateErrorTooLargeContractState|\Near\JsonRpc\Generated\Models\RpcViewStateErrorInternalError */
-    public \Near\JsonRpc\Generated\Models\RpcViewStateErrorUnknownBlock|\Near\JsonRpc\Generated\Models\RpcViewStateErrorInvalidAccount|\Near\JsonRpc\Generated\Models\RpcViewStateErrorUnknownAccount|\Near\JsonRpc\Generated\Models\RpcViewStateErrorTooLargeContractState|\Near\JsonRpc\Generated\Models\RpcViewStateErrorInternalError $root;
+    /** @var \Near\JsonRpc\Generated\Models\RpcViewStateErrorUnknownBlock|\Near\JsonRpc\Generated\Models\RpcViewStateErrorInvalidAccount|\Near\JsonRpc\Generated\Models\RpcViewStateErrorUnknownAccount|\Near\JsonRpc\Generated\Models\RpcViewStateErrorUninitializedAccount|\Near\JsonRpc\Generated\Models\RpcViewStateErrorTooLargeContractState|\Near\JsonRpc\Generated\Models\RpcViewStateErrorInternalError */
+    public \Near\JsonRpc\Generated\Models\RpcViewStateErrorUnknownBlock|\Near\JsonRpc\Generated\Models\RpcViewStateErrorInvalidAccount|\Near\JsonRpc\Generated\Models\RpcViewStateErrorUnknownAccount|\Near\JsonRpc\Generated\Models\RpcViewStateErrorUninitializedAccount|\Near\JsonRpc\Generated\Models\RpcViewStateErrorTooLargeContractState|\Near\JsonRpc\Generated\Models\RpcViewStateErrorInternalError $root;
 
-    public function __construct(\Near\JsonRpc\Generated\Models\RpcViewStateErrorUnknownBlock|\Near\JsonRpc\Generated\Models\RpcViewStateErrorInvalidAccount|\Near\JsonRpc\Generated\Models\RpcViewStateErrorUnknownAccount|\Near\JsonRpc\Generated\Models\RpcViewStateErrorTooLargeContractState|\Near\JsonRpc\Generated\Models\RpcViewStateErrorInternalError $root) { $this->root = $root; }
+    public function __construct(\Near\JsonRpc\Generated\Models\RpcViewStateErrorUnknownBlock|\Near\JsonRpc\Generated\Models\RpcViewStateErrorInvalidAccount|\Near\JsonRpc\Generated\Models\RpcViewStateErrorUnknownAccount|\Near\JsonRpc\Generated\Models\RpcViewStateErrorUninitializedAccount|\Near\JsonRpc\Generated\Models\RpcViewStateErrorTooLargeContractState|\Near\JsonRpc\Generated\Models\RpcViewStateErrorInternalError $root) { $this->root = $root; }
 
     public static function fromValue(mixed $value): self
     {
@@ -19,8 +19,9 @@ final readonly class RpcViewStateError implements \Near\JsonRpc\Models\ModelJson
         try { $matched[0] = \Near\JsonRpc\Generated\Models\RpcViewStateErrorUnknownBlock::fromValue($value); } catch (\InvalidArgumentException) {}
         try { $matched[1] = \Near\JsonRpc\Generated\Models\RpcViewStateErrorInvalidAccount::fromValue($value); } catch (\InvalidArgumentException) {}
         try { $matched[2] = \Near\JsonRpc\Generated\Models\RpcViewStateErrorUnknownAccount::fromValue($value); } catch (\InvalidArgumentException) {}
-        try { $matched[3] = \Near\JsonRpc\Generated\Models\RpcViewStateErrorTooLargeContractState::fromValue($value); } catch (\InvalidArgumentException) {}
-        try { $matched[4] = \Near\JsonRpc\Generated\Models\RpcViewStateErrorInternalError::fromValue($value); } catch (\InvalidArgumentException) {}
+        try { $matched[3] = \Near\JsonRpc\Generated\Models\RpcViewStateErrorUninitializedAccount::fromValue($value); } catch (\InvalidArgumentException) {}
+        try { $matched[4] = \Near\JsonRpc\Generated\Models\RpcViewStateErrorTooLargeContractState::fromValue($value); } catch (\InvalidArgumentException) {}
+        try { $matched[5] = \Near\JsonRpc\Generated\Models\RpcViewStateErrorInternalError::fromValue($value); } catch (\InvalidArgumentException) {}
         if ($matched === [] || (true && count($matched) !== 1)) throw new \InvalidArgumentException('Value does not match its oneOf schema for RpcViewStateError.');
         return new self($matched[array_key_first($matched)]);
     }
@@ -31,6 +32,7 @@ final readonly class RpcViewStateError implements \Near\JsonRpc\Models\ModelJson
             $this->root instanceof \Near\JsonRpc\Generated\Models\RpcViewStateErrorUnknownBlock => 'UNKNOWN_BLOCK',
             $this->root instanceof \Near\JsonRpc\Generated\Models\RpcViewStateErrorInvalidAccount => 'INVALID_ACCOUNT',
             $this->root instanceof \Near\JsonRpc\Generated\Models\RpcViewStateErrorUnknownAccount => 'UNKNOWN_ACCOUNT',
+            $this->root instanceof \Near\JsonRpc\Generated\Models\RpcViewStateErrorUninitializedAccount => 'UNINITIALIZED_ACCOUNT',
             $this->root instanceof \Near\JsonRpc\Generated\Models\RpcViewStateErrorTooLargeContractState => 'TOO_LARGE_CONTRACT_STATE',
             $this->root instanceof \Near\JsonRpc\Generated\Models\RpcViewStateErrorInternalError => 'INTERNAL_ERROR',
             default => throw new \LogicException('Unknown RpcViewStateError variant.'),
@@ -39,6 +41,7 @@ final readonly class RpcViewStateError implements \Near\JsonRpc\Models\ModelJson
     public static function unknownBlock(\Near\JsonRpc\Generated\Models\RpcViewStateErrorUnknownBlock $variant): self { return new self($variant); }
     public static function invalidAccount(\Near\JsonRpc\Generated\Models\RpcViewStateErrorInvalidAccount $variant): self { return new self($variant); }
     public static function unknownAccount(\Near\JsonRpc\Generated\Models\RpcViewStateErrorUnknownAccount $variant): self { return new self($variant); }
+    public static function uninitializedAccount(\Near\JsonRpc\Generated\Models\RpcViewStateErrorUninitializedAccount $variant): self { return new self($variant); }
     public static function tooLargeContractState(\Near\JsonRpc\Generated\Models\RpcViewStateErrorTooLargeContractState $variant): self { return new self($variant); }
     public static function internalError(\Near\JsonRpc\Generated\Models\RpcViewStateErrorInternalError $variant): self { return new self($variant); }
     public static function fromArray(array $data): self { return self::fromValue($data); }
@@ -65,10 +68,15 @@ final readonly class RpcViewStateError implements \Near\JsonRpc\Models\ModelJson
     ),
     3 => 
     array (
-      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\RpcViewStateErrorTooLargeContractState',
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\RpcViewStateErrorUninitializedAccount',
       'nullable' => false,
     ),
     4 => 
+    array (
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\RpcViewStateErrorTooLargeContractState',
+      'nullable' => false,
+    ),
+    5 => 
     array (
       'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\RpcViewStateErrorInternalError',
       'nullable' => false,
@@ -97,10 +105,15 @@ final readonly class RpcViewStateError implements \Near\JsonRpc\Models\ModelJson
     ),
     3 => 
     array (
-      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\RpcViewStateErrorTooLargeContractState',
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\RpcViewStateErrorUninitializedAccount',
       'nullable' => false,
     ),
     4 => 
+    array (
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\RpcViewStateErrorTooLargeContractState',
+      'nullable' => false,
+    ),
+    5 => 
     array (
       'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\RpcViewStateErrorInternalError',
       'nullable' => false,

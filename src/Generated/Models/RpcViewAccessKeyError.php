@@ -8,10 +8,10 @@ namespace Near\JsonRpc\Generated\Models;
  */
 final readonly class RpcViewAccessKeyError implements \Near\JsonRpc\Models\ModelJsonSerializable
 {
-    /** @var \Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorUnknownBlock|\Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorInvalidAccount|\Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorUnknownAccount|\Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorUnknownAccessKey|\Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorInternalError */
-    public \Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorUnknownBlock|\Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorInvalidAccount|\Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorUnknownAccount|\Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorUnknownAccessKey|\Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorInternalError $root;
+    /** @var \Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorUnknownBlock|\Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorInvalidAccount|\Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorUnknownAccount|\Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorUninitializedAccount|\Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorUnknownAccessKey|\Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorInternalError */
+    public \Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorUnknownBlock|\Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorInvalidAccount|\Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorUnknownAccount|\Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorUninitializedAccount|\Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorUnknownAccessKey|\Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorInternalError $root;
 
-    public function __construct(\Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorUnknownBlock|\Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorInvalidAccount|\Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorUnknownAccount|\Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorUnknownAccessKey|\Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorInternalError $root) { $this->root = $root; }
+    public function __construct(\Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorUnknownBlock|\Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorInvalidAccount|\Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorUnknownAccount|\Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorUninitializedAccount|\Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorUnknownAccessKey|\Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorInternalError $root) { $this->root = $root; }
 
     public static function fromValue(mixed $value): self
     {
@@ -19,8 +19,9 @@ final readonly class RpcViewAccessKeyError implements \Near\JsonRpc\Models\Model
         try { $matched[0] = \Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorUnknownBlock::fromValue($value); } catch (\InvalidArgumentException) {}
         try { $matched[1] = \Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorInvalidAccount::fromValue($value); } catch (\InvalidArgumentException) {}
         try { $matched[2] = \Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorUnknownAccount::fromValue($value); } catch (\InvalidArgumentException) {}
-        try { $matched[3] = \Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorUnknownAccessKey::fromValue($value); } catch (\InvalidArgumentException) {}
-        try { $matched[4] = \Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorInternalError::fromValue($value); } catch (\InvalidArgumentException) {}
+        try { $matched[3] = \Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorUninitializedAccount::fromValue($value); } catch (\InvalidArgumentException) {}
+        try { $matched[4] = \Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorUnknownAccessKey::fromValue($value); } catch (\InvalidArgumentException) {}
+        try { $matched[5] = \Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorInternalError::fromValue($value); } catch (\InvalidArgumentException) {}
         if ($matched === [] || (true && count($matched) !== 1)) throw new \InvalidArgumentException('Value does not match its oneOf schema for RpcViewAccessKeyError.');
         return new self($matched[array_key_first($matched)]);
     }
@@ -31,6 +32,7 @@ final readonly class RpcViewAccessKeyError implements \Near\JsonRpc\Models\Model
             $this->root instanceof \Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorUnknownBlock => 'UNKNOWN_BLOCK',
             $this->root instanceof \Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorInvalidAccount => 'INVALID_ACCOUNT',
             $this->root instanceof \Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorUnknownAccount => 'UNKNOWN_ACCOUNT',
+            $this->root instanceof \Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorUninitializedAccount => 'UNINITIALIZED_ACCOUNT',
             $this->root instanceof \Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorUnknownAccessKey => 'UNKNOWN_ACCESS_KEY',
             $this->root instanceof \Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorInternalError => 'INTERNAL_ERROR',
             default => throw new \LogicException('Unknown RpcViewAccessKeyError variant.'),
@@ -39,6 +41,7 @@ final readonly class RpcViewAccessKeyError implements \Near\JsonRpc\Models\Model
     public static function unknownBlock(\Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorUnknownBlock $variant): self { return new self($variant); }
     public static function invalidAccount(\Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorInvalidAccount $variant): self { return new self($variant); }
     public static function unknownAccount(\Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorUnknownAccount $variant): self { return new self($variant); }
+    public static function uninitializedAccount(\Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorUninitializedAccount $variant): self { return new self($variant); }
     public static function unknownAccessKey(\Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorUnknownAccessKey $variant): self { return new self($variant); }
     public static function internalError(\Near\JsonRpc\Generated\Models\RpcViewAccessKeyErrorInternalError $variant): self { return new self($variant); }
     public static function fromArray(array $data): self { return self::fromValue($data); }
@@ -65,10 +68,15 @@ final readonly class RpcViewAccessKeyError implements \Near\JsonRpc\Models\Model
     ),
     3 => 
     array (
-      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\RpcViewAccessKeyErrorUnknownAccessKey',
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\RpcViewAccessKeyErrorUninitializedAccount',
       'nullable' => false,
     ),
     4 => 
+    array (
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\RpcViewAccessKeyErrorUnknownAccessKey',
+      'nullable' => false,
+    ),
+    5 => 
     array (
       'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\RpcViewAccessKeyErrorInternalError',
       'nullable' => false,
@@ -97,10 +105,15 @@ final readonly class RpcViewAccessKeyError implements \Near\JsonRpc\Models\Model
     ),
     3 => 
     array (
-      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\RpcViewAccessKeyErrorUnknownAccessKey',
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\RpcViewAccessKeyErrorUninitializedAccount',
       'nullable' => false,
     ),
     4 => 
+    array (
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\RpcViewAccessKeyErrorUnknownAccessKey',
+      'nullable' => false,
+    ),
+    5 => 
     array (
       'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\RpcViewAccessKeyErrorInternalError',
       'nullable' => false,
