@@ -8,10 +8,10 @@ namespace Near\JsonRpc\Generated\Models;
  */
 final readonly class RpcViewCodeError implements \Near\JsonRpc\Models\ModelJsonSerializable
 {
-    /** @var \Near\JsonRpc\Generated\Models\RpcViewCodeErrorUnknownBlock|\Near\JsonRpc\Generated\Models\RpcViewCodeErrorInvalidAccount|\Near\JsonRpc\Generated\Models\RpcViewCodeErrorUnknownAccount|\Near\JsonRpc\Generated\Models\RpcViewCodeErrorNoContractCode|\Near\JsonRpc\Generated\Models\RpcViewCodeErrorInternalError */
-    public \Near\JsonRpc\Generated\Models\RpcViewCodeErrorUnknownBlock|\Near\JsonRpc\Generated\Models\RpcViewCodeErrorInvalidAccount|\Near\JsonRpc\Generated\Models\RpcViewCodeErrorUnknownAccount|\Near\JsonRpc\Generated\Models\RpcViewCodeErrorNoContractCode|\Near\JsonRpc\Generated\Models\RpcViewCodeErrorInternalError $root;
+    /** @var \Near\JsonRpc\Generated\Models\RpcViewCodeErrorUnknownBlock|\Near\JsonRpc\Generated\Models\RpcViewCodeErrorInvalidAccount|\Near\JsonRpc\Generated\Models\RpcViewCodeErrorUnknownAccount|\Near\JsonRpc\Generated\Models\RpcViewCodeErrorUninitializedAccount|\Near\JsonRpc\Generated\Models\RpcViewCodeErrorNoContractCode|\Near\JsonRpc\Generated\Models\RpcViewCodeErrorInternalError */
+    public \Near\JsonRpc\Generated\Models\RpcViewCodeErrorUnknownBlock|\Near\JsonRpc\Generated\Models\RpcViewCodeErrorInvalidAccount|\Near\JsonRpc\Generated\Models\RpcViewCodeErrorUnknownAccount|\Near\JsonRpc\Generated\Models\RpcViewCodeErrorUninitializedAccount|\Near\JsonRpc\Generated\Models\RpcViewCodeErrorNoContractCode|\Near\JsonRpc\Generated\Models\RpcViewCodeErrorInternalError $root;
 
-    public function __construct(\Near\JsonRpc\Generated\Models\RpcViewCodeErrorUnknownBlock|\Near\JsonRpc\Generated\Models\RpcViewCodeErrorInvalidAccount|\Near\JsonRpc\Generated\Models\RpcViewCodeErrorUnknownAccount|\Near\JsonRpc\Generated\Models\RpcViewCodeErrorNoContractCode|\Near\JsonRpc\Generated\Models\RpcViewCodeErrorInternalError $root) { $this->root = $root; }
+    public function __construct(\Near\JsonRpc\Generated\Models\RpcViewCodeErrorUnknownBlock|\Near\JsonRpc\Generated\Models\RpcViewCodeErrorInvalidAccount|\Near\JsonRpc\Generated\Models\RpcViewCodeErrorUnknownAccount|\Near\JsonRpc\Generated\Models\RpcViewCodeErrorUninitializedAccount|\Near\JsonRpc\Generated\Models\RpcViewCodeErrorNoContractCode|\Near\JsonRpc\Generated\Models\RpcViewCodeErrorInternalError $root) { $this->root = $root; }
 
     public static function fromValue(mixed $value): self
     {
@@ -19,8 +19,9 @@ final readonly class RpcViewCodeError implements \Near\JsonRpc\Models\ModelJsonS
         try { $matched[0] = \Near\JsonRpc\Generated\Models\RpcViewCodeErrorUnknownBlock::fromValue($value); } catch (\InvalidArgumentException) {}
         try { $matched[1] = \Near\JsonRpc\Generated\Models\RpcViewCodeErrorInvalidAccount::fromValue($value); } catch (\InvalidArgumentException) {}
         try { $matched[2] = \Near\JsonRpc\Generated\Models\RpcViewCodeErrorUnknownAccount::fromValue($value); } catch (\InvalidArgumentException) {}
-        try { $matched[3] = \Near\JsonRpc\Generated\Models\RpcViewCodeErrorNoContractCode::fromValue($value); } catch (\InvalidArgumentException) {}
-        try { $matched[4] = \Near\JsonRpc\Generated\Models\RpcViewCodeErrorInternalError::fromValue($value); } catch (\InvalidArgumentException) {}
+        try { $matched[3] = \Near\JsonRpc\Generated\Models\RpcViewCodeErrorUninitializedAccount::fromValue($value); } catch (\InvalidArgumentException) {}
+        try { $matched[4] = \Near\JsonRpc\Generated\Models\RpcViewCodeErrorNoContractCode::fromValue($value); } catch (\InvalidArgumentException) {}
+        try { $matched[5] = \Near\JsonRpc\Generated\Models\RpcViewCodeErrorInternalError::fromValue($value); } catch (\InvalidArgumentException) {}
         if ($matched === [] || (true && count($matched) !== 1)) throw new \InvalidArgumentException('Value does not match its oneOf schema for RpcViewCodeError.');
         return new self($matched[array_key_first($matched)]);
     }
@@ -31,6 +32,7 @@ final readonly class RpcViewCodeError implements \Near\JsonRpc\Models\ModelJsonS
             $this->root instanceof \Near\JsonRpc\Generated\Models\RpcViewCodeErrorUnknownBlock => 'UNKNOWN_BLOCK',
             $this->root instanceof \Near\JsonRpc\Generated\Models\RpcViewCodeErrorInvalidAccount => 'INVALID_ACCOUNT',
             $this->root instanceof \Near\JsonRpc\Generated\Models\RpcViewCodeErrorUnknownAccount => 'UNKNOWN_ACCOUNT',
+            $this->root instanceof \Near\JsonRpc\Generated\Models\RpcViewCodeErrorUninitializedAccount => 'UNINITIALIZED_ACCOUNT',
             $this->root instanceof \Near\JsonRpc\Generated\Models\RpcViewCodeErrorNoContractCode => 'NO_CONTRACT_CODE',
             $this->root instanceof \Near\JsonRpc\Generated\Models\RpcViewCodeErrorInternalError => 'INTERNAL_ERROR',
             default => throw new \LogicException('Unknown RpcViewCodeError variant.'),
@@ -39,6 +41,7 @@ final readonly class RpcViewCodeError implements \Near\JsonRpc\Models\ModelJsonS
     public static function unknownBlock(\Near\JsonRpc\Generated\Models\RpcViewCodeErrorUnknownBlock $variant): self { return new self($variant); }
     public static function invalidAccount(\Near\JsonRpc\Generated\Models\RpcViewCodeErrorInvalidAccount $variant): self { return new self($variant); }
     public static function unknownAccount(\Near\JsonRpc\Generated\Models\RpcViewCodeErrorUnknownAccount $variant): self { return new self($variant); }
+    public static function uninitializedAccount(\Near\JsonRpc\Generated\Models\RpcViewCodeErrorUninitializedAccount $variant): self { return new self($variant); }
     public static function noContractCode(\Near\JsonRpc\Generated\Models\RpcViewCodeErrorNoContractCode $variant): self { return new self($variant); }
     public static function internalError(\Near\JsonRpc\Generated\Models\RpcViewCodeErrorInternalError $variant): self { return new self($variant); }
     public static function fromArray(array $data): self { return self::fromValue($data); }
@@ -65,10 +68,15 @@ final readonly class RpcViewCodeError implements \Near\JsonRpc\Models\ModelJsonS
     ),
     3 => 
     array (
-      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\RpcViewCodeErrorNoContractCode',
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\RpcViewCodeErrorUninitializedAccount',
       'nullable' => false,
     ),
     4 => 
+    array (
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\RpcViewCodeErrorNoContractCode',
+      'nullable' => false,
+    ),
+    5 => 
     array (
       'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\RpcViewCodeErrorInternalError',
       'nullable' => false,
@@ -97,10 +105,15 @@ final readonly class RpcViewCodeError implements \Near\JsonRpc\Models\ModelJsonS
     ),
     3 => 
     array (
-      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\RpcViewCodeErrorNoContractCode',
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\RpcViewCodeErrorUninitializedAccount',
       'nullable' => false,
     ),
     4 => 
+    array (
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\RpcViewCodeErrorNoContractCode',
+      'nullable' => false,
+    ),
+    5 => 
     array (
       'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\RpcViewCodeErrorInternalError',
       'nullable' => false,
