@@ -32,6 +32,12 @@ final readonly class RuntimeConfigView implements \Near\JsonRpc\Models\ModelJson
          */
         public \Near\JsonRpc\Generated\Models\CongestionControlConfigView|null $congestionControlConfig = null,
         /**
+         * Limits on external contract calls, per call and per chunk.
+         *
+         * @var \Near\JsonRpc\Generated\Models\ExternalCallsConfigView|null
+         */
+        public \Near\JsonRpc\Generated\Models\ExternalCallsConfigView|null $externalCallsConfig = null,
+        /**
          * Minimum price at which the gas attached to a receipt is purchased. The price at which it is
          * burned might be lower, in which case the difference is refunded after execution.
          *
@@ -80,6 +86,10 @@ final readonly class RuntimeConfigView implements \Near\JsonRpc\Models\ModelJson
   'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\CongestionControlConfigView',
   'nullable' => false,
 ), 'congestion_control_config');
+        if ($this->externalCallsConfig !== null) \Near\JsonRpc\Models\TypeGuard::assert($this->externalCallsConfig, array (
+  'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\ExternalCallsConfigView',
+  'nullable' => false,
+), 'external_calls_config');
         if ($this->minGasPurchasePrice !== null) \Near\JsonRpc\Models\TypeGuard::assert($this->minGasPurchasePrice, array (
   'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\NearToken',
   'nullable' => false,
@@ -117,6 +127,7 @@ final readonly class RuntimeConfigView implements \Near\JsonRpc\Models\ModelJson
   'account_creation_charge' => true,
   'account_creation_config' => true,
   'congestion_control_config' => true,
+  'external_calls_config' => true,
   'min_gas_purchase_price' => true,
   'storage_amount_per_byte' => true,
   'transaction_costs' => true,
@@ -136,6 +147,10 @@ final readonly class RuntimeConfigView implements \Near\JsonRpc\Models\ModelJson
   'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\CongestionControlConfigView',
   'nullable' => false,
 ), 'congestion_control_config') : null,
+            externalCallsConfig: array_key_exists('external_calls_config', $data) ? \Near\JsonRpc\Models\ModelHydrator::hydrate($data['external_calls_config'], array (
+  'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\ExternalCallsConfigView',
+  'nullable' => false,
+), 'external_calls_config') : null,
             minGasPurchasePrice: array_key_exists('min_gas_purchase_price', $data) ? \Near\JsonRpc\Models\ModelHydrator::hydrate($data['min_gas_purchase_price'], array (
   'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\NearToken',
   'nullable' => false,
@@ -171,6 +186,7 @@ final readonly class RuntimeConfigView implements \Near\JsonRpc\Models\ModelJson
         if ($this->accountCreationCharge !== null) $data['account_creation_charge'] = $this->accountCreationCharge;
         if ($this->accountCreationConfig !== null) $data['account_creation_config'] = $this->accountCreationConfig;
         if ($this->congestionControlConfig !== null) $data['congestion_control_config'] = $this->congestionControlConfig;
+        if ($this->externalCallsConfig !== null) $data['external_calls_config'] = $this->externalCallsConfig;
         if ($this->minGasPurchasePrice !== null) $data['min_gas_purchase_price'] = $this->minGasPurchasePrice;
         if ($this->storageAmountPerByte !== null) $data['storage_amount_per_byte'] = $this->storageAmountPerByte;
         if ($this->transactionCosts !== null) $data['transaction_costs'] = $this->transactionCosts;
@@ -198,6 +214,11 @@ final readonly class RuntimeConfigView implements \Near\JsonRpc\Models\ModelJson
     'congestion_control_config' => 
     array (
       'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\CongestionControlConfigView',
+      'nullable' => false,
+    ),
+    'external_calls_config' => 
+    array (
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\ExternalCallsConfigView',
       'nullable' => false,
     ),
     'min_gas_purchase_price' => 
@@ -252,6 +273,11 @@ final readonly class RuntimeConfigView implements \Near\JsonRpc\Models\ModelJson
     'congestion_control_config' => 
     array (
       'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\CongestionControlConfigView',
+      'nullable' => false,
+    ),
+    'external_calls_config' => 
+    array (
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\ExternalCallsConfigView',
       'nullable' => false,
     ),
     'min_gas_purchase_price' => 
