@@ -109,6 +109,22 @@ final readonly class RpcClientConfigResponse implements \Near\JsonRpc\Models\Mod
          */
         public \Near\JsonRpc\Generated\Models\MutableConfigValue|null $doomslugStepPeriod = null,
         /**
+         * The share of the size limit of the transaction pool that ECCs may fill. Zero keeps ECCs out
+         * of the pool.
+         *
+         * @var list<int>|null
+         */
+        public array|null $eccPoolSizeShare = null,
+        /**
+         * The share of `produce_chunk_add_transactions_time_limit` that ECCs may take when a chunk is
+         * produced. Signed transactions go first, and ECCs get what they leave of the limit, but no
+         * more than this share of it. If there is no time limit, the share is of the default one.
+         * Zero keeps ECCs out of chunks.
+         *
+         * @var \Near\JsonRpc\Generated\Models\MutableConfigValue|null
+         */
+        public \Near\JsonRpc\Generated\Models\MutableConfigValue|null $eccTimeShare = null,
+        /**
          * If true, transactions for the next chunk will be prepared early, right after the previous chunk's
          * post-state is ready. This can help produce chunks faster, for high-throughput chains.
          * The current implementation increases latency on low-load chains, which will be fixed in the future.
@@ -599,6 +615,20 @@ final readonly class RpcClientConfigResponse implements \Near\JsonRpc\Models\Mod
   'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\MutableConfigValue',
   'nullable' => false,
 ), 'doomslug_step_period');
+        if ($this->eccPoolSizeShare !== null) \Near\JsonRpc\Models\TypeGuard::assert($this->eccPoolSizeShare, array (
+  'items' => 
+  array (
+    'format' => 'int32',
+    'type' => 'integer',
+  ),
+  'maxItems' => 2,
+  'minItems' => 2,
+  'type' => 'array',
+), 'ecc_pool_size_share');
+        if ($this->eccTimeShare !== null) \Near\JsonRpc\Models\TypeGuard::assert($this->eccTimeShare, array (
+  'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\MutableConfigValue',
+  'nullable' => false,
+), 'ecc_time_share');
         if ($this->enableEarlyPrepareTransactions !== null) \Near\JsonRpc\Models\TypeGuard::assert($this->enableEarlyPrepareTransactions, array (
   'type' => 'boolean',
 ), 'enable_early_prepare_transactions');
@@ -939,6 +969,8 @@ final readonly class RpcClientConfigResponse implements \Near\JsonRpc\Models\Mod
   'cloud_archival_writer' => true,
   'disable_tx_routing' => true,
   'doomslug_step_period' => true,
+  'ecc_pool_size_share' => true,
+  'ecc_time_share' => true,
   'enable_early_prepare_transactions' => true,
   'enable_multiline_logging' => true,
   'enable_statistics_export' => true,
@@ -1109,6 +1141,20 @@ final readonly class RpcClientConfigResponse implements \Near\JsonRpc\Models\Mod
   'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\MutableConfigValue',
   'nullable' => false,
 ), 'doomslug_step_period') : null,
+            eccPoolSizeShare: array_key_exists('ecc_pool_size_share', $data) ? \Near\JsonRpc\Models\ModelHydrator::hydrate($data['ecc_pool_size_share'], array (
+  'items' => 
+  array (
+    'format' => 'int32',
+    'type' => 'integer',
+  ),
+  'maxItems' => 2,
+  'minItems' => 2,
+  'type' => 'array',
+), 'ecc_pool_size_share') : null,
+            eccTimeShare: array_key_exists('ecc_time_share', $data) ? \Near\JsonRpc\Models\ModelHydrator::hydrate($data['ecc_time_share'], array (
+  'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\MutableConfigValue',
+  'nullable' => false,
+), 'ecc_time_share') : null,
             enableEarlyPrepareTransactions: array_key_exists('enable_early_prepare_transactions', $data) ? \Near\JsonRpc\Models\ModelHydrator::hydrate($data['enable_early_prepare_transactions'], array (
   'type' => 'boolean',
 ), 'enable_early_prepare_transactions') : null,
@@ -1447,6 +1493,8 @@ final readonly class RpcClientConfigResponse implements \Near\JsonRpc\Models\Mod
         if ($this->cloudArchivalWriter->present) $data['cloud_archival_writer'] = $this->cloudArchivalWriter->value;
         if ($this->disableTxRouting !== null) $data['disable_tx_routing'] = $this->disableTxRouting;
         if ($this->doomslugStepPeriod !== null) $data['doomslug_step_period'] = $this->doomslugStepPeriod;
+        if ($this->eccPoolSizeShare !== null) $data['ecc_pool_size_share'] = $this->eccPoolSizeShare;
+        if ($this->eccTimeShare !== null) $data['ecc_time_share'] = $this->eccTimeShare;
         if ($this->enableEarlyPrepareTransactions !== null) $data['enable_early_prepare_transactions'] = $this->enableEarlyPrepareTransactions;
         if ($this->enableMultilineLogging !== null) $data['enable_multiline_logging'] = $this->enableMultilineLogging;
         if ($this->enableStatisticsExport !== null) $data['enable_statistics_export'] = $this->enableStatisticsExport;
@@ -1635,6 +1683,22 @@ final readonly class RpcClientConfigResponse implements \Near\JsonRpc\Models\Mod
       'type' => 'boolean',
     ),
     'doomslug_step_period' => 
+    array (
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\MutableConfigValue',
+      'nullable' => false,
+    ),
+    'ecc_pool_size_share' => 
+    array (
+      'items' => 
+      array (
+        'format' => 'int32',
+        'type' => 'integer',
+      ),
+      'maxItems' => 2,
+      'minItems' => 2,
+      'type' => 'array',
+    ),
+    'ecc_time_share' => 
     array (
       'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\MutableConfigValue',
       'nullable' => false,
@@ -2143,6 +2207,22 @@ final readonly class RpcClientConfigResponse implements \Near\JsonRpc\Models\Mod
       'type' => 'boolean',
     ),
     'doomslug_step_period' => 
+    array (
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\MutableConfigValue',
+      'nullable' => false,
+    ),
+    'ecc_pool_size_share' => 
+    array (
+      'items' => 
+      array (
+        'format' => 'int32',
+        'type' => 'integer',
+      ),
+      'maxItems' => 2,
+      'minItems' => 2,
+      'type' => 'array',
+    ),
+    'ecc_time_share' => 
     array (
       'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\MutableConfigValue',
       'nullable' => false,
