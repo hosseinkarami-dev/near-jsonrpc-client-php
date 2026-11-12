@@ -24,7 +24,13 @@ final readonly class RpcCallFunctionRequestSyncCheckpoint implements \Near\JsonR
         /**
          * @var string
          */
-        public string $methodName
+        public string $methodName,
+        /**
+         * Runs the call as if this were installed, unless the account already has its state.
+         *
+         * @var \Near\JsonRpc\Models\OptionalValue<\Near\JsonRpc\Generated\Models\StateInitView|null>
+         */
+        public \Near\JsonRpc\Models\OptionalValue $stateInit = new \Near\JsonRpc\Models\OptionalValue()
     ) {
         \Near\JsonRpc\Models\TypeGuard::assert($this->syncCheckpoint, array (
   'phpEnum' => '\\Near\\JsonRpc\\Generated\\Models\\SyncCheckpoint',
@@ -41,6 +47,25 @@ final readonly class RpcCallFunctionRequestSyncCheckpoint implements \Near\JsonR
         \Near\JsonRpc\Models\TypeGuard::assert($this->methodName, array (
   'type' => 'string',
 ), 'method_name');
+        if ($this->stateInit->present) \Near\JsonRpc\Models\TypeGuard::assert($this->stateInit->value, array (
+  'anyOf' => 
+  array (
+    0 => 
+    array (
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\StateInitView',
+      'nullable' => false,
+    ),
+    1 => 
+    array (
+      'enum' => 
+      array (
+        0 => NULL,
+      ),
+      'nullable' => true,
+      'type' => 'null',
+    ),
+  ),
+), 'state_init');
     }
 
     public static function fromValue(mixed $value): self
@@ -63,6 +88,7 @@ final readonly class RpcCallFunctionRequestSyncCheckpoint implements \Near\JsonR
   'account_id' => true,
   'args_base64' => true,
   'method_name' => true,
+  'state_init' => true,
 ));
         if ($unknown !== []) throw new \InvalidArgumentException('Unknown field ' . (string) array_key_first($unknown) . ' in RpcCallFunctionRequestSyncCheckpoint.');
         return new self(
@@ -80,7 +106,26 @@ final readonly class RpcCallFunctionRequestSyncCheckpoint implements \Near\JsonR
 ), 'args_base64'),
             methodName: \Near\JsonRpc\Models\ModelHydrator::hydrate($data['method_name'], array (
   'type' => 'string',
-), 'method_name')
+), 'method_name'),
+            stateInit: array_key_exists('state_init', $data) ? \Near\JsonRpc\Models\OptionalValue::of(\Near\JsonRpc\Models\ModelHydrator::hydrate($data['state_init'], array (
+  'anyOf' => 
+  array (
+    0 => 
+    array (
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\StateInitView',
+      'nullable' => false,
+    ),
+    1 => 
+    array (
+      'enum' => 
+      array (
+        0 => NULL,
+      ),
+      'nullable' => true,
+      'type' => 'null',
+    ),
+  ),
+), 'state_init')) : new \Near\JsonRpc\Models\OptionalValue()
         );
     }
 
@@ -96,6 +141,7 @@ final readonly class RpcCallFunctionRequestSyncCheckpoint implements \Near\JsonR
         $data['account_id'] = $this->accountId;
         $data['args_base64'] = $this->argsBase64;
         $data['method_name'] = $this->methodName;
+        if ($this->stateInit->present) $data['state_init'] = $this->stateInit->value;
         return (object) $data;
     }
 
@@ -124,6 +170,26 @@ final readonly class RpcCallFunctionRequestSyncCheckpoint implements \Near\JsonR
     'method_name' => 
     array (
       'type' => 'string',
+    ),
+    'state_init' => 
+    array (
+      'anyOf' => 
+      array (
+        0 => 
+        array (
+          'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\StateInitView',
+          'nullable' => false,
+        ),
+        1 => 
+        array (
+          'enum' => 
+          array (
+            0 => NULL,
+          ),
+          'nullable' => true,
+          'type' => 'null',
+        ),
+      ),
     ),
   ),
   'required' => 
@@ -168,6 +234,26 @@ final readonly class RpcCallFunctionRequestSyncCheckpoint implements \Near\JsonR
     'method_name' => 
     array (
       'type' => 'string',
+    ),
+    'state_init' => 
+    array (
+      'anyOf' => 
+      array (
+        0 => 
+        array (
+          'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\StateInitView',
+          'nullable' => false,
+        ),
+        1 => 
+        array (
+          'enum' => 
+          array (
+            0 => NULL,
+          ),
+          'nullable' => true,
+          'type' => 'null',
+        ),
+      ),
     ),
   ),
   'required' => 

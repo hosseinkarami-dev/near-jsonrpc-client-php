@@ -33,9 +33,11 @@ final readonly class ReceiptEnumViewActionPayload implements \Near\JsonRpc\Model
          */
         public \Near\JsonRpc\Generated\Models\AccountId $signerId,
         /**
-         * @var \Near\JsonRpc\Generated\Models\PublicKey
+         * What authorized the chain, absent in views written before external calls
+         *
+         * @var \Near\JsonRpc\Models\OptionalValue<\Near\JsonRpc\Generated\Models\AuthorizationContext|null>
          */
-        public \Near\JsonRpc\Generated\Models\PublicKey $signerPublicKey,
+        public \Near\JsonRpc\Models\OptionalValue $authorizationContext = new \Near\JsonRpc\Models\OptionalValue(),
         /**
          * @var bool|null
          */
@@ -44,6 +46,12 @@ final readonly class ReceiptEnumViewActionPayload implements \Near\JsonRpc\Model
          * @var \Near\JsonRpc\Models\OptionalValue<\Near\JsonRpc\Generated\Models\AccountId|null>
          */
         public \Near\JsonRpc\Models\OptionalValue $refundTo = new \Near\JsonRpc\Models\OptionalValue(),
+        /**
+         * The key of the transaction that started the chain, absent in an external call's chain
+         *
+         * @var \Near\JsonRpc\Models\OptionalValue<\Near\JsonRpc\Generated\Models\PublicKey|null>
+         */
+        public \Near\JsonRpc\Models\OptionalValue $signerPublicKey = new \Near\JsonRpc\Models\OptionalValue(),
         /** @var array<string, mixed> */
         array $_extra = [],
     ) {
@@ -80,10 +88,25 @@ final readonly class ReceiptEnumViewActionPayload implements \Near\JsonRpc\Model
   'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\AccountId',
   'nullable' => false,
 ), 'signer_id');
-        \Near\JsonRpc\Models\TypeGuard::assert($this->signerPublicKey, array (
-  'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\PublicKey',
-  'nullable' => false,
-), 'signer_public_key');
+        if ($this->authorizationContext->present) \Near\JsonRpc\Models\TypeGuard::assert($this->authorizationContext->value, array (
+  'anyOf' => 
+  array (
+    0 => 
+    array (
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\AuthorizationContext',
+      'nullable' => false,
+    ),
+    1 => 
+    array (
+      'enum' => 
+      array (
+        0 => NULL,
+      ),
+      'nullable' => true,
+      'type' => 'null',
+    ),
+  ),
+), 'authorization_context');
         if ($this->isPromiseYield !== null) \Near\JsonRpc\Models\TypeGuard::assert($this->isPromiseYield, array (
   'default' => false,
   'type' => 'boolean',
@@ -107,6 +130,25 @@ final readonly class ReceiptEnumViewActionPayload implements \Near\JsonRpc\Model
     ),
   ),
 ), 'refund_to');
+        if ($this->signerPublicKey->present) \Near\JsonRpc\Models\TypeGuard::assert($this->signerPublicKey->value, array (
+  'anyOf' => 
+  array (
+    0 => 
+    array (
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\PublicKey',
+      'nullable' => false,
+    ),
+    1 => 
+    array (
+      'enum' => 
+      array (
+        0 => NULL,
+      ),
+      'nullable' => true,
+      'type' => 'null',
+    ),
+  ),
+), 'signer_public_key');
     }
 
     public static function fromValue(mixed $value): self
@@ -121,13 +163,13 @@ final readonly class ReceiptEnumViewActionPayload implements \Near\JsonRpc\Model
     public static function fromArray(array $data): self
     {
         if (!array_key_exists('signer_id', $data)) throw new \InvalidArgumentException('Missing required field: signer_id');
-        if (!array_key_exists('signer_public_key', $data)) throw new \InvalidArgumentException('Missing required field: signer_public_key');
         if (!array_key_exists('gas_price', $data)) throw new \InvalidArgumentException('Missing required field: gas_price');
         if (!array_key_exists('output_data_receivers', $data)) throw new \InvalidArgumentException('Missing required field: output_data_receivers');
         if (!array_key_exists('input_data_ids', $data)) throw new \InvalidArgumentException('Missing required field: input_data_ids');
         if (!array_key_exists('actions', $data)) throw new \InvalidArgumentException('Missing required field: actions');
         $extra = array_diff_key($data, array (
   'actions' => true,
+  'authorization_context' => true,
   'gas_price' => true,
   'input_data_ids' => true,
   'is_promise_yield' => true,
@@ -169,10 +211,25 @@ final readonly class ReceiptEnumViewActionPayload implements \Near\JsonRpc\Model
   'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\AccountId',
   'nullable' => false,
 ), 'signer_id'),
-            signerPublicKey: \Near\JsonRpc\Models\ModelHydrator::hydrate($data['signer_public_key'], array (
-  'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\PublicKey',
-  'nullable' => false,
-), 'signer_public_key'),
+            authorizationContext: array_key_exists('authorization_context', $data) ? \Near\JsonRpc\Models\OptionalValue::of(\Near\JsonRpc\Models\ModelHydrator::hydrate($data['authorization_context'], array (
+  'anyOf' => 
+  array (
+    0 => 
+    array (
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\AuthorizationContext',
+      'nullable' => false,
+    ),
+    1 => 
+    array (
+      'enum' => 
+      array (
+        0 => NULL,
+      ),
+      'nullable' => true,
+      'type' => 'null',
+    ),
+  ),
+), 'authorization_context')) : new \Near\JsonRpc\Models\OptionalValue(),
             isPromiseYield: array_key_exists('is_promise_yield', $data) ? \Near\JsonRpc\Models\ModelHydrator::hydrate($data['is_promise_yield'], array (
   'default' => false,
   'type' => 'boolean',
@@ -196,6 +253,25 @@ final readonly class ReceiptEnumViewActionPayload implements \Near\JsonRpc\Model
     ),
   ),
 ), 'refund_to')) : new \Near\JsonRpc\Models\OptionalValue(),
+            signerPublicKey: array_key_exists('signer_public_key', $data) ? \Near\JsonRpc\Models\OptionalValue::of(\Near\JsonRpc\Models\ModelHydrator::hydrate($data['signer_public_key'], array (
+  'anyOf' => 
+  array (
+    0 => 
+    array (
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\PublicKey',
+      'nullable' => false,
+    ),
+    1 => 
+    array (
+      'enum' => 
+      array (
+        0 => NULL,
+      ),
+      'nullable' => true,
+      'type' => 'null',
+    ),
+  ),
+), 'signer_public_key')) : new \Near\JsonRpc\Models\OptionalValue(),
             _extra: $extra
         );
     }
@@ -213,9 +289,10 @@ final readonly class ReceiptEnumViewActionPayload implements \Near\JsonRpc\Model
         $data['input_data_ids'] = $this->inputDataIds;
         $data['output_data_receivers'] = $this->outputDataReceivers;
         $data['signer_id'] = $this->signerId;
-        $data['signer_public_key'] = $this->signerPublicKey;
+        if ($this->authorizationContext->present) $data['authorization_context'] = $this->authorizationContext->value;
         if ($this->isPromiseYield !== null) $data['is_promise_yield'] = $this->isPromiseYield;
         if ($this->refundTo->present) $data['refund_to'] = $this->refundTo->value;
+        if ($this->signerPublicKey->present) $data['signer_public_key'] = $this->signerPublicKey->value;
         return (object) $data;
     }
 
@@ -233,6 +310,26 @@ final readonly class ReceiptEnumViewActionPayload implements \Near\JsonRpc\Model
         'nullable' => false,
       ),
       'type' => 'array',
+    ),
+    'authorization_context' => 
+    array (
+      'anyOf' => 
+      array (
+        0 => 
+        array (
+          'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\AuthorizationContext',
+          'nullable' => false,
+        ),
+        1 => 
+        array (
+          'enum' => 
+          array (
+            0 => NULL,
+          ),
+          'nullable' => true,
+          'type' => 'null',
+        ),
+      ),
     ),
     'gas_price' => 
     array (
@@ -289,18 +386,32 @@ final readonly class ReceiptEnumViewActionPayload implements \Near\JsonRpc\Model
     ),
     'signer_public_key' => 
     array (
-      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\PublicKey',
-      'nullable' => false,
+      'anyOf' => 
+      array (
+        0 => 
+        array (
+          'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\PublicKey',
+          'nullable' => false,
+        ),
+        1 => 
+        array (
+          'enum' => 
+          array (
+            0 => NULL,
+          ),
+          'nullable' => true,
+          'type' => 'null',
+        ),
+      ),
     ),
   ),
   'required' => 
   array (
     0 => 'signer_id',
-    1 => 'signer_public_key',
-    2 => 'gas_price',
-    3 => 'output_data_receivers',
-    4 => 'input_data_ids',
-    5 => 'actions',
+    1 => 'gas_price',
+    2 => 'output_data_receivers',
+    3 => 'input_data_ids',
+    4 => 'actions',
   ),
   'type' => 'object',
 ), 'ReceiptEnumViewActionPayload'));
@@ -321,6 +432,26 @@ final readonly class ReceiptEnumViewActionPayload implements \Near\JsonRpc\Model
       ),
       'type' => 'array',
     ),
+    'authorization_context' => 
+    array (
+      'anyOf' => 
+      array (
+        0 => 
+        array (
+          'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\AuthorizationContext',
+          'nullable' => false,
+        ),
+        1 => 
+        array (
+          'enum' => 
+          array (
+            0 => NULL,
+          ),
+          'nullable' => true,
+          'type' => 'null',
+        ),
+      ),
+    ),
     'gas_price' => 
     array (
       'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\NearToken',
@@ -376,18 +507,32 @@ final readonly class ReceiptEnumViewActionPayload implements \Near\JsonRpc\Model
     ),
     'signer_public_key' => 
     array (
-      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\PublicKey',
-      'nullable' => false,
+      'anyOf' => 
+      array (
+        0 => 
+        array (
+          'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\PublicKey',
+          'nullable' => false,
+        ),
+        1 => 
+        array (
+          'enum' => 
+          array (
+            0 => NULL,
+          ),
+          'nullable' => true,
+          'type' => 'null',
+        ),
+      ),
     ),
   ),
   'required' => 
   array (
     0 => 'signer_id',
-    1 => 'signer_public_key',
-    2 => 'gas_price',
-    3 => 'output_data_receivers',
-    4 => 'input_data_ids',
-    5 => 'actions',
+    1 => 'gas_price',
+    2 => 'output_data_receivers',
+    3 => 'input_data_ids',
+    4 => 'actions',
   ),
   'type' => 'object',
 ), 'ReceiptEnumViewActionPayload');
