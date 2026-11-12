@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace Near\JsonRpc\Generated\Models;
 
 /**
- * `method_name` is not allowed in external contract calls
+ * `method_name` is not allowed in external contract calls, or in the receipts they lead to
  */
 final readonly class HostErrorProhibitedInExternalCall implements \Near\JsonRpc\Models\ModelJsonSerializable
 {

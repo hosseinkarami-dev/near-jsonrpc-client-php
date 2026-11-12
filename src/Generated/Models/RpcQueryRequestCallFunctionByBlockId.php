@@ -32,6 +32,12 @@ final readonly class RpcQueryRequestCallFunctionByBlockId implements \Near\JsonR
          * @var 'call_function'
          */
         public string $requestType,
+        /**
+         * Runs the call as if this were installed, unless the account already has its state.
+         *
+         * @var \Near\JsonRpc\Models\OptionalValue<\Near\JsonRpc\Generated\Models\StateInitView|null>
+         */
+        public \Near\JsonRpc\Models\OptionalValue $stateInit = new \Near\JsonRpc\Models\OptionalValue(),
         /** @var array<string, mixed> */
         array $_extra = [],
     ) {
@@ -58,6 +64,25 @@ final readonly class RpcQueryRequestCallFunctionByBlockId implements \Near\JsonR
   ),
   'type' => 'string',
 ), 'request_type');
+        if ($this->stateInit->present) \Near\JsonRpc\Models\TypeGuard::assert($this->stateInit->value, array (
+  'anyOf' => 
+  array (
+    0 => 
+    array (
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\StateInitView',
+      'nullable' => false,
+    ),
+    1 => 
+    array (
+      'enum' => 
+      array (
+        0 => NULL,
+      ),
+      'nullable' => true,
+      'type' => 'null',
+    ),
+  ),
+), 'state_init');
     }
 
     public static function fromValue(mixed $value): self
@@ -82,6 +107,7 @@ final readonly class RpcQueryRequestCallFunctionByBlockId implements \Near\JsonR
   'args_base64' => true,
   'method_name' => true,
   'request_type' => true,
+  'state_init' => true,
 ));
         return new self(
             blockId: \Near\JsonRpc\Models\ModelHydrator::hydrate($data['block_id'], array (
@@ -106,6 +132,25 @@ final readonly class RpcQueryRequestCallFunctionByBlockId implements \Near\JsonR
   ),
   'type' => 'string',
 ), 'request_type'),
+            stateInit: array_key_exists('state_init', $data) ? \Near\JsonRpc\Models\OptionalValue::of(\Near\JsonRpc\Models\ModelHydrator::hydrate($data['state_init'], array (
+  'anyOf' => 
+  array (
+    0 => 
+    array (
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\StateInitView',
+      'nullable' => false,
+    ),
+    1 => 
+    array (
+      'enum' => 
+      array (
+        0 => NULL,
+      ),
+      'nullable' => true,
+      'type' => 'null',
+    ),
+  ),
+), 'state_init')) : new \Near\JsonRpc\Models\OptionalValue(),
             _extra: $extra
         );
     }
@@ -123,6 +168,7 @@ final readonly class RpcQueryRequestCallFunctionByBlockId implements \Near\JsonR
         $data['args_base64'] = $this->argsBase64;
         $data['method_name'] = $this->methodName;
         $data['request_type'] = $this->requestType;
+        if ($this->stateInit->present) $data['state_init'] = $this->stateInit->value;
         return (object) $data;
     }
 
@@ -159,6 +205,26 @@ final readonly class RpcQueryRequestCallFunctionByBlockId implements \Near\JsonR
         0 => 'call_function',
       ),
       'type' => 'string',
+    ),
+    'state_init' => 
+    array (
+      'anyOf' => 
+      array (
+        0 => 
+        array (
+          'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\StateInitView',
+          'nullable' => false,
+        ),
+        1 => 
+        array (
+          'enum' => 
+          array (
+            0 => NULL,
+          ),
+          'nullable' => true,
+          'type' => 'null',
+        ),
+      ),
     ),
   ),
   'required' => 
@@ -211,6 +277,26 @@ final readonly class RpcQueryRequestCallFunctionByBlockId implements \Near\JsonR
         0 => 'call_function',
       ),
       'type' => 'string',
+    ),
+    'state_init' => 
+    array (
+      'anyOf' => 
+      array (
+        0 => 
+        array (
+          'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\StateInitView',
+          'nullable' => false,
+        ),
+        1 => 
+        array (
+          'enum' => 
+          array (
+            0 => NULL,
+          ),
+          'nullable' => true,
+          'type' => 'null',
+        ),
+      ),
     ),
   ),
   'required' => 

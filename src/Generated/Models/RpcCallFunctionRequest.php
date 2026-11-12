@@ -72,6 +72,24 @@ final readonly class RpcCallFunctionRequest implements \Near\JsonRpc\Models\Mode
     array (
       'type' => 'string',
     ),
+    'state_init' => 
+    array (
+      'anyOf' => 
+      array (
+        0 => 
+        array (
+          '$ref' => '#/components/schemas/StateInitView',
+        ),
+        1 => 
+        array (
+          'enum' => 
+          array (
+            0 => NULL,
+          ),
+          'nullable' => true,
+        ),
+      ),
+    ),
   ),
   'required' => 
   array (
@@ -116,6 +134,24 @@ final readonly class RpcCallFunctionRequest implements \Near\JsonRpc\Models\Mode
     'method_name' => 
     array (
       'type' => 'string',
+    ),
+    'state_init' => 
+    array (
+      'anyOf' => 
+      array (
+        0 => 
+        array (
+          '$ref' => '#/components/schemas/StateInitView',
+        ),
+        1 => 
+        array (
+          'enum' => 
+          array (
+            0 => NULL,
+          ),
+          'nullable' => true,
+        ),
+      ),
     ),
   ),
   'required' => 
