@@ -25,7 +25,7 @@ final readonly class RpcChunkResponse implements \Near\JsonRpc\Models\ModelJsonS
          */
         public array $receipts,
         /**
-         * @var list<\Near\JsonRpc\Generated\Models\TransactionEnvelopeView>
+         * @var list<\Near\JsonRpc\Generated\Models\ChunkTransactionView>
          */
         public array $transactions,
         /** @var array<string, mixed> */
@@ -51,7 +51,7 @@ final readonly class RpcChunkResponse implements \Near\JsonRpc\Models\ModelJsonS
         \Near\JsonRpc\Models\TypeGuard::assert($this->transactions, array (
   'items' => 
   array (
-    'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\TransactionEnvelopeView',
+    'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\ChunkTransactionView',
     'nullable' => false,
   ),
   'type' => 'array',
@@ -99,7 +99,7 @@ final readonly class RpcChunkResponse implements \Near\JsonRpc\Models\ModelJsonS
             transactions: \Near\JsonRpc\Models\ModelHydrator::hydrate($data['transactions'], array (
   'items' => 
   array (
-    'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\TransactionEnvelopeView',
+    'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\ChunkTransactionView',
     'nullable' => false,
   ),
   'type' => 'array',
@@ -152,7 +152,7 @@ final readonly class RpcChunkResponse implements \Near\JsonRpc\Models\ModelJsonS
     array (
       'items' => 
       array (
-        'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\TransactionEnvelopeView',
+        'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\ChunkTransactionView',
         'nullable' => false,
       ),
       'type' => 'array',
@@ -198,7 +198,7 @@ final readonly class RpcChunkResponse implements \Near\JsonRpc\Models\ModelJsonS
     array (
       'items' => 
       array (
-        'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\TransactionEnvelopeView',
+        'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\ChunkTransactionView',
         'nullable' => false,
       ),
       'type' => 'array',

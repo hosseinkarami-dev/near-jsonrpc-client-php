@@ -17,13 +17,21 @@ final readonly class EccTransactionView implements \Near\JsonRpc\Models\ModelJso
          */
         public \Near\JsonRpc\Generated\Models\AccountId $contractId,
         /**
-         * @var \Near\JsonRpc\Generated\Models\CryptoHash
-         */
-        public \Near\JsonRpc\Generated\Models\CryptoHash $hash,
-        /**
          * @var string
          */
         public string $payload,
+        /**
+         * The unique id of this copy of the call, its outcome id.
+         *
+         * @var \Near\JsonRpc\Generated\Models\CryptoHash
+         */
+        public \Near\JsonRpc\Generated\Models\CryptoHash $transactionId,
+        /**
+         * The universal account state init this copy of the call carries.
+         *
+         * @var \Near\JsonRpc\Models\OptionalValue<string|null>
+         */
+        public \Near\JsonRpc\Models\OptionalValue $stateInit = new \Near\JsonRpc\Models\OptionalValue(),
         /** @var array<string, mixed> */
         array $_extra = [],
     ) {
@@ -32,13 +40,17 @@ final readonly class EccTransactionView implements \Near\JsonRpc\Models\ModelJso
   'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\AccountId',
   'nullable' => false,
 ), 'contract_id');
-        \Near\JsonRpc\Models\TypeGuard::assert($this->hash, array (
-  'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\CryptoHash',
-  'nullable' => false,
-), 'hash');
         \Near\JsonRpc\Models\TypeGuard::assert($this->payload, array (
   'type' => 'string',
 ), 'payload');
+        \Near\JsonRpc\Models\TypeGuard::assert($this->transactionId, array (
+  'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\CryptoHash',
+  'nullable' => false,
+), 'transaction_id');
+        if ($this->stateInit->present) \Near\JsonRpc\Models\TypeGuard::assert($this->stateInit->value, array (
+  'nullable' => true,
+  'type' => 'string',
+), 'state_init');
     }
 
     public static function fromValue(mixed $value): self
@@ -54,24 +66,29 @@ final readonly class EccTransactionView implements \Near\JsonRpc\Models\ModelJso
     {
         if (!array_key_exists('contract_id', $data)) throw new \InvalidArgumentException('Missing required field: contract_id');
         if (!array_key_exists('payload', $data)) throw new \InvalidArgumentException('Missing required field: payload');
-        if (!array_key_exists('hash', $data)) throw new \InvalidArgumentException('Missing required field: hash');
+        if (!array_key_exists('transaction_id', $data)) throw new \InvalidArgumentException('Missing required field: transaction_id');
         $extra = array_diff_key($data, array (
   'contract_id' => true,
-  'hash' => true,
   'payload' => true,
+  'state_init' => true,
+  'transaction_id' => true,
 ));
         return new self(
             contractId: \Near\JsonRpc\Models\ModelHydrator::hydrate($data['contract_id'], array (
   'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\AccountId',
   'nullable' => false,
 ), 'contract_id'),
-            hash: \Near\JsonRpc\Models\ModelHydrator::hydrate($data['hash'], array (
-  'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\CryptoHash',
-  'nullable' => false,
-), 'hash'),
             payload: \Near\JsonRpc\Models\ModelHydrator::hydrate($data['payload'], array (
   'type' => 'string',
 ), 'payload'),
+            transactionId: \Near\JsonRpc\Models\ModelHydrator::hydrate($data['transaction_id'], array (
+  'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\CryptoHash',
+  'nullable' => false,
+), 'transaction_id'),
+            stateInit: array_key_exists('state_init', $data) ? \Near\JsonRpc\Models\OptionalValue::of(\Near\JsonRpc\Models\ModelHydrator::hydrate($data['state_init'], array (
+  'nullable' => true,
+  'type' => 'string',
+), 'state_init')) : new \Near\JsonRpc\Models\OptionalValue(),
             _extra: $extra
         );
     }
@@ -85,8 +102,9 @@ final readonly class EccTransactionView implements \Near\JsonRpc\Models\ModelJso
     {
         $data = $this->extra;
         $data['contract_id'] = $this->contractId;
-        $data['hash'] = $this->hash;
         $data['payload'] = $this->payload;
+        $data['transaction_id'] = $this->transactionId;
+        if ($this->stateInit->present) $data['state_init'] = $this->stateInit->value;
         return (object) $data;
     }
 
@@ -101,21 +119,26 @@ final readonly class EccTransactionView implements \Near\JsonRpc\Models\ModelJso
       'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\AccountId',
       'nullable' => false,
     ),
-    'hash' => 
-    array (
-      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\CryptoHash',
-      'nullable' => false,
-    ),
     'payload' => 
     array (
       'type' => 'string',
+    ),
+    'state_init' => 
+    array (
+      'nullable' => true,
+      'type' => 'string',
+    ),
+    'transaction_id' => 
+    array (
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\CryptoHash',
+      'nullable' => false,
     ),
   ),
   'required' => 
   array (
     0 => 'contract_id',
     1 => 'payload',
-    2 => 'hash',
+    2 => 'transaction_id',
   ),
   'type' => 'object',
 ), 'EccTransactionView'));
@@ -132,21 +155,26 @@ final readonly class EccTransactionView implements \Near\JsonRpc\Models\ModelJso
       'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\AccountId',
       'nullable' => false,
     ),
-    'hash' => 
-    array (
-      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\CryptoHash',
-      'nullable' => false,
-    ),
     'payload' => 
     array (
       'type' => 'string',
+    ),
+    'state_init' => 
+    array (
+      'nullable' => true,
+      'type' => 'string',
+    ),
+    'transaction_id' => 
+    array (
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\CryptoHash',
+      'nullable' => false,
     ),
   ),
   'required' => 
   array (
     0 => 'contract_id',
     1 => 'payload',
-    2 => 'hash',
+    2 => 'transaction_id',
   ),
   'type' => 'object',
 ), 'EccTransactionView');

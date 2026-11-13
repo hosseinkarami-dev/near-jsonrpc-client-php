@@ -91,6 +91,27 @@ final readonly class LimitConfig implements \Near\JsonRpc\Models\ModelJsonSerial
          */
         public \Near\JsonRpc\Generated\Models\NearGas|null $maxGasBurntExternal = null,
         /**
+         * Max number of gas key nonces the `AddKey` actions in one receipt may add,
+         * in total, including the actions inside a delegate action.
+         *
+         * Each nonce adds to the receipt's execution fees and so to its congestion
+         * gas, but the send fee does not depend on the number of nonces.
+         *
+         * @var int|string|null
+         */
+        public int|string|null $maxGasKeyNoncesAddedPerReceipt = null,
+        /**
+         * Max number of gas key nonces the actions in one receipt may remove, in
+         * total. Checked at execution, because the count comes from state.
+         *
+         * Removals are charged as compute only, and the chunk compute limit is
+         * checked between receipts, so without this bound one receipt can use
+         * many times the chunk compute limit.
+         *
+         * @var int|string|null
+         */
+        public int|string|null $maxGasKeyNoncesRemovedPerReceipt = null,
+        /**
          * If present, stores max number of globals (entries in the wasm global
          * section) a contract may declare.
          *
@@ -375,6 +396,16 @@ final readonly class LimitConfig implements \Near\JsonRpc\Models\ModelJsonSerial
   'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\NearGas',
   'nullable' => false,
 ), 'max_gas_burnt_external');
+        if ($this->maxGasKeyNoncesAddedPerReceipt !== null) \Near\JsonRpc\Models\TypeGuard::assert($this->maxGasKeyNoncesAddedPerReceipt, array (
+  'format' => 'uint64',
+  'minimum' => 0,
+  'type' => 'integer',
+), 'max_gas_key_nonces_added_per_receipt');
+        if ($this->maxGasKeyNoncesRemovedPerReceipt !== null) \Near\JsonRpc\Models\TypeGuard::assert($this->maxGasKeyNoncesRemovedPerReceipt, array (
+  'format' => 'uint64',
+  'minimum' => 0,
+  'type' => 'integer',
+), 'max_gas_key_nonces_removed_per_receipt');
         if ($this->maxGlobalsPerContract->present) \Near\JsonRpc\Models\TypeGuard::assert($this->maxGlobalsPerContract->value, array (
   'format' => 'uint64',
   'minimum' => 0,
@@ -569,6 +600,8 @@ final readonly class LimitConfig implements \Near\JsonRpc\Models\ModelJsonSerial
   'max_functions_number_per_contract' => true,
   'max_gas_burnt' => true,
   'max_gas_burnt_external' => true,
+  'max_gas_key_nonces_added_per_receipt' => true,
+  'max_gas_key_nonces_removed_per_receipt' => true,
   'max_globals_per_contract' => true,
   'max_instrumented_code_size' => true,
   'max_length_method_name' => true,
@@ -666,6 +699,16 @@ final readonly class LimitConfig implements \Near\JsonRpc\Models\ModelJsonSerial
   'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\NearGas',
   'nullable' => false,
 ), 'max_gas_burnt_external') : null,
+            maxGasKeyNoncesAddedPerReceipt: array_key_exists('max_gas_key_nonces_added_per_receipt', $data) ? \Near\JsonRpc\Models\ModelHydrator::hydrate($data['max_gas_key_nonces_added_per_receipt'], array (
+  'format' => 'uint64',
+  'minimum' => 0,
+  'type' => 'integer',
+), 'max_gas_key_nonces_added_per_receipt') : null,
+            maxGasKeyNoncesRemovedPerReceipt: array_key_exists('max_gas_key_nonces_removed_per_receipt', $data) ? \Near\JsonRpc\Models\ModelHydrator::hydrate($data['max_gas_key_nonces_removed_per_receipt'], array (
+  'format' => 'uint64',
+  'minimum' => 0,
+  'type' => 'integer',
+), 'max_gas_key_nonces_removed_per_receipt') : null,
             maxGlobalsPerContract: array_key_exists('max_globals_per_contract', $data) ? \Near\JsonRpc\Models\OptionalValue::of(\Near\JsonRpc\Models\ModelHydrator::hydrate($data['max_globals_per_contract'], array (
   'format' => 'uint64',
   'minimum' => 0,
@@ -858,6 +901,8 @@ final readonly class LimitConfig implements \Near\JsonRpc\Models\ModelJsonSerial
         if ($this->maxFunctionsNumberPerContract->present) $data['max_functions_number_per_contract'] = $this->maxFunctionsNumberPerContract->value;
         if ($this->maxGasBurnt !== null) $data['max_gas_burnt'] = $this->maxGasBurnt;
         if ($this->maxGasBurntExternal !== null) $data['max_gas_burnt_external'] = $this->maxGasBurntExternal;
+        if ($this->maxGasKeyNoncesAddedPerReceipt !== null) $data['max_gas_key_nonces_added_per_receipt'] = $this->maxGasKeyNoncesAddedPerReceipt;
+        if ($this->maxGasKeyNoncesRemovedPerReceipt !== null) $data['max_gas_key_nonces_removed_per_receipt'] = $this->maxGasKeyNoncesRemovedPerReceipt;
         if ($this->maxGlobalsPerContract->present) $data['max_globals_per_contract'] = $this->maxGlobalsPerContract->value;
         if ($this->maxInstrumentedCodeSize->present) $data['max_instrumented_code_size'] = $this->maxInstrumentedCodeSize->value;
         if ($this->maxLengthMethodName !== null) $data['max_length_method_name'] = $this->maxLengthMethodName;
@@ -973,6 +1018,18 @@ final readonly class LimitConfig implements \Near\JsonRpc\Models\ModelJsonSerial
     array (
       'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\NearGas',
       'nullable' => false,
+    ),
+    'max_gas_key_nonces_added_per_receipt' => 
+    array (
+      'format' => 'uint64',
+      'minimum' => 0,
+      'type' => 'integer',
+    ),
+    'max_gas_key_nonces_removed_per_receipt' => 
+    array (
+      'format' => 'uint64',
+      'minimum' => 0,
+      'type' => 'integer',
     ),
     'max_globals_per_contract' => 
     array (
@@ -1262,6 +1319,18 @@ final readonly class LimitConfig implements \Near\JsonRpc\Models\ModelJsonSerial
     array (
       'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\NearGas',
       'nullable' => false,
+    ),
+    'max_gas_key_nonces_added_per_receipt' => 
+    array (
+      'format' => 'uint64',
+      'minimum' => 0,
+      'type' => 'integer',
+    ),
+    'max_gas_key_nonces_removed_per_receipt' => 
+    array (
+      'format' => 'uint64',
+      'minimum' => 0,
+      'type' => 'integer',
     ),
     'max_globals_per_contract' => 
     array (
