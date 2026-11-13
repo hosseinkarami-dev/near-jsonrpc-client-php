@@ -4,8 +4,8 @@ declare(strict_types=1);
 namespace Near\JsonRpc\Generated\Models;
 
 /**
- * On the wire, a signed transaction goes in `signed_tx_base64` and an ECC in `ecc_base64`, so
- * requests with a signed transaction look as they did before ECCs.
+ * On the wire, a signed transaction goes in `signed_tx_base64` and an ECC in
+ * `external_call_base64`, so requests with a signed transaction look as they did before ECCs.
  */
 final readonly class RpcSendTransactionRequest implements \Near\JsonRpc\Models\ModelJsonSerializable
 {
@@ -18,9 +18,9 @@ final readonly class RpcSendTransactionRequest implements \Near\JsonRpc\Models\M
          *
          * @var \Near\JsonRpc\Models\OptionalValue<\Near\JsonRpc\Generated\Models\EccTransaction|null>
          */
-        public \Near\JsonRpc\Models\OptionalValue $eccBase64 = new \Near\JsonRpc\Models\OptionalValue(),
+        public \Near\JsonRpc\Models\OptionalValue $externalCallBase64 = new \Near\JsonRpc\Models\OptionalValue(),
         /**
-         * A signed transaction. Exactly one of this and `ecc_base64` is expected.
+         * A signed transaction. Exactly one of this and `external_call_base64` is expected.
          *
          * @var \Near\JsonRpc\Models\OptionalValue<\Near\JsonRpc\Generated\Models\SignedTransaction|null>
          */
@@ -33,7 +33,7 @@ final readonly class RpcSendTransactionRequest implements \Near\JsonRpc\Models\M
         array $_extra = [],
     ) {
         $this->extra = $_extra;
-        if ($this->eccBase64->present) \Near\JsonRpc\Models\TypeGuard::assert($this->eccBase64->value, array (
+        if ($this->externalCallBase64->present) \Near\JsonRpc\Models\TypeGuard::assert($this->externalCallBase64->value, array (
   'anyOf' => 
   array (
     0 => 
@@ -51,7 +51,7 @@ final readonly class RpcSendTransactionRequest implements \Near\JsonRpc\Models\M
       'type' => 'null',
     ),
   ),
-), 'ecc_base64');
+), 'external_call_base64');
         if ($this->signedTxBase64->present) \Near\JsonRpc\Models\TypeGuard::assert($this->signedTxBase64->value, array (
   'anyOf' => 
   array (
@@ -89,12 +89,12 @@ final readonly class RpcSendTransactionRequest implements \Near\JsonRpc\Models\M
     public static function fromArray(array $data): self
     {
         $extra = array_diff_key($data, array (
-  'ecc_base64' => true,
+  'external_call_base64' => true,
   'signed_tx_base64' => true,
   'wait_until' => true,
 ));
         return new self(
-            eccBase64: array_key_exists('ecc_base64', $data) ? \Near\JsonRpc\Models\OptionalValue::of(\Near\JsonRpc\Models\ModelHydrator::hydrate($data['ecc_base64'], array (
+            externalCallBase64: array_key_exists('external_call_base64', $data) ? \Near\JsonRpc\Models\OptionalValue::of(\Near\JsonRpc\Models\ModelHydrator::hydrate($data['external_call_base64'], array (
   'anyOf' => 
   array (
     0 => 
@@ -112,7 +112,7 @@ final readonly class RpcSendTransactionRequest implements \Near\JsonRpc\Models\M
       'type' => 'null',
     ),
   ),
-), 'ecc_base64')) : new \Near\JsonRpc\Models\OptionalValue(),
+), 'external_call_base64')) : new \Near\JsonRpc\Models\OptionalValue(),
             signedTxBase64: array_key_exists('signed_tx_base64', $data) ? \Near\JsonRpc\Models\OptionalValue::of(\Near\JsonRpc\Models\ModelHydrator::hydrate($data['signed_tx_base64'], array (
   'anyOf' => 
   array (
@@ -148,7 +148,7 @@ final readonly class RpcSendTransactionRequest implements \Near\JsonRpc\Models\M
     private function jsonSerializeValue(): \stdClass
     {
         $data = $this->extra;
-        if ($this->eccBase64->present) $data['ecc_base64'] = $this->eccBase64->value;
+        if ($this->externalCallBase64->present) $data['external_call_base64'] = $this->externalCallBase64->value;
         if ($this->signedTxBase64->present) $data['signed_tx_base64'] = $this->signedTxBase64->value;
         if ($this->waitUntil !== null) $data['wait_until'] = $this->waitUntil;
         return (object) $data;
@@ -160,7 +160,7 @@ final readonly class RpcSendTransactionRequest implements \Near\JsonRpc\Models\M
         \Near\JsonRpc\Models\JsonEncoder::assertNativeEncodingSafe(\Near\JsonRpc\Models\ModelHydrator::normalizeForJson($data, array (
   'properties' => 
   array (
-    'ecc_base64' => 
+    'external_call_base64' => 
     array (
       'anyOf' => 
       array (
@@ -220,7 +220,7 @@ final readonly class RpcSendTransactionRequest implements \Near\JsonRpc\Models\M
         return \Near\JsonRpc\Models\ModelHydrator::normalizeForJson($this->jsonSerializeValue(), array (
   'properties' => 
   array (
-    'ecc_base64' => 
+    'external_call_base64' => 
     array (
       'anyOf' => 
       array (

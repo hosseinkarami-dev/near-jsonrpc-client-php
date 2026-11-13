@@ -6,13 +6,16 @@ namespace Near\JsonRpc\Generated\Models;
 /**
  * Generated typed OpenAPI object model.
  */
-final readonly class JsonRpcResponseForCryptoHashAndRpcTransactionErrorResult implements \Near\JsonRpc\Models\ModelJsonSerializable
+final readonly class JsonRpcResponseForNullableCryptoHashAndRpcTransactionErrorResult implements \Near\JsonRpc\Models\ModelJsonSerializable
 {
+    /** @var array<string, mixed> */
+    private array $extra;
+
     public function __construct(
         /**
-         * @var \Near\JsonRpc\Generated\Models\CryptoHash
+         * @var \Near\JsonRpc\Generated\Models\CryptoHash|null
          */
-        public \Near\JsonRpc\Generated\Models\CryptoHash $result,
+        public \Near\JsonRpc\Generated\Models\CryptoHash|null $result,
         /**
          * @var string
          */
@@ -20,11 +23,29 @@ final readonly class JsonRpcResponseForCryptoHashAndRpcTransactionErrorResult im
         /**
          * @var string
          */
-        public string $jsonrpc
+        public string $jsonrpc,
+        /** @var array<string, mixed> */
+        array $_extra = [],
     ) {
+        $this->extra = $_extra;
         \Near\JsonRpc\Models\TypeGuard::assert($this->result, array (
-  'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\CryptoHash',
-  'nullable' => false,
+  'anyOf' => 
+  array (
+    0 => 
+    array (
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\CryptoHash',
+      'nullable' => false,
+    ),
+    1 => 
+    array (
+      'enum' => 
+      array (
+        0 => NULL,
+      ),
+      'nullable' => true,
+      'type' => 'null',
+    ),
+  ),
 ), 'result');
         \Near\JsonRpc\Models\TypeGuard::assert($this->id, array (
   'type' => 'string',
@@ -38,7 +59,7 @@ final readonly class JsonRpcResponseForCryptoHashAndRpcTransactionErrorResult im
     {
         if ($value instanceof self) return $value;
         if ($value instanceof \stdClass) return self::fromArray(get_object_vars($value));
-        if (!is_array($value) || array_is_list($value)) throw new \InvalidArgumentException('Expected an object value for JsonRpcResponseForCryptoHashAndRpcTransactionErrorResult.');
+        if (!is_array($value) || array_is_list($value)) throw new \InvalidArgumentException('Expected an object value for JsonRpcResponseForNullableCryptoHashAndRpcTransactionErrorResult.');
         return self::fromArray($value);
     }
 
@@ -48,23 +69,38 @@ final readonly class JsonRpcResponseForCryptoHashAndRpcTransactionErrorResult im
         if (!array_key_exists('result', $data)) throw new \InvalidArgumentException('Missing required field: result');
         if (!array_key_exists('jsonrpc', $data)) throw new \InvalidArgumentException('Missing required field: jsonrpc');
         if (!array_key_exists('id', $data)) throw new \InvalidArgumentException('Missing required field: id');
-        $unknown = array_diff_key($data, array (
+        $extra = array_diff_key($data, array (
   'result' => true,
   'id' => true,
   'jsonrpc' => true,
 ));
-        if ($unknown !== []) throw new \InvalidArgumentException('Unknown field ' . (string) array_key_first($unknown) . ' in JsonRpcResponseForCryptoHashAndRpcTransactionErrorResult.');
         return new self(
             result: \Near\JsonRpc\Models\ModelHydrator::hydrate($data['result'], array (
-  'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\CryptoHash',
-  'nullable' => false,
+  'anyOf' => 
+  array (
+    0 => 
+    array (
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\CryptoHash',
+      'nullable' => false,
+    ),
+    1 => 
+    array (
+      'enum' => 
+      array (
+        0 => NULL,
+      ),
+      'nullable' => true,
+      'type' => 'null',
+    ),
+  ),
 ), 'result'),
             id: \Near\JsonRpc\Models\ModelHydrator::hydrate($data['id'], array (
   'type' => 'string',
 ), 'id'),
             jsonrpc: \Near\JsonRpc\Models\ModelHydrator::hydrate($data['jsonrpc'], array (
   'type' => 'string',
-), 'jsonrpc')
+), 'jsonrpc'),
+            _extra: $extra
         );
     }
 
@@ -75,7 +111,7 @@ final readonly class JsonRpcResponseForCryptoHashAndRpcTransactionErrorResult im
 
     private function jsonSerializeValue(): \stdClass
     {
-        $data = [];
+        $data = $this->extra;
         $data['result'] = $this->result;
         $data['id'] = $this->id;
         $data['jsonrpc'] = $this->jsonrpc;
@@ -91,8 +127,23 @@ final readonly class JsonRpcResponseForCryptoHashAndRpcTransactionErrorResult im
   array (
     'result' => 
     array (
-      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\CryptoHash',
-      'nullable' => false,
+      'anyOf' => 
+      array (
+        0 => 
+        array (
+          'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\CryptoHash',
+          'nullable' => false,
+        ),
+        1 => 
+        array (
+          'enum' => 
+          array (
+            0 => NULL,
+          ),
+          'nullable' => true,
+          'type' => 'null',
+        ),
+      ),
     ),
     'id' => 
     array (
@@ -109,14 +160,12 @@ final readonly class JsonRpcResponseForCryptoHashAndRpcTransactionErrorResult im
     1 => 'jsonrpc',
     2 => 'id',
   ),
-  'additionalProperties' => false,
+  'additionalProperties' => true,
   'x-php-union' => 
   array (
-    'label' => 'result',
-    'tag' => 'result',
-    'payload' => 'CryptoHash',
+    'label' => 'Result',
   ),
-), 'JsonRpcResponseForCryptoHashAndRpcTransactionErrorResult'));
+), 'JsonRpcResponseForNullableCryptoHashAndRpcTransactionErrorResult'));
         return $data;
     }
 
@@ -128,8 +177,23 @@ final readonly class JsonRpcResponseForCryptoHashAndRpcTransactionErrorResult im
   array (
     'result' => 
     array (
-      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\CryptoHash',
-      'nullable' => false,
+      'anyOf' => 
+      array (
+        0 => 
+        array (
+          'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\CryptoHash',
+          'nullable' => false,
+        ),
+        1 => 
+        array (
+          'enum' => 
+          array (
+            0 => NULL,
+          ),
+          'nullable' => true,
+          'type' => 'null',
+        ),
+      ),
     ),
     'id' => 
     array (
@@ -146,14 +210,12 @@ final readonly class JsonRpcResponseForCryptoHashAndRpcTransactionErrorResult im
     1 => 'jsonrpc',
     2 => 'id',
   ),
-  'additionalProperties' => false,
+  'additionalProperties' => true,
   'x-php-union' => 
   array (
-    'label' => 'result',
-    'tag' => 'result',
-    'payload' => 'CryptoHash',
+    'label' => 'Result',
   ),
-), 'JsonRpcResponseForCryptoHashAndRpcTransactionErrorResult');
+), 'JsonRpcResponseForNullableCryptoHashAndRpcTransactionErrorResult');
     }
 
     public function toJson(): string { return \Near\JsonRpc\Models\JsonEncoder::encode($this); }

@@ -17,9 +17,9 @@ final readonly class IndexerTransactionWithOutcome implements \Near\JsonRpc\Mode
          */
         public \Near\JsonRpc\Generated\Models\IndexerExecutionOutcomeWithOptionalReceipt $outcome,
         /**
-         * @var \Near\JsonRpc\Generated\Models\SignedTransactionView
+         * @var \Near\JsonRpc\Generated\Models\TransactionEnvelopeView
          */
-        public \Near\JsonRpc\Generated\Models\SignedTransactionView $transaction,
+        public \Near\JsonRpc\Generated\Models\TransactionEnvelopeView $transaction,
         /** @var array<string, mixed> */
         array $_extra = [],
     ) {
@@ -29,7 +29,7 @@ final readonly class IndexerTransactionWithOutcome implements \Near\JsonRpc\Mode
   'nullable' => false,
 ), 'outcome');
         \Near\JsonRpc\Models\TypeGuard::assert($this->transaction, array (
-  'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\SignedTransactionView',
+  'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\TransactionEnvelopeView',
   'nullable' => false,
 ), 'transaction');
     }
@@ -57,7 +57,7 @@ final readonly class IndexerTransactionWithOutcome implements \Near\JsonRpc\Mode
   'nullable' => false,
 ), 'outcome'),
             transaction: \Near\JsonRpc\Models\ModelHydrator::hydrate($data['transaction'], array (
-  'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\SignedTransactionView',
+  'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\TransactionEnvelopeView',
   'nullable' => false,
 ), 'transaction'),
             _extra: $extra
@@ -90,7 +90,7 @@ final readonly class IndexerTransactionWithOutcome implements \Near\JsonRpc\Mode
     ),
     'transaction' => 
     array (
-      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\SignedTransactionView',
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\TransactionEnvelopeView',
       'nullable' => false,
     ),
   ),
@@ -116,7 +116,7 @@ final readonly class IndexerTransactionWithOutcome implements \Near\JsonRpc\Mode
     ),
     'transaction' => 
     array (
-      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\SignedTransactionView',
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\TransactionEnvelopeView',
       'nullable' => false,
     ),
   ),

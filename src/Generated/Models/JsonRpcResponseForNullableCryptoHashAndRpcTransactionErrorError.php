@@ -6,7 +6,7 @@ namespace Near\JsonRpc\Generated\Models;
 /**
  * Generated typed OpenAPI object model.
  */
-final readonly class JsonRpcResponseForCryptoHashAndRpcTransactionErrorError implements \Near\JsonRpc\Models\ModelJsonSerializable
+final readonly class JsonRpcResponseForNullableCryptoHashAndRpcTransactionErrorError implements \Near\JsonRpc\Models\ModelJsonSerializable
 {
     public function __construct(
         /**
@@ -38,7 +38,7 @@ final readonly class JsonRpcResponseForCryptoHashAndRpcTransactionErrorError imp
     {
         if ($value instanceof self) return $value;
         if ($value instanceof \stdClass) return self::fromArray(get_object_vars($value));
-        if (!is_array($value) || array_is_list($value)) throw new \InvalidArgumentException('Expected an object value for JsonRpcResponseForCryptoHashAndRpcTransactionErrorError.');
+        if (!is_array($value) || array_is_list($value)) throw new \InvalidArgumentException('Expected an object value for JsonRpcResponseForNullableCryptoHashAndRpcTransactionErrorError.');
         return self::fromArray($value);
     }
 
@@ -53,7 +53,7 @@ final readonly class JsonRpcResponseForCryptoHashAndRpcTransactionErrorError imp
   'id' => true,
   'jsonrpc' => true,
 ));
-        if ($unknown !== []) throw new \InvalidArgumentException('Unknown field ' . (string) array_key_first($unknown) . ' in JsonRpcResponseForCryptoHashAndRpcTransactionErrorError.');
+        if ($unknown !== []) throw new \InvalidArgumentException('Unknown field ' . (string) array_key_first($unknown) . ' in JsonRpcResponseForNullableCryptoHashAndRpcTransactionErrorError.');
         return new self(
             error: \Near\JsonRpc\Models\ModelHydrator::hydrate($data['error'], array (
   'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\ErrorWrapperForRpcTransactionError',
@@ -116,7 +116,7 @@ final readonly class JsonRpcResponseForCryptoHashAndRpcTransactionErrorError imp
     'tag' => 'error',
     'payload' => 'ErrorWrapper_for_RpcTransactionError',
   ),
-), 'JsonRpcResponseForCryptoHashAndRpcTransactionErrorError'));
+), 'JsonRpcResponseForNullableCryptoHashAndRpcTransactionErrorError'));
         return $data;
     }
 
@@ -153,7 +153,7 @@ final readonly class JsonRpcResponseForCryptoHashAndRpcTransactionErrorError imp
     'tag' => 'error',
     'payload' => 'ErrorWrapper_for_RpcTransactionError',
   ),
-), 'JsonRpcResponseForCryptoHashAndRpcTransactionErrorError');
+), 'JsonRpcResponseForNullableCryptoHashAndRpcTransactionErrorError');
     }
 
     public function toJson(): string { return \Near\JsonRpc\Models\JsonEncoder::encode($this); }

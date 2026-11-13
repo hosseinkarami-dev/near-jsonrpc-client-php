@@ -213,12 +213,27 @@ trait RpcMethods
 ), 'block_effects.result');
     }
     /** Execute the matching OpenAPI JSON-RPC operation and decode its result. */
-    public function broadcastTxAsync(\Near\JsonRpc\Generated\Models\RpcSendTransactionRequest $params): \Near\JsonRpc\Generated\Models\CryptoHash
+    public function broadcastTxAsync(\Near\JsonRpc\Generated\Models\RpcSendTransactionRequest $params): \Near\JsonRpc\Generated\Models\CryptoHash|null
     {
         $result = $this->call('broadcast_tx_async', $params);
         return \Near\JsonRpc\Models\ModelHydrator::hydrate($result, array (
-  'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\CryptoHash',
-  'nullable' => false,
+  'anyOf' => 
+  array (
+    0 => 
+    array (
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\CryptoHash',
+      'nullable' => false,
+    ),
+    1 => 
+    array (
+      'enum' => 
+      array (
+        0 => NULL,
+      ),
+      'nullable' => true,
+      'type' => 'null',
+    ),
+  ),
 ), 'broadcast_tx_async.result');
     }
     /** Execute the matching OpenAPI JSON-RPC operation and decode its result. */

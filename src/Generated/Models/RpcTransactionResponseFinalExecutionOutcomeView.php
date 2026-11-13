@@ -30,13 +30,13 @@ final readonly class RpcTransactionResponseFinalExecutionOutcomeView implements 
          */
         public \Near\JsonRpc\Generated\Models\FinalExecutionStatus $status,
         /**
-         * Signed Transaction
+         * The transaction, signed or an external call.
          *
-         * @var \Near\JsonRpc\Generated\Models\SignedTransactionView
+         * @var \Near\JsonRpc\Generated\Models\TransactionEnvelopeView
          */
-        public \Near\JsonRpc\Generated\Models\SignedTransactionView $transaction,
+        public \Near\JsonRpc\Generated\Models\TransactionEnvelopeView $transaction,
         /**
-         * The execution outcome of the signed transaction.
+         * The execution outcome of the transaction.
          *
          * @var \Near\JsonRpc\Generated\Models\ExecutionOutcomeWithIdView
          */
@@ -62,7 +62,7 @@ final readonly class RpcTransactionResponseFinalExecutionOutcomeView implements 
   'nullable' => false,
 ), 'status');
         \Near\JsonRpc\Models\TypeGuard::assert($this->transaction, array (
-  'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\SignedTransactionView',
+  'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\TransactionEnvelopeView',
   'nullable' => false,
 ), 'transaction');
         \Near\JsonRpc\Models\TypeGuard::assert($this->transactionOutcome, array (
@@ -112,7 +112,7 @@ final readonly class RpcTransactionResponseFinalExecutionOutcomeView implements 
   'nullable' => false,
 ), 'status'),
             transaction: \Near\JsonRpc\Models\ModelHydrator::hydrate($data['transaction'], array (
-  'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\SignedTransactionView',
+  'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\TransactionEnvelopeView',
   'nullable' => false,
 ), 'transaction'),
             transactionOutcome: \Near\JsonRpc\Models\ModelHydrator::hydrate($data['transaction_outcome'], array (
@@ -166,7 +166,7 @@ final readonly class RpcTransactionResponseFinalExecutionOutcomeView implements 
     ),
     'transaction' => 
     array (
-      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\SignedTransactionView',
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\TransactionEnvelopeView',
       'nullable' => false,
     ),
     'transaction_outcome' => 
@@ -219,7 +219,7 @@ final readonly class RpcTransactionResponseFinalExecutionOutcomeView implements 
     ),
     'transaction' => 
     array (
-      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\SignedTransactionView',
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\TransactionEnvelopeView',
       'nullable' => false,
     ),
     'transaction_outcome' => 
