@@ -33,11 +33,17 @@ final readonly class ReceiptEnumViewActionPayload implements \Near\JsonRpc\Model
          */
         public \Near\JsonRpc\Generated\Models\AccountId $signerId,
         /**
-         * What authorized the chain, absent in views written before external calls
+         * What authorized the chain, absent if the receipt doesn't record it
          *
          * @var \Near\JsonRpc\Models\OptionalValue<\Near\JsonRpc\Generated\Models\AuthorizationContext|null>
          */
         public \Near\JsonRpc\Models\OptionalValue $authorizationContext = new \Near\JsonRpc\Models\OptionalValue(),
+        /**
+         * The protocol version the receipt was created at, absent if the receipt doesn't record it
+         *
+         * @var \Near\JsonRpc\Models\OptionalValue<int|null>
+         */
+        public \Near\JsonRpc\Models\OptionalValue $creationProtocolVersion = new \Near\JsonRpc\Models\OptionalValue(),
         /**
          * @var bool|null
          */
@@ -107,6 +113,12 @@ final readonly class ReceiptEnumViewActionPayload implements \Near\JsonRpc\Model
     ),
   ),
 ), 'authorization_context');
+        if ($this->creationProtocolVersion->present) \Near\JsonRpc\Models\TypeGuard::assert($this->creationProtocolVersion->value, array (
+  'format' => 'uint32',
+  'minimum' => 0,
+  'nullable' => true,
+  'type' => 'integer',
+), 'creation_protocol_version');
         if ($this->isPromiseYield !== null) \Near\JsonRpc\Models\TypeGuard::assert($this->isPromiseYield, array (
   'default' => false,
   'type' => 'boolean',
@@ -170,6 +182,7 @@ final readonly class ReceiptEnumViewActionPayload implements \Near\JsonRpc\Model
         $extra = array_diff_key($data, array (
   'actions' => true,
   'authorization_context' => true,
+  'creation_protocol_version' => true,
   'gas_price' => true,
   'input_data_ids' => true,
   'is_promise_yield' => true,
@@ -230,6 +243,12 @@ final readonly class ReceiptEnumViewActionPayload implements \Near\JsonRpc\Model
     ),
   ),
 ), 'authorization_context')) : new \Near\JsonRpc\Models\OptionalValue(),
+            creationProtocolVersion: array_key_exists('creation_protocol_version', $data) ? \Near\JsonRpc\Models\OptionalValue::of(\Near\JsonRpc\Models\ModelHydrator::hydrate($data['creation_protocol_version'], array (
+  'format' => 'uint32',
+  'minimum' => 0,
+  'nullable' => true,
+  'type' => 'integer',
+), 'creation_protocol_version')) : new \Near\JsonRpc\Models\OptionalValue(),
             isPromiseYield: array_key_exists('is_promise_yield', $data) ? \Near\JsonRpc\Models\ModelHydrator::hydrate($data['is_promise_yield'], array (
   'default' => false,
   'type' => 'boolean',
@@ -290,6 +309,7 @@ final readonly class ReceiptEnumViewActionPayload implements \Near\JsonRpc\Model
         $data['output_data_receivers'] = $this->outputDataReceivers;
         $data['signer_id'] = $this->signerId;
         if ($this->authorizationContext->present) $data['authorization_context'] = $this->authorizationContext->value;
+        if ($this->creationProtocolVersion->present) $data['creation_protocol_version'] = $this->creationProtocolVersion->value;
         if ($this->isPromiseYield !== null) $data['is_promise_yield'] = $this->isPromiseYield;
         if ($this->refundTo->present) $data['refund_to'] = $this->refundTo->value;
         if ($this->signerPublicKey->present) $data['signer_public_key'] = $this->signerPublicKey->value;
@@ -330,6 +350,13 @@ final readonly class ReceiptEnumViewActionPayload implements \Near\JsonRpc\Model
           'type' => 'null',
         ),
       ),
+    ),
+    'creation_protocol_version' => 
+    array (
+      'format' => 'uint32',
+      'minimum' => 0,
+      'nullable' => true,
+      'type' => 'integer',
     ),
     'gas_price' => 
     array (
@@ -451,6 +478,13 @@ final readonly class ReceiptEnumViewActionPayload implements \Near\JsonRpc\Model
           'type' => 'null',
         ),
       ),
+    ),
+    'creation_protocol_version' => 
+    array (
+      'format' => 'uint32',
+      'minimum' => 0,
+      'nullable' => true,
+      'type' => 'integer',
     ),
     'gas_price' => 
     array (

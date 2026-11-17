@@ -8,10 +8,10 @@ namespace Near\JsonRpc\Generated\Models;
  */
 final readonly class RpcCallFunctionError implements \Near\JsonRpc\Models\ModelJsonSerializable
 {
-    /** @var \Near\JsonRpc\Generated\Models\RpcCallFunctionErrorUnknownBlock|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorInvalidAccount|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorUnknownAccount|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorUninitializedAccount|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorInvalidStateInit|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorNoContractCode|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorNoGlobalContractCode|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorContractExecutionError|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorInternalError */
-    public \Near\JsonRpc\Generated\Models\RpcCallFunctionErrorUnknownBlock|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorInvalidAccount|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorUnknownAccount|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorUninitializedAccount|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorInvalidStateInit|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorNoContractCode|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorNoGlobalContractCode|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorContractExecutionError|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorInternalError $root;
+    /** @var \Near\JsonRpc\Generated\Models\RpcCallFunctionErrorUnknownBlock|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorInvalidAccount|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorUnknownAccount|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorUninitializedAccount|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorInvalidStateInit|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorNoContractCode|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorNoGlobalContractCode|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorContractExecutionError|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorExternalCallRefused|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorInternalError */
+    public \Near\JsonRpc\Generated\Models\RpcCallFunctionErrorUnknownBlock|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorInvalidAccount|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorUnknownAccount|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorUninitializedAccount|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorInvalidStateInit|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorNoContractCode|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorNoGlobalContractCode|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorContractExecutionError|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorExternalCallRefused|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorInternalError $root;
 
-    public function __construct(\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorUnknownBlock|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorInvalidAccount|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorUnknownAccount|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorUninitializedAccount|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorInvalidStateInit|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorNoContractCode|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorNoGlobalContractCode|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorContractExecutionError|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorInternalError $root) { $this->root = $root; }
+    public function __construct(\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorUnknownBlock|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorInvalidAccount|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorUnknownAccount|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorUninitializedAccount|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorInvalidStateInit|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorNoContractCode|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorNoGlobalContractCode|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorContractExecutionError|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorExternalCallRefused|\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorInternalError $root) { $this->root = $root; }
 
     public static function fromValue(mixed $value): self
     {
@@ -24,7 +24,8 @@ final readonly class RpcCallFunctionError implements \Near\JsonRpc\Models\ModelJ
         try { $matched[5] = \Near\JsonRpc\Generated\Models\RpcCallFunctionErrorNoContractCode::fromValue($value); } catch (\InvalidArgumentException) {}
         try { $matched[6] = \Near\JsonRpc\Generated\Models\RpcCallFunctionErrorNoGlobalContractCode::fromValue($value); } catch (\InvalidArgumentException) {}
         try { $matched[7] = \Near\JsonRpc\Generated\Models\RpcCallFunctionErrorContractExecutionError::fromValue($value); } catch (\InvalidArgumentException) {}
-        try { $matched[8] = \Near\JsonRpc\Generated\Models\RpcCallFunctionErrorInternalError::fromValue($value); } catch (\InvalidArgumentException) {}
+        try { $matched[8] = \Near\JsonRpc\Generated\Models\RpcCallFunctionErrorExternalCallRefused::fromValue($value); } catch (\InvalidArgumentException) {}
+        try { $matched[9] = \Near\JsonRpc\Generated\Models\RpcCallFunctionErrorInternalError::fromValue($value); } catch (\InvalidArgumentException) {}
         if ($matched === [] || (true && count($matched) !== 1)) throw new \InvalidArgumentException('Value does not match its oneOf schema for RpcCallFunctionError.');
         return new self($matched[array_key_first($matched)]);
     }
@@ -40,6 +41,7 @@ final readonly class RpcCallFunctionError implements \Near\JsonRpc\Models\ModelJ
             $this->root instanceof \Near\JsonRpc\Generated\Models\RpcCallFunctionErrorNoContractCode => 'NO_CONTRACT_CODE',
             $this->root instanceof \Near\JsonRpc\Generated\Models\RpcCallFunctionErrorNoGlobalContractCode => 'NO_GLOBAL_CONTRACT_CODE',
             $this->root instanceof \Near\JsonRpc\Generated\Models\RpcCallFunctionErrorContractExecutionError => 'CONTRACT_EXECUTION_ERROR',
+            $this->root instanceof \Near\JsonRpc\Generated\Models\RpcCallFunctionErrorExternalCallRefused => 'EXTERNAL_CALL_REFUSED',
             $this->root instanceof \Near\JsonRpc\Generated\Models\RpcCallFunctionErrorInternalError => 'INTERNAL_ERROR',
             default => throw new \LogicException('Unknown RpcCallFunctionError variant.'),
         };
@@ -52,6 +54,7 @@ final readonly class RpcCallFunctionError implements \Near\JsonRpc\Models\ModelJ
     public static function noContractCode(\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorNoContractCode $variant): self { return new self($variant); }
     public static function noGlobalContractCode(\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorNoGlobalContractCode $variant): self { return new self($variant); }
     public static function contractExecutionError(\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorContractExecutionError $variant): self { return new self($variant); }
+    public static function externalCallRefused(\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorExternalCallRefused $variant): self { return new self($variant); }
     public static function internalError(\Near\JsonRpc\Generated\Models\RpcCallFunctionErrorInternalError $variant): self { return new self($variant); }
     public static function fromArray(array $data): self { return self::fromValue($data); }
     public static function fromJson(string $json): self { return self::fromValue(\Near\JsonRpc\Models\ModelHydrator::decodeJsonValue($json)); }
@@ -101,6 +104,11 @@ final readonly class RpcCallFunctionError implements \Near\JsonRpc\Models\ModelJ
       'nullable' => false,
     ),
     8 => 
+    array (
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\RpcCallFunctionErrorExternalCallRefused',
+      'nullable' => false,
+    ),
+    9 => 
     array (
       'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\RpcCallFunctionErrorInternalError',
       'nullable' => false,
@@ -153,6 +161,11 @@ final readonly class RpcCallFunctionError implements \Near\JsonRpc\Models\ModelJ
       'nullable' => false,
     ),
     8 => 
+    array (
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\RpcCallFunctionErrorExternalCallRefused',
+      'nullable' => false,
+    ),
+    9 => 
     array (
       'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\RpcCallFunctionErrorInternalError',
       'nullable' => false,

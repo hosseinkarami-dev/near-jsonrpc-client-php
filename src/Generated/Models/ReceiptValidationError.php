@@ -8,10 +8,10 @@ namespace Near\JsonRpc\Generated\Models;
  */
 final readonly class ReceiptValidationError implements \Near\JsonRpc\Models\ModelJsonSerializable
 {
-    /** @var \Near\JsonRpc\Generated\Models\ReceiptValidationErrorInvalidPredecessorId|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorInvalidReceiverId|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorInvalidSignerId|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorInvalidDataReceiverId|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorReturnedValueLengthExceeded|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorNumberInputDataDependenciesExceeded|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorActionsValidation|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorReceiptSizeExceeded|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorInvalidRefundTo */
-    public \Near\JsonRpc\Generated\Models\ReceiptValidationErrorInvalidPredecessorId|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorInvalidReceiverId|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorInvalidSignerId|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorInvalidDataReceiverId|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorReturnedValueLengthExceeded|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorNumberInputDataDependenciesExceeded|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorActionsValidation|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorReceiptSizeExceeded|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorInvalidRefundTo $root;
+    /** @var \Near\JsonRpc\Generated\Models\ReceiptValidationErrorInvalidPredecessorId|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorInvalidReceiverId|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorInvalidSignerId|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorInvalidDataReceiverId|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorReturnedValueLengthExceeded|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorNumberInputDataDependenciesExceeded|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorActionsValidation|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorReceiptSizeExceeded|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorInvalidRefundTo|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorInvalidPromiseYieldInputDataCount|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorDuplicateInputDataId */
+    public \Near\JsonRpc\Generated\Models\ReceiptValidationErrorInvalidPredecessorId|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorInvalidReceiverId|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorInvalidSignerId|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorInvalidDataReceiverId|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorReturnedValueLengthExceeded|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorNumberInputDataDependenciesExceeded|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorActionsValidation|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorReceiptSizeExceeded|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorInvalidRefundTo|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorInvalidPromiseYieldInputDataCount|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorDuplicateInputDataId $root;
 
-    public function __construct(\Near\JsonRpc\Generated\Models\ReceiptValidationErrorInvalidPredecessorId|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorInvalidReceiverId|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorInvalidSignerId|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorInvalidDataReceiverId|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorReturnedValueLengthExceeded|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorNumberInputDataDependenciesExceeded|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorActionsValidation|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorReceiptSizeExceeded|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorInvalidRefundTo $root) { $this->root = $root; }
+    public function __construct(\Near\JsonRpc\Generated\Models\ReceiptValidationErrorInvalidPredecessorId|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorInvalidReceiverId|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorInvalidSignerId|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorInvalidDataReceiverId|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorReturnedValueLengthExceeded|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorNumberInputDataDependenciesExceeded|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorActionsValidation|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorReceiptSizeExceeded|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorInvalidRefundTo|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorInvalidPromiseYieldInputDataCount|\Near\JsonRpc\Generated\Models\ReceiptValidationErrorDuplicateInputDataId $root) { $this->root = $root; }
 
     public static function fromValue(mixed $value): self
     {
@@ -25,6 +25,8 @@ final readonly class ReceiptValidationError implements \Near\JsonRpc\Models\Mode
         try { $matched[6] = \Near\JsonRpc\Generated\Models\ReceiptValidationErrorActionsValidation::fromValue($value); } catch (\InvalidArgumentException) {}
         try { $matched[7] = \Near\JsonRpc\Generated\Models\ReceiptValidationErrorReceiptSizeExceeded::fromValue($value); } catch (\InvalidArgumentException) {}
         try { $matched[8] = \Near\JsonRpc\Generated\Models\ReceiptValidationErrorInvalidRefundTo::fromValue($value); } catch (\InvalidArgumentException) {}
+        try { $matched[9] = \Near\JsonRpc\Generated\Models\ReceiptValidationErrorInvalidPromiseYieldInputDataCount::fromValue($value); } catch (\InvalidArgumentException) {}
+        try { $matched[10] = \Near\JsonRpc\Generated\Models\ReceiptValidationErrorDuplicateInputDataId::fromValue($value); } catch (\InvalidArgumentException) {}
         if ($matched === [] || (true && count($matched) !== 1)) throw new \InvalidArgumentException('Value does not match its oneOf schema for ReceiptValidationError.');
         return new self($matched[array_key_first($matched)]);
     }
@@ -41,6 +43,8 @@ final readonly class ReceiptValidationError implements \Near\JsonRpc\Models\Mode
             $this->root instanceof \Near\JsonRpc\Generated\Models\ReceiptValidationErrorActionsValidation => 'ActionsValidation',
             $this->root instanceof \Near\JsonRpc\Generated\Models\ReceiptValidationErrorReceiptSizeExceeded => 'ReceiptSizeExceeded',
             $this->root instanceof \Near\JsonRpc\Generated\Models\ReceiptValidationErrorInvalidRefundTo => 'InvalidRefundTo',
+            $this->root instanceof \Near\JsonRpc\Generated\Models\ReceiptValidationErrorInvalidPromiseYieldInputDataCount => 'InvalidPromiseYieldInputDataCount',
+            $this->root instanceof \Near\JsonRpc\Generated\Models\ReceiptValidationErrorDuplicateInputDataId => 'DuplicateInputDataId',
             default => throw new \LogicException('Unknown ReceiptValidationError variant.'),
         };
     }
@@ -53,6 +57,8 @@ final readonly class ReceiptValidationError implements \Near\JsonRpc\Models\Mode
     public static function actionsValidation(\Near\JsonRpc\Generated\Models\ActionsValidationError $payload): self { return new self(new \Near\JsonRpc\Generated\Models\ReceiptValidationErrorActionsValidation($payload)); }
     public static function receiptSizeExceeded(\Near\JsonRpc\Generated\Models\ReceiptValidationErrorReceiptSizeExceededPayload $payload): self { return new self(new \Near\JsonRpc\Generated\Models\ReceiptValidationErrorReceiptSizeExceeded($payload)); }
     public static function invalidRefundTo(\Near\JsonRpc\Generated\Models\ReceiptValidationErrorInvalidRefundToPayload $payload): self { return new self(new \Near\JsonRpc\Generated\Models\ReceiptValidationErrorInvalidRefundTo($payload)); }
+    public static function invalidPromiseYieldInputDataCount(\Near\JsonRpc\Generated\Models\ReceiptValidationErrorInvalidPromiseYieldInputDataCountPayload $payload): self { return new self(new \Near\JsonRpc\Generated\Models\ReceiptValidationErrorInvalidPromiseYieldInputDataCount($payload)); }
+    public static function duplicateInputDataId(\Near\JsonRpc\Generated\Models\ReceiptValidationErrorDuplicateInputDataIdPayload $payload): self { return new self(new \Near\JsonRpc\Generated\Models\ReceiptValidationErrorDuplicateInputDataId($payload)); }
     public static function fromArray(array $data): self { return self::fromValue($data); }
     public static function fromJson(string $json): self { return self::fromValue(\Near\JsonRpc\Models\ModelHydrator::decodeJsonValue($json)); }
     public function jsonSerialize(): mixed
@@ -105,6 +111,16 @@ final readonly class ReceiptValidationError implements \Near\JsonRpc\Models\Mode
       'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\ReceiptValidationErrorInvalidRefundTo',
       'nullable' => false,
     ),
+    9 => 
+    array (
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\ReceiptValidationErrorInvalidPromiseYieldInputDataCount',
+      'nullable' => false,
+    ),
+    10 => 
+    array (
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\ReceiptValidationErrorDuplicateInputDataId',
+      'nullable' => false,
+    ),
   ),
 ), 'root'));
         return $this->root;
@@ -155,6 +171,16 @@ final readonly class ReceiptValidationError implements \Near\JsonRpc\Models\Mode
     8 => 
     array (
       'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\ReceiptValidationErrorInvalidRefundTo',
+      'nullable' => false,
+    ),
+    9 => 
+    array (
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\ReceiptValidationErrorInvalidPromiseYieldInputDataCount',
+      'nullable' => false,
+    ),
+    10 => 
+    array (
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\ReceiptValidationErrorDuplicateInputDataId',
       'nullable' => false,
     ),
   ),
