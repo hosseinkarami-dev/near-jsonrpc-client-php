@@ -8,10 +8,10 @@ namespace Near\JsonRpc\Generated\Models;
  */
 final readonly class RpcQueryError implements \Near\JsonRpc\Models\ModelJsonSerializable
 {
-    /** @var \Near\JsonRpc\Generated\Models\RpcQueryErrorNoSyncedBlocks|\Near\JsonRpc\Generated\Models\RpcQueryErrorUnavailableShard|\Near\JsonRpc\Generated\Models\RpcQueryErrorGarbageCollectedBlock|\Near\JsonRpc\Generated\Models\RpcQueryErrorUnknownBlock|\Near\JsonRpc\Generated\Models\RpcQueryErrorInvalidAccount|\Near\JsonRpc\Generated\Models\RpcQueryErrorUnknownAccount|\Near\JsonRpc\Generated\Models\RpcQueryErrorUninitializedAccount|\Near\JsonRpc\Generated\Models\RpcQueryErrorInvalidStateInit|\Near\JsonRpc\Generated\Models\RpcQueryErrorNoContractCode|\Near\JsonRpc\Generated\Models\RpcQueryErrorTooLargeContractState|\Near\JsonRpc\Generated\Models\RpcQueryErrorUnknownAccessKey|\Near\JsonRpc\Generated\Models\RpcQueryErrorUnknownGasKey|\Near\JsonRpc\Generated\Models\RpcQueryErrorTooManyAccessKeys|\Near\JsonRpc\Generated\Models\RpcQueryErrorContractExecutionError|\Near\JsonRpc\Generated\Models\RpcQueryErrorNoGlobalContractCode|\Near\JsonRpc\Generated\Models\RpcQueryErrorInternalError */
-    public \Near\JsonRpc\Generated\Models\RpcQueryErrorNoSyncedBlocks|\Near\JsonRpc\Generated\Models\RpcQueryErrorUnavailableShard|\Near\JsonRpc\Generated\Models\RpcQueryErrorGarbageCollectedBlock|\Near\JsonRpc\Generated\Models\RpcQueryErrorUnknownBlock|\Near\JsonRpc\Generated\Models\RpcQueryErrorInvalidAccount|\Near\JsonRpc\Generated\Models\RpcQueryErrorUnknownAccount|\Near\JsonRpc\Generated\Models\RpcQueryErrorUninitializedAccount|\Near\JsonRpc\Generated\Models\RpcQueryErrorInvalidStateInit|\Near\JsonRpc\Generated\Models\RpcQueryErrorNoContractCode|\Near\JsonRpc\Generated\Models\RpcQueryErrorTooLargeContractState|\Near\JsonRpc\Generated\Models\RpcQueryErrorUnknownAccessKey|\Near\JsonRpc\Generated\Models\RpcQueryErrorUnknownGasKey|\Near\JsonRpc\Generated\Models\RpcQueryErrorTooManyAccessKeys|\Near\JsonRpc\Generated\Models\RpcQueryErrorContractExecutionError|\Near\JsonRpc\Generated\Models\RpcQueryErrorNoGlobalContractCode|\Near\JsonRpc\Generated\Models\RpcQueryErrorInternalError $root;
+    /** @var \Near\JsonRpc\Generated\Models\RpcQueryErrorNoSyncedBlocks|\Near\JsonRpc\Generated\Models\RpcQueryErrorUnavailableShard|\Near\JsonRpc\Generated\Models\RpcQueryErrorGarbageCollectedBlock|\Near\JsonRpc\Generated\Models\RpcQueryErrorUnknownBlock|\Near\JsonRpc\Generated\Models\RpcQueryErrorInvalidAccount|\Near\JsonRpc\Generated\Models\RpcQueryErrorUnknownAccount|\Near\JsonRpc\Generated\Models\RpcQueryErrorUninitializedAccount|\Near\JsonRpc\Generated\Models\RpcQueryErrorInvalidStateInit|\Near\JsonRpc\Generated\Models\RpcQueryErrorNoContractCode|\Near\JsonRpc\Generated\Models\RpcQueryErrorTooLargeContractState|\Near\JsonRpc\Generated\Models\RpcQueryErrorUnknownAccessKey|\Near\JsonRpc\Generated\Models\RpcQueryErrorUnknownGasKey|\Near\JsonRpc\Generated\Models\RpcQueryErrorTooManyAccessKeys|\Near\JsonRpc\Generated\Models\RpcQueryErrorContractExecutionError|\Near\JsonRpc\Generated\Models\RpcQueryErrorExternalCallRefused|\Near\JsonRpc\Generated\Models\RpcQueryErrorNoGlobalContractCode|\Near\JsonRpc\Generated\Models\RpcQueryErrorInternalError */
+    public \Near\JsonRpc\Generated\Models\RpcQueryErrorNoSyncedBlocks|\Near\JsonRpc\Generated\Models\RpcQueryErrorUnavailableShard|\Near\JsonRpc\Generated\Models\RpcQueryErrorGarbageCollectedBlock|\Near\JsonRpc\Generated\Models\RpcQueryErrorUnknownBlock|\Near\JsonRpc\Generated\Models\RpcQueryErrorInvalidAccount|\Near\JsonRpc\Generated\Models\RpcQueryErrorUnknownAccount|\Near\JsonRpc\Generated\Models\RpcQueryErrorUninitializedAccount|\Near\JsonRpc\Generated\Models\RpcQueryErrorInvalidStateInit|\Near\JsonRpc\Generated\Models\RpcQueryErrorNoContractCode|\Near\JsonRpc\Generated\Models\RpcQueryErrorTooLargeContractState|\Near\JsonRpc\Generated\Models\RpcQueryErrorUnknownAccessKey|\Near\JsonRpc\Generated\Models\RpcQueryErrorUnknownGasKey|\Near\JsonRpc\Generated\Models\RpcQueryErrorTooManyAccessKeys|\Near\JsonRpc\Generated\Models\RpcQueryErrorContractExecutionError|\Near\JsonRpc\Generated\Models\RpcQueryErrorExternalCallRefused|\Near\JsonRpc\Generated\Models\RpcQueryErrorNoGlobalContractCode|\Near\JsonRpc\Generated\Models\RpcQueryErrorInternalError $root;
 
-    public function __construct(\Near\JsonRpc\Generated\Models\RpcQueryErrorNoSyncedBlocks|\Near\JsonRpc\Generated\Models\RpcQueryErrorUnavailableShard|\Near\JsonRpc\Generated\Models\RpcQueryErrorGarbageCollectedBlock|\Near\JsonRpc\Generated\Models\RpcQueryErrorUnknownBlock|\Near\JsonRpc\Generated\Models\RpcQueryErrorInvalidAccount|\Near\JsonRpc\Generated\Models\RpcQueryErrorUnknownAccount|\Near\JsonRpc\Generated\Models\RpcQueryErrorUninitializedAccount|\Near\JsonRpc\Generated\Models\RpcQueryErrorInvalidStateInit|\Near\JsonRpc\Generated\Models\RpcQueryErrorNoContractCode|\Near\JsonRpc\Generated\Models\RpcQueryErrorTooLargeContractState|\Near\JsonRpc\Generated\Models\RpcQueryErrorUnknownAccessKey|\Near\JsonRpc\Generated\Models\RpcQueryErrorUnknownGasKey|\Near\JsonRpc\Generated\Models\RpcQueryErrorTooManyAccessKeys|\Near\JsonRpc\Generated\Models\RpcQueryErrorContractExecutionError|\Near\JsonRpc\Generated\Models\RpcQueryErrorNoGlobalContractCode|\Near\JsonRpc\Generated\Models\RpcQueryErrorInternalError $root) { $this->root = $root; }
+    public function __construct(\Near\JsonRpc\Generated\Models\RpcQueryErrorNoSyncedBlocks|\Near\JsonRpc\Generated\Models\RpcQueryErrorUnavailableShard|\Near\JsonRpc\Generated\Models\RpcQueryErrorGarbageCollectedBlock|\Near\JsonRpc\Generated\Models\RpcQueryErrorUnknownBlock|\Near\JsonRpc\Generated\Models\RpcQueryErrorInvalidAccount|\Near\JsonRpc\Generated\Models\RpcQueryErrorUnknownAccount|\Near\JsonRpc\Generated\Models\RpcQueryErrorUninitializedAccount|\Near\JsonRpc\Generated\Models\RpcQueryErrorInvalidStateInit|\Near\JsonRpc\Generated\Models\RpcQueryErrorNoContractCode|\Near\JsonRpc\Generated\Models\RpcQueryErrorTooLargeContractState|\Near\JsonRpc\Generated\Models\RpcQueryErrorUnknownAccessKey|\Near\JsonRpc\Generated\Models\RpcQueryErrorUnknownGasKey|\Near\JsonRpc\Generated\Models\RpcQueryErrorTooManyAccessKeys|\Near\JsonRpc\Generated\Models\RpcQueryErrorContractExecutionError|\Near\JsonRpc\Generated\Models\RpcQueryErrorExternalCallRefused|\Near\JsonRpc\Generated\Models\RpcQueryErrorNoGlobalContractCode|\Near\JsonRpc\Generated\Models\RpcQueryErrorInternalError $root) { $this->root = $root; }
 
     public static function fromValue(mixed $value): self
     {
@@ -30,8 +30,9 @@ final readonly class RpcQueryError implements \Near\JsonRpc\Models\ModelJsonSeri
         try { $matched[11] = \Near\JsonRpc\Generated\Models\RpcQueryErrorUnknownGasKey::fromValue($value); } catch (\InvalidArgumentException) {}
         try { $matched[12] = \Near\JsonRpc\Generated\Models\RpcQueryErrorTooManyAccessKeys::fromValue($value); } catch (\InvalidArgumentException) {}
         try { $matched[13] = \Near\JsonRpc\Generated\Models\RpcQueryErrorContractExecutionError::fromValue($value); } catch (\InvalidArgumentException) {}
-        try { $matched[14] = \Near\JsonRpc\Generated\Models\RpcQueryErrorNoGlobalContractCode::fromValue($value); } catch (\InvalidArgumentException) {}
-        try { $matched[15] = \Near\JsonRpc\Generated\Models\RpcQueryErrorInternalError::fromValue($value); } catch (\InvalidArgumentException) {}
+        try { $matched[14] = \Near\JsonRpc\Generated\Models\RpcQueryErrorExternalCallRefused::fromValue($value); } catch (\InvalidArgumentException) {}
+        try { $matched[15] = \Near\JsonRpc\Generated\Models\RpcQueryErrorNoGlobalContractCode::fromValue($value); } catch (\InvalidArgumentException) {}
+        try { $matched[16] = \Near\JsonRpc\Generated\Models\RpcQueryErrorInternalError::fromValue($value); } catch (\InvalidArgumentException) {}
         if ($matched === [] || (true && count($matched) !== 1)) throw new \InvalidArgumentException('Value does not match its oneOf schema for RpcQueryError.');
         return new self($matched[array_key_first($matched)]);
     }
@@ -53,6 +54,7 @@ final readonly class RpcQueryError implements \Near\JsonRpc\Models\ModelJsonSeri
             $this->root instanceof \Near\JsonRpc\Generated\Models\RpcQueryErrorUnknownGasKey => 'UNKNOWN_GAS_KEY',
             $this->root instanceof \Near\JsonRpc\Generated\Models\RpcQueryErrorTooManyAccessKeys => 'TOO_MANY_ACCESS_KEYS',
             $this->root instanceof \Near\JsonRpc\Generated\Models\RpcQueryErrorContractExecutionError => 'CONTRACT_EXECUTION_ERROR',
+            $this->root instanceof \Near\JsonRpc\Generated\Models\RpcQueryErrorExternalCallRefused => 'EXTERNAL_CALL_REFUSED',
             $this->root instanceof \Near\JsonRpc\Generated\Models\RpcQueryErrorNoGlobalContractCode => 'NO_GLOBAL_CONTRACT_CODE',
             $this->root instanceof \Near\JsonRpc\Generated\Models\RpcQueryErrorInternalError => 'INTERNAL_ERROR',
             default => throw new \LogicException('Unknown RpcQueryError variant.'),
@@ -72,6 +74,7 @@ final readonly class RpcQueryError implements \Near\JsonRpc\Models\ModelJsonSeri
     public static function unknownGasKey(\Near\JsonRpc\Generated\Models\RpcQueryErrorUnknownGasKey $variant): self { return new self($variant); }
     public static function tooManyAccessKeys(\Near\JsonRpc\Generated\Models\RpcQueryErrorTooManyAccessKeys $variant): self { return new self($variant); }
     public static function contractExecutionError(\Near\JsonRpc\Generated\Models\RpcQueryErrorContractExecutionError $variant): self { return new self($variant); }
+    public static function externalCallRefused(\Near\JsonRpc\Generated\Models\RpcQueryErrorExternalCallRefused $variant): self { return new self($variant); }
     public static function noGlobalContractCode(\Near\JsonRpc\Generated\Models\RpcQueryErrorNoGlobalContractCode $variant): self { return new self($variant); }
     public static function internalError(\Near\JsonRpc\Generated\Models\RpcQueryErrorInternalError $variant): self { return new self($variant); }
     public static function fromArray(array $data): self { return self::fromValue($data); }
@@ -153,10 +156,15 @@ final readonly class RpcQueryError implements \Near\JsonRpc\Models\ModelJsonSeri
     ),
     14 => 
     array (
-      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\RpcQueryErrorNoGlobalContractCode',
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\RpcQueryErrorExternalCallRefused',
       'nullable' => false,
     ),
     15 => 
+    array (
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\RpcQueryErrorNoGlobalContractCode',
+      'nullable' => false,
+    ),
+    16 => 
     array (
       'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\RpcQueryErrorInternalError',
       'nullable' => false,
@@ -240,10 +248,15 @@ final readonly class RpcQueryError implements \Near\JsonRpc\Models\ModelJsonSeri
     ),
     14 => 
     array (
-      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\RpcQueryErrorNoGlobalContractCode',
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\RpcQueryErrorExternalCallRefused',
       'nullable' => false,
     ),
     15 => 
+    array (
+      'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\RpcQueryErrorNoGlobalContractCode',
+      'nullable' => false,
+    ),
+    16 => 
     array (
       'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\RpcQueryErrorInternalError',
       'nullable' => false,
