@@ -79,6 +79,14 @@ final readonly class CongestionControlConfigView implements \Near\JsonRpc\Models
          */
         public \Near\JsonRpc\Generated\Models\NearGas|null $minOutgoingGas = null,
         /**
+         * The smallest size a receipt counts for bandwidth and congestion.
+         *
+         * See [`CongestionControlConfig`] for more details.
+         *
+         * @var int|string|null
+         */
+        public int|string|null $minReceiptCongestionSize = null,
+        /**
          * The minimum amount of gas in a chunk spent on converting new transactions
          * to receipts, as long as the receiving shard is not congested.
          *
@@ -132,6 +140,12 @@ final readonly class CongestionControlConfigView implements \Near\JsonRpc\Models
   'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\NearGas',
   'nullable' => false,
 ), 'min_outgoing_gas');
+        if ($this->minReceiptCongestionSize !== null) \Near\JsonRpc\Models\TypeGuard::assert($this->minReceiptCongestionSize, array (
+  'default' => 0,
+  'format' => 'uint64',
+  'minimum' => 0,
+  'type' => 'integer',
+), 'min_receipt_congestion_size');
         if ($this->minTxGas !== null) \Near\JsonRpc\Models\TypeGuard::assert($this->minTxGas, array (
   'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\NearGas',
   'nullable' => false,
@@ -162,6 +176,7 @@ final readonly class CongestionControlConfigView implements \Near\JsonRpc\Models
   'max_outgoing_gas' => true,
   'max_tx_gas' => true,
   'min_outgoing_gas' => true,
+  'min_receipt_congestion_size' => true,
   'min_tx_gas' => true,
   'reject_tx_congestion_threshold' => true,
 ));
@@ -200,6 +215,12 @@ final readonly class CongestionControlConfigView implements \Near\JsonRpc\Models
   'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\NearGas',
   'nullable' => false,
 ), 'min_outgoing_gas') : null,
+            minReceiptCongestionSize: array_key_exists('min_receipt_congestion_size', $data) ? \Near\JsonRpc\Models\ModelHydrator::hydrate($data['min_receipt_congestion_size'], array (
+  'default' => 0,
+  'format' => 'uint64',
+  'minimum' => 0,
+  'type' => 'integer',
+), 'min_receipt_congestion_size') : null,
             minTxGas: array_key_exists('min_tx_gas', $data) ? \Near\JsonRpc\Models\ModelHydrator::hydrate($data['min_tx_gas'], array (
   'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\NearGas',
   'nullable' => false,
@@ -228,6 +249,7 @@ final readonly class CongestionControlConfigView implements \Near\JsonRpc\Models
         if ($this->maxOutgoingGas !== null) $data['max_outgoing_gas'] = $this->maxOutgoingGas;
         if ($this->maxTxGas !== null) $data['max_tx_gas'] = $this->maxTxGas;
         if ($this->minOutgoingGas !== null) $data['min_outgoing_gas'] = $this->minOutgoingGas;
+        if ($this->minReceiptCongestionSize !== null) $data['min_receipt_congestion_size'] = $this->minReceiptCongestionSize;
         if ($this->minTxGas !== null) $data['min_tx_gas'] = $this->minTxGas;
         if ($this->rejectTxCongestionThreshold !== null) $data['reject_tx_congestion_threshold'] = $this->rejectTxCongestionThreshold;
         return (object) $data;
@@ -280,6 +302,13 @@ final readonly class CongestionControlConfigView implements \Near\JsonRpc\Models
     array (
       'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\NearGas',
       'nullable' => false,
+    ),
+    'min_receipt_congestion_size' => 
+    array (
+      'default' => 0,
+      'format' => 'uint64',
+      'minimum' => 0,
+      'type' => 'integer',
     ),
     'min_tx_gas' => 
     array (
@@ -346,6 +375,13 @@ final readonly class CongestionControlConfigView implements \Near\JsonRpc\Models
     array (
       'phpClass' => '\\Near\\JsonRpc\\Generated\\Models\\NearGas',
       'nullable' => false,
+    ),
+    'min_receipt_congestion_size' => 
+    array (
+      'default' => 0,
+      'format' => 'uint64',
+      'minimum' => 0,
+      'type' => 'integer',
     ),
     'min_tx_gas' => 
     array (
